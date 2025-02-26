@@ -34,7 +34,10 @@ export default function BestSellingProductsChart() {
     <div className="bg-slate-700 p-8 rounded-lg">
        <h2 className="text-xl font-bold mb-4">Best Selling Products</h2>
        {/* charts */}
-       <Pie data={data}/>
+       <div className="p-4">
+        <Pie data={data} />
+       </div>
+      
        
     </div>
   )
