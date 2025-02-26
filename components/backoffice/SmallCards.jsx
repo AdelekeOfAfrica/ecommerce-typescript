@@ -49,7 +49,7 @@ export default function SmallCards() {
        {
         OrderrStatus.map((data,i)=>{
             return(
-                <SmallCard data={data}/>
+                <SmallCard data={data} key={i}/>
             )
         })
        }
