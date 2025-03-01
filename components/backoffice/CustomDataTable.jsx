@@ -7,14 +7,13 @@ export default function CustomDataTable() {
 
   const arr =[1,2,3,4,5 ];
   const PAGE_SIZE = 10; 
-  const [currentPage, setCurrentPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(1);
   const startIndex=(currentPage-1)*PAGE_SIZE;
   const endIndex =startIndex + PAGE_SIZE;
   const currentlyDisplayedData=data.slice(startIndex,endIndex); //i limit the page to 5
-
-  function handlePageChange(page){
-    console.log(page)
-  }
+  const totalPages =Math.ceil(data.length/PAGE_SIZE);
+  const itemStartIndex =startIndex + 1; 
+  const itemEndIndex = Math.min(startIndex + PAGE_SIZE, data.length);
   return (
     <div className="">
         <h2 className="text-xl font-bold mb-4">Recent Orders</h2>
@@ -37,16 +36,16 @@ export default function CustomDataTable() {
                             S/N
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Product name
+                           First Name
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Color
+                            Last Name 
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Category
+                            Email
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Price
+                            Gender
                         </th>
                         <th scope="col" className="px-6 py-3">
                             Action
@@ -71,17 +70,19 @@ export default function CustomDataTable() {
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                   {item.first_name}
                                 </th>
+
+                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                  {item.last_name}
+                                </th>
                                 <td className="px-6 py-4">
                                     {item.email}
                                 </td>
                                 <td className="px-6 py-4">
                                     {item.gender}
                                 </td>
+                               
                                 <td className="px-6 py-4">
-                                    $2999
-                                </td>
-                                <td className="px-6 py-4">
-                                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <button  className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
                                 </td>
                             </tr>
                             );
@@ -90,29 +91,38 @@ export default function CustomDataTable() {
                   
                 </tbody>
             </table>
-            <nav className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
-                <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span className="font-semibold text-gray-50 dark:text-white">1-10</span> of <span className="font-semibold text-gray-50 dark:text-white">1000</span></span>
+            <nav className="flex items-center flex-column flex-wrap md:flex-row justify-between p-4" aria-label="Table navigation">
+                <span className="text-xl font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span className="font-semibold text-gray-50 dark:text-white">{itemStartIndex}-{itemEndIndex}</span> of <span className="font-semibold text-gray-50 dark:text-white">{data.length}</span></span>
                 <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
                     <li>
-                        <a href="#" className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                        <button onClick={()=>setCurrentPage(currentPage - 1)}
+                            disabled={currentPage==1}  className="flex items-center justify-center px-3 h-10 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</button>
                     </li>
+                    
+                    {Array.from({ length: totalPages }, (_, index) => {
+                        return (
+                        <li key={index}> 
+                         <button
+                            onClick={() => setCurrentPage(index + 1)}
+                            disabled={currentPage == index + 1}
+                            className={`flex items-center justify-center px-3 h-10 leading-tight border border-gray-300 ${
+                                currentPage == index + 1
+                                ? "bg-blue-500 text-white" 
+                                : "text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                            }`}
+                            >
+                            {index + 1}
+                        </button>
+
+                           
+                        </li>
+                        );
+                    })}
+                    
+                 
                     <li>
-                        <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                    </li>
-                    <li>
-                        <a href="#" aria-current="page" className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                    </li>
-                    <li>
-                <button onclick={handlePageChange} className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</button>
+                <button onClick={()=>setCurrentPage(currentPage + 1)}
+                disabled={currentPage==totalPages} className="flex items-center justify-center px-3 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</button>
                     </li>
                 </ul>
             </nav>
