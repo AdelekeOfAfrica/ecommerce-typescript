@@ -1,9 +1,9 @@
 import React from 'react'
 import Sidebar from '@/components/backoffice/Sidebar.jsx'
-import Navbar from '@/components/backoffice/Navbar.jsx'
+import Navbar from '@/components/backoffice/navbar.jsx'
 export default function Layout({children}) {
   return (
-    <div className='flex '>
+    <div className='flex gap-4'>
       {/*side bar*/}
         <Sidebar />
 
