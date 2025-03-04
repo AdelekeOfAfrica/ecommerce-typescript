@@ -41,7 +41,7 @@ export default function Navbar() {
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <button class="flex items-center space-x-2">
+                  <button className="flex items-center space-x-2">
 
                     <LayoutDashboard className="mr-2 h-4 w-4"/>
                     <span>Dashboard</span> 
@@ -49,7 +49,7 @@ export default function Navbar() {
                  
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                   <button>
+                   <button className="flex items-center space-x-2">
                       <LogOut className="mr-2 h-4 w-4"/>
                      <span>Edit Profile</span> 
                    </button>
@@ -57,7 +57,7 @@ export default function Navbar() {
 
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                   <button>
+                   <button className="flex items-center space-x-2">
                       <User className="mr-2 h-4 w-4"/>
                        <span>Logout </span> 
                    </button>
