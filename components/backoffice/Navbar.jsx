@@ -42,10 +42,10 @@ export default function Navbar() {
                 <DropdownMenuItem>
                   <div className="flex items-center space-x-2">
                   <Image width={200} height={200} className="w-8 h-8 rounded-full " src="/placeholder.png" alt="User Profile"/>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col space-y-1">
                       <p>Yellow sweet corn stock out </p>
-                      <div className="flex">
-                        <p>Stock out </p>
+                      <div className="flex items-center space-x-2 ">
+                        <p className="px-3 py-0.5 text-sm bg-red-700 text-white rounded-full">Stock out </p>
                         <p>10-10-2010 5:30:00</p>
                       </div>
                     </div>
@@ -54,8 +54,25 @@ export default function Navbar() {
                       <X/>
                     </button>
                   </div>
-                 
                 </DropdownMenuItem>
+                 <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                  <div className="flex items-center space-x-2">
+                  <Image width={200} height={200} className="w-8 h-8 rounded-full " src="/placeholder.png" alt="User Profile"/>
+                    <div className="flex flex-col space-y-1">
+                      <p>Yellow sweet corn stock out </p>
+                      <div className="flex items-center space-x-2 ">
+                        <p className="px-3 py-0.5 text-sm bg-red-700 text-white rounded-full">Stock out </p>
+                        <p>10-10-2010 5:30:00</p>
+                      </div>
+                    </div>
+
+                    <button>
+                      <X/>
+                    </button>
+                  </div>
+                </DropdownMenuItem>
+                 <DropdownMenuSeparator />
                
               </DropdownMenuContent>
             </DropdownMenu>
