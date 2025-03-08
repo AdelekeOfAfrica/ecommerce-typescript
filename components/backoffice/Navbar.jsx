@@ -1,4 +1,4 @@
-import { AlignJustify, Sun, Bell, User, LayoutDashboard, LogOut, Settings2 } from 'lucide-react';
+import { AlignJustify, Sun, Bell, User, LayoutDashboard, LogOut, Settings2, X } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import {
@@ -22,14 +22,47 @@ export default function Navbar() {
       <div className="flex space-x-3">
         <button><Sun size={24} strokeWidth={1.5} className="text-green-600" /></button>
 
-        <button type="button" className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-transparent rounded-lg dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-         <Bell className="text-green-600"/>
-        <span className="sr-only">Notifications</span>
-          <div className="absolute inline-flex items-center 
-          justify-center w-6 h-6 text-xs font-bold
-           text-white bg-red-500 
-            rounded-full -top-0 end-6 dark:border-gray-900">20</div>
-        </button>
+
+       
+            <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+            <button  className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-transparent rounded-lg dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              <Bell className="text-green-600"/>
+              <span className="sr-only">Notifications</span>
+                <div className="absolute inline-flex items-center 
+                justify-center w-6 h-6 text-xs font-bold
+                text-white bg-red-500 
+                  rounded-full -top-0 end-6 dark:border-gray-900">20</div>
+            </button>
+            
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className=" py-2 px-4 pr-8">
+                <DropdownMenuLabel>Notification</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <div className="flex items-center space-x-2">
+                  <Image width={200} height={200} className="w-8 h-8 rounded-full " src="/placeholder.png" alt="User Profile"/>
+                    <div className="flex flex-col">
+                      <p>Yellow sweet corn stock out </p>
+                      <div className="flex">
+                        <p>Stock out </p>
+                        <p>10-10-2010 5:30:00</p>
+                      </div>
+                    </div>
+
+                    <button>
+                      <X/>
+                    </button>
+                  </div>
+                 
+                </DropdownMenuItem>
+               
+              </DropdownMenuContent>
+            </DropdownMenu>
+       
+
+      
+     
 
      
         <button >
