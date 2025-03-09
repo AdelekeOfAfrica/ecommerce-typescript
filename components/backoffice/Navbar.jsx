@@ -9,6 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import ThemeSwitcher from '@/components/ThemeSwitcher.jsx'
 
 export default function Navbar() {
   return (
@@ -20,7 +21,9 @@ export default function Navbar() {
 
       {/* 3 icons */}
       <div className="flex space-x-3">
-        <button><Sun size={24} strokeWidth={1.5} className="text-green-600" /></button>
+       
+       <ThemeSwitcher />
+
 
 
        
