@@ -6,7 +6,7 @@ import React from 'react'
 
 export default function Providers({children}) {
   return (
-   <ThemeProvider attribute="class" defaultTheme="dark">{children}</ThemeProvider>
+   <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>{children}</ThemeProvider>
   
   )
 }
