@@ -92,8 +92,8 @@ const tabs = [
   const [chartToDisplay, setChartToDisplay] = useState(tabs[0].type);
 
   return (
-    <div className="bg-slate-700 p-8 rounded-lg text-white">
-      <h2 className="text-xl font-bold mb-4">Best Selling Products</h2>
+    <div className="dark:bg-slate-700 bg-slate-50 p-8 rounded-lg shadow-xl text-white">
+      <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-50">Weekly Sales</h2>
       <div className="p-4">
         {/* Tabs */}
         <div className="text-sm font-medium text-center text-gray-200 border-b border-gray-400">
@@ -105,7 +105,7 @@ const tabs = [
                   className={`inline-block p-4 border-b-2 rounded-t-lg ${
                     chartToDisplay == tab.type
                       ? "text-orange-600 border-orange-600"
-                      : "text-gray-300 border-transparent hover:text-gray-100 hover:border-gray-100"
+                      : "text-gray-300 border-transparent hover:text-gray-700 hover:border-gray-100 dark:hover:text-gray-100"
                   }`}
                 >
                   {tab.title}

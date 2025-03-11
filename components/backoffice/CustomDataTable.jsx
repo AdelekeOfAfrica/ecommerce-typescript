@@ -15,8 +15,9 @@ export default function CustomDataTable() {
   const itemStartIndex =startIndex + 1; 
   const itemEndIndex = Math.min(startIndex + PAGE_SIZE, data.length);
   return (
-    <div className="">
-        <h2 className="text-xl font-bold mb-4">Recent Orders</h2>
+    <div className="mt-8">
+        <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-50 px-4
+        ">Recent Orders</h2>
         {/* table */}
 
 
@@ -92,7 +93,7 @@ export default function CustomDataTable() {
                 </tbody>
             </table>
             <nav className="flex items-center flex-column flex-wrap md:flex-row justify-between p-4" aria-label="Table navigation">
-                <span className="text-xl font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span className="font-semibold text-gray-50 dark:text-white">{itemStartIndex}-{itemEndIndex}</span> of <span className="font-semibold text-gray-50 dark:text-white">{data.length}</span></span>
+                <span className="text-xl font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-50">{itemStartIndex}-{itemEndIndex}</span> of <span className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-50">{data.length}</span></span>
                 <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
                     <li>
                         <button onClick={()=>setCurrentPage(currentPage - 1)}
