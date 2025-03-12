@@ -1,10 +1,15 @@
 "use client"
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/logo.png';
-import { ChevronsRight, ExternalLink, LayoutGrid, LogOut, Slack, Tractor, Truck, Users2, UserSquare2, Warehouse } from 'lucide-react';
+import { LayoutDashboard,User,ChevronsRight, ExternalLink, LayoutGrid, LogOut, Slack, Tractor, Truck, Users2, UserSquare2, Warehouse, Boxes, LayoutList, SendToBack, ScanSearch, MonitorPlay, ChevronDown } from 'lucide-react';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
 import { usePathname } from 'next/navigation';
 
 
@@ -57,8 +62,44 @@ export default function Sidebar() {
       href:"/dashboard/onlineStore"
     },
   ];
+
+  const catalogueLinks =[
+
+    
+    {
+      title:"Products",
+      icon:Boxes,
+       href:"/dashboard/products"
+    },
+    {
+      title:"Categories",
+      icon:LayoutList,
+       href:"/dashboard/categories"
+    },
+    {
+      title:"Attributes",
+      icon:SendToBack,
+    
+       href:"/dashboard/attributes"
+    },
+    {
+      title:"Coupons",
+      icon:ScanSearch
+      ,
+       href:"/dashboard/coupons"
+    },
+
+
+    {
+      title:"Store Sliders",
+      icon:MonitorPlay
+      ,
+       href:"/dashboard/sliders"
+    }
+  ];
+  const[openMenu,setOpenMenu]=useState(false);
   return (
-    <div className="dark:bg-slate-700 bg-slate-50 space-y-6 w-60 h-screen text-slate-800 dark:text-slate-50 fixed left-0 top-0 shadow-md">
+    <div className="hidden sm:block dark:bg-slate-700 bg-slate-50 space-y-6 w-60 h-screen text-slate-800 dark:text-slate-50 fixed left-0 top-0 shadow-md">
     
       <Link className="" href="#" >
         {/*<Image src={logo} alt="company logo " className="w-36" height={190} />*/}
@@ -70,15 +111,39 @@ export default function Sidebar() {
           <LayoutGrid/>
        <span>Dashboard </span>
        </Link>
-       <button  className="flex items-center space-x-6 
-      px-6 py-2  "> 
-       <div className="flex  items-center space-x-3 
-        ">
-       <Slack/>
-       <span>Catalogue </span>
-       <ChevronsRight/>
-       </div>
-       </button>
+
+       <Collapsible>
+            <CollapsibleTrigger asChild className='mb-3' onClick={()=>setOpenMenu(!openMenu)}>
+             <button  className="flex items-center space-x-6 
+                px-6 py-2  "> 
+                <div className="flex  items-center space-x-3 
+                  ">
+                <Slack/>
+                <span>Catalogue </span>
+                {openMenu ?<ChevronDown />:<ChevronsRight/>}
+                </div>
+              </button>
+              </CollapsibleTrigger  >
+              <CollapsibleContent className=" rounded-lg py-2 px-4 pr-8 bg-slate-800">
+                
+              {
+                catalogueLinks.map((item,i)=>{
+                  const Icon= item.icon
+                  return(
+                    <Link key={i} href={item.href}  className={item.href ==pathName ?`flex items-center space-x-3 
+                      px-6 py-1  text-sm border-l-4 border-green-600`:'flex items-center space-x-3  px-6 py-1'}>  
+                    <Icon className="w-4 h-4"/>
+                    <span>{item.title} </span>
+                    </Link>
+                  );
+                })
+              }
+                 
+              
+               
+              </CollapsibleContent>
+            </Collapsible>
+     
 
        {
         sidebarLinks.map((item,i)=>{
