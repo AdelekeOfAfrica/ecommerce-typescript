@@ -11,39 +11,29 @@ import { usePathname } from 'next/navigation';
 export default function Sidebar() {
   const pathName=usePathname()
   const sidebarLinks =[
-    {
-      title:"Dashboard",
-      icon:LayoutGrid,
-      href:"/dashboard"
-    },
-    
-    {
-      title:"Catalogue",
-      icon:Slack,
-       href:"/dashboard/Catalogue"
-    },
+
     
     {
       title:"Customers",
       icon:Users2,
-       href:"/dashboard/Customers"
+       href:"/dashboard/customers"
     },
     {
       title:"Orders",
       icon:Truck,
-       href:"/dashboard/Orders"
+       href:"/dashboard/orders"
     },
     {
       title:"Markets",
       icon:Warehouse,
     
-       href:"/dashboard/Markets"
+       href:"/dashboard/markets"
     },
     {
       title:"Farmers",
       icon:Tractor
       ,
-       href:"/dashboard/Farmers"
+       href:"/dashboard/farmers"
     },
 
 
@@ -75,13 +65,13 @@ export default function Sidebar() {
       </Link>
 
       <div className="space-y-4 flex flex-col mt-14">
-      <Link href="#" className="flex items-center space-x-3 
-      px-6 py-2 border-l-4 border-green-600 "> 
-      <LayoutGrid/>
+      <Link href="/dashboard" className={pathName =="/dashboard" ?`flex items-center space-x-3 
+                px-6 py-2 border-l-4 border-green-600 text-green-600`:'flex items-center space-x-3  px-6 py-2'}> 
+          <LayoutGrid/>
        <span>Dashboard </span>
        </Link>
        <Link href="#" className="flex items-center space-x-3 
-      px-6 py-2 border-l-4 border-green-600 "> 
+      px-6 py-2  "> 
       <Slack/>
        <span>Catalogue </span>
        </Link>
@@ -91,8 +81,8 @@ export default function Sidebar() {
           const Icon= item.icon
 
             return (
-              <Link key={i} href={item.href} className={`flex items-center space-x-3 
-                px-6 py-2 border-l-4 border-green-600`}> 
+              <Link key={i} href={item.href} className={item.href ==pathName ?`flex items-center space-x-3 
+                px-6 py-2 border-l-4 border-green-600`:'flex items-center space-x-3  px-6 py-2'}> 
                 <Icon/>
                  <span>{item.title} </span>
                  </Link>
