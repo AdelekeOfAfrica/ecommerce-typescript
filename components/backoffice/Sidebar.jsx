@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/logo.png';
-import { ExternalLink, LayoutGrid, Slack, Tractor, Truck, Users2, UserSquare2, Warehouse } from 'lucide-react';
+import { ExternalLink, LayoutGrid, LogOut, Slack, Tractor, Truck, Users2, UserSquare2, Warehouse } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 
@@ -99,6 +99,14 @@ export default function Sidebar() {
             );
         })
        }
+
+    <div className="px-6 py-2 ">
+       <button className="flex items-center space-x-3 
+                 bg-green-600 rounded-md px-6 py-3">
+        <LogOut/>
+          <span >Logout</span>
+       </button>
+    </div>
 
       </div>
     </div>
