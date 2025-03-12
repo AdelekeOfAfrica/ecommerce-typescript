@@ -11,13 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu"
 import ThemeSwitcher from '@/components/ThemeSwitcher.jsx'
 
-export default function Navbar() {
+export default function Navbar({setShowSidebar,showSidebar}) {
   return (
     <div className="flex items-center justify-between bg-white dark:bg-slate-800  text-slate-50
      h-20 px-8 py-8 fixed top-0 left-60 right-0 w-full z-50 pr-[20em]"> 
 
       {/* icons */}
-      <button className="text-green-700 dark:text-white-500"><AlignJustify size={24} /></button>
+      <button onClick={()=>setShowSidebar(!showSidebar)} className="text-green-700 dark:text-white-500"><AlignJustify size={24} /></button>
 
       {/* 3 icons */}
       <div className="flex space-x-3">

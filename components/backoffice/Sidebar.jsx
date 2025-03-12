@@ -13,7 +13,7 @@ import {
 import { usePathname } from 'next/navigation';
 
 
-export default function Sidebar() {
+export default function Sidebar({showSidebar,setShowSidebar}) {
   const pathName=usePathname()
   const sidebarLinks =[
 
@@ -97,9 +97,18 @@ export default function Sidebar() {
        href:"/dashboard/sliders"
     }
   ];
+  console.log("Sidebar state:", showSidebar);
   const[openMenu,setOpenMenu]=useState(false);
   return (
-    <div className="hidden sm:block dark:bg-slate-700 bg-slate-50 space-y-6 w-60 h-screen text-slate-800 dark:text-slate-50 fixed left-0 top-0 shadow-md">
+ 
+
+    <div
+  className="sm:block mt-20 sm:mt-0 dark:bg-slate-700 bg-slate-50 space-y-6 w-60 h-screen text-slate-800 dark:text-slate-50 fixed left-0 top-0 shadow-md"
+  style={{ display: showSidebar ? "block" : "none" }}
+>
+
+    
+    
     
       <Link className="" href="#" >
         {/*<Image src={logo} alt="company logo " className="w-36" height={190} />*/}
@@ -150,7 +159,9 @@ export default function Sidebar() {
           const Icon= item.icon
 
             return (
-              <Link key={i} href={item.href} className={item.href ==pathName ?`flex items-center space-x-3 
+              <Link 
+              onClick={()=>setShowSidebar(false)}
+              key={i} href={item.href} className={item.href ==pathName ?`flex items-center space-x-3 
                 px-6 py-2 border-l-4 border-green-600`:'flex items-center space-x-3  px-6 py-2'}> 
                 <Icon/>
                  <span>{item.title} </span>
