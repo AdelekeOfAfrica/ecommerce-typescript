@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../public/logo.png';
-import { ExternalLink, LayoutGrid, LogOut, Slack, Tractor, Truck, Users2, UserSquare2, Warehouse } from 'lucide-react';
+import { ChevronsRight, ExternalLink, LayoutGrid, LogOut, Slack, Tractor, Truck, Users2, UserSquare2, Warehouse } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 
@@ -70,11 +70,15 @@ export default function Sidebar() {
           <LayoutGrid/>
        <span>Dashboard </span>
        </Link>
-       <Link href="#" className="flex items-center space-x-3 
+       <button  className="flex items-center space-x-6 
       px-6 py-2  "> 
-      <Slack/>
+       <div className="flex  items-center space-x-3 
+        ">
+       <Slack/>
        <span>Catalogue </span>
-       </Link>
+       <ChevronsRight/>
+       </div>
+       </button>
 
        {
         sidebarLinks.map((item,i)=>{
