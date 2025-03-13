@@ -102,10 +102,7 @@ export default function Sidebar({showSidebar,setShowSidebar}) {
   return (
  
 
-    <div
-  className="sm:block mt-20 sm:mt-0 dark:bg-slate-700 bg-slate-50 space-y-6 w-60 h-screen text-slate-800 dark:text-slate-50 fixed left-0 top-0 shadow-md"
-  style={{ display: showSidebar ? "block" : "none" }}
->
+  <div    style={{ display: showSidebar ? "block" : "none" }} className={showSidebar ? "sm:block mt-20 sm:mt-0 dark:bg-slate-700 bg-white space-y-6 w-64 h-screen text-slate-800 dark:text-slate-50 fixed left-0 top-0 shadow-md overflow-y-scroll":"sm:block mt-20 hidden sm:mt-0 dark:bg-slate-700 bg-white space-y-6 w-64 h-screen text-slate-800 dark:text-slate-50 fixed left-0 top-0 shadow-md overflow-y-scroll"}>
 
     
     
