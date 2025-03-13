@@ -1,4 +1,4 @@
-import { AlignJustify, Sun, Bell, User, LayoutDashboard, LogOut, Settings2, X } from 'lucide-react';
+import { AlignJustify, Sun, Bell, User, LayoutDashboard, LogOut, X } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import {
@@ -11,15 +11,17 @@ import {
 } from "@/components/ui/dropdown-menu"
 import ThemeSwitcher from '@/components/ThemeSwitcher.jsx'
 
-export default function Navbar({setShowSidebar,showSidebar}) {
+export default function Navbar({ setShowSidebar, showSidebar }) {
   return (
-    <div className="flex items-center justify-between bg-white dark:bg-slate-800  text-slate-50
-     h-20 px-8 py-8 fixed top-0 left-60 right-0 w-full z-50 pr-[20em]"> 
+    <div className={`flex items-center justify-between bg-white dark:bg-slate-800 text-slate-50 h-20 px-8 py-8 fixed top-0 
+      transition-all duration-300 z-50 ${showSidebar ? 'left-60 sm:w-[calc(100%-15rem)]' : 'left-0 w-full'}`}> 
+      
+      {/* Sidebar Toggle Button */}
+      <button onClick={() => setShowSidebar(!showSidebar)} className="text-green-700 dark:text-white-500">
+        <AlignJustify size={24} />
+      </button>
 
-      {/* icons */}
-      <button onClick={()=>setShowSidebar(!showSidebar)} className="text-green-700 dark:text-white-500"><AlignJustify size={24} /></button>
-
-      {/* 3 icons */}
+      {/* Navbar Right Section */}
       <div className="flex space-x-3">
        
        <ThemeSwitcher />
@@ -123,7 +125,6 @@ export default function Navbar({setShowSidebar,showSidebar}) {
 
 
       </div>
-
     </div>
-  )
+  );
 }
