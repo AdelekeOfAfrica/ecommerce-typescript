@@ -13,9 +13,8 @@ import ThemeSwitcher from '@/components/ThemeSwitcher.jsx'
 
 export default function Navbar({ setShowSidebar, showSidebar }) {
   return (
-    <div className="flex items-center justify-between bg-white dark:bg-slate-800 text-slate-50 h-20 py-8 fixed top-0 w-full px-8 z-50 sm:pr-[20rem]">
-      
-      {/* Sidebar Toggle Button */}
+    <div className="flex items-center justify-between bg-white dark:bg-slate-800 text-slate-50 h-20 px-8 z-40 ">
+          {/* Sidebar Toggle Button */}
       <button onClick={() => setShowSidebar(!showSidebar)} className="text-green-700 dark:text-white-500">
         <AlignJustify size={24} />
       </button>
@@ -125,5 +124,6 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
 
       </div>
     </div>
+
   );
 }

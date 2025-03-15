@@ -6,7 +6,7 @@ export default function PageHeader({heading,linkTitle,href}) {
   return (
     <div>
       
-      <div className="flex justify-between ">
+      <div className="flex justify-between py-4 mb-4">
         <Heading title={heading}/>
         <Link className="
         text-white bg-green-600 hover:bg-green-600/90 focus:ring-4
