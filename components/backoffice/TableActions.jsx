@@ -1,5 +1,6 @@
 import React from 'react'
 import { Download, DownloadIcon, Search, Trash } from 'lucide-react'
+import { Input } from 'postcss'
 export default function TableActions() {
   return (
         //tables
