@@ -1,12 +1,16 @@
 "use client"
 
 import {ThemeProvider} from "next-themes";
-
+import {Toaster} from "react-hot-toast";
 import React from 'react'
 
 export default function Providers({children}) {
   return (
-   <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>{children}</ThemeProvider>
+   
+   <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+       <Toaster position="top-center" reverseOrder={false}/>
+      {children}
+    </ThemeProvider>
   
   )
 }
