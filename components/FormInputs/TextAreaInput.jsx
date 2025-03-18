@@ -5,7 +5,7 @@ export default function TextAreaInput({label,name,register,errors,isRequired=tru
 }) {
   return (
     <div className={className}>
-      <label htmlFor="{name}"className="block text-sm font-medium leading-6 text-gray-900 mb-2">{label}</label>
+      <label htmlFor="{name}"className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50  mb-2">{label}</label>
       <div className="mt-2">
         <textarea
         {...register(name, { required: isRequired })}
@@ -14,10 +14,9 @@ export default function TextAreaInput({label,name,register,errors,isRequired=tru
         id={name}
         defaultValue={defaultValue}
         autoComplete={name}
-        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1
-        ring-inset ring-gray-300 placeholder:text-gray-400
-        focus:ring-inset focus:ring-indigo-600 sm:text-sm 
-        sm:leading-6" placeholder={`Type the ${label.toLowerCase()}`} />
+        className="block w-full rounded border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
+          placeholder:text-gray-400 focus:ring-green-700 dark:focus:ring-slate-500 focus:ring-inset  sm:text-sm 
+          sm:leading-6 dark:bg-transparent dark:text-slate-100" placeholder={`Type the ${label.toLowerCase()}`} />
 
 
         {errors?.[name] && (

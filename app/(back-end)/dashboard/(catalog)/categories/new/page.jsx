@@ -6,10 +6,13 @@ import TextInput from '../../../../../../components/FormInputs/TextInput';
 import SubmitButton from '../../../../../../components/FormInputs/SubmitButton';
 import { useForm } from 'react-hook-form';
 import TextAreaInput from '../../../../../../components/FormInputs/TextAreaInput';
+import { generateSlug } from '../../../../../../lib/generateSlug';
 
 export default function NewCategory() {
   const {register,handleSubmit,formState:{errors}}=useForm();
   async function onSubmit(data){
+    const slug = generateSlug(data.title);
+    data.slug=slug
     console.log(data);
   }
   return (
