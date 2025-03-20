@@ -5,9 +5,11 @@ export default function TableActions() {
   return (
         //tables
         //search//bulk delete // exports
-    <div className="flex justify-between py-6 px-12 bg-slate-700 rounded-lg items-center gap-8 ">
+    <div className="flex justify-between py-6 px-12 bg-white dark:bg-slate-700 rounded-lg items-center gap-8 ">
     <button
-      className="relative inline-flex items-center justify-center py-3 px-4 space-x-3 text-base font-medium text-gray-900 rounded-lg group bg-slate-800 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 border border-green-700"
+      className="relative inline-flex items-center justify-center py-3 px-4 space-x-3 text-base font-medium text-gray-900 rounded-lg group
+       dark:bg-slate-800 bg-slate-100  dark:text-white focus:ring-4 
+        focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 border border-slate-900"
     ><DownloadIcon/>
       
       <span > Export</span>

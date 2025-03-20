@@ -29,13 +29,13 @@ export default function ImageInput({
                         alt="Item Image"
                         width={1000}
                         height={667}
-                        className="w-full h-64 object-cover" />
+                        className="w-full h-64 object-contain" />
                 ) : (
                     <UploadDropZone
                         endpoint={endpoint}
                         className="w-full" 
                         onClientUploadComplete={(res) => {
-                            setImageUrl(res[0].fileUrl);
+                            setImageUrl(res[0].ufsUrl);
                             toast.success("Image Uploaded Successfully");
                             console.log("Files:", res);
                             console.log("Upload Completed");
@@ -49,3 +49,4 @@ export default function ImageInput({
         </div>
     );
 }
+

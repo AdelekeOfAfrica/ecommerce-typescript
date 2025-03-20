@@ -15,13 +15,14 @@ export default function NewCategory() {
   const {register,handleSubmit,formState:{errors}}=useForm();
   async function onSubmit(data){
     const slug = generateSlug(data.title);
-    data.slug=slug
+    data.slug=slug;
+    data.imageUrl =imageUrl;
     console.log(data);
   }
   return (
     <div>
     <FormHeader title="New Category"/>
-    <form onClick={handleSubmit(onSubmit)} className="w-full max-w-4xl p-4 bg-white border
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-4xl p-4 bg-white border
     border-gray-200 rounded-lg shadow sm:p-6 md:p-8
     dark:bg-gray-800 dark:border-gray-700 mx-auto my-3
     " >
@@ -30,7 +31,7 @@ export default function NewCategory() {
         errors={errors}/>
         <TextAreaInput label="Category Description" name="Description" register={register}
         errors={errors} />
-        <ImageInput imageUrl={imageUrl} endpoint="categoryImageUploader" setImageUrl={setImageUrl} label="Category Image"/>
+        <ImageInput imageUrl={imageUrl} setImageUrl={setImageUrl} endpoint="categoryImageUploader"  label="Category Image"/>
       </div>
       <SubmitButton isLoading={false} buttonTitle="category Title" loadingButtonTitle="creating category please wait ..."/>
     </form>
