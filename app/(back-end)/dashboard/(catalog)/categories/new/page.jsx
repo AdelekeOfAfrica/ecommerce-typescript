@@ -8,12 +8,26 @@ import { useForm } from 'react-hook-form';
 import TextAreaInput from '../../../../../../components/FormInputs/TextAreaInput';
 import { generateSlug } from '../../../../../../lib/generateSlug';
 import ImageInput from '../../../../../../components/FormInputs/ImageInput'
+import { makePostRequest } from '../../../../../../lib/apiRequest';
 
 export default function NewCategory() {
 
-  const [imageUrl,setImageUrl] = useState("")
-  const {register,handleSubmit,formState:{errors}}=useForm();
-  async function onSubmit(data){
+  const [imageUrl,setImageUrl] = useState("");
+  const [loading,setLoading]=useState(false);
+  const {register,reset,handleSubmit,formState:{errors}}=useForm();
+  async function onSubmit(data){ //form function
+   
+    makePostRequest(
+      setLoading,
+      //endpoint,
+      'api/categories',
+      data,
+      "Category",
+      //resourceName,
+      reset
+    );
+
+    //fetching of the data from the form
     const slug = generateSlug(data.title);
     data.slug=slug;
     data.imageUrl =imageUrl;
@@ -33,7 +47,7 @@ export default function NewCategory() {
         errors={errors} />
         <ImageInput imageUrl={imageUrl} setImageUrl={setImageUrl} endpoint="categoryImageUploader"  label="Category Image"/>
       </div>
-      <SubmitButton isLoading={false} buttonTitle="category Title" loadingButtonTitle="creating category please wait ..."/>
+      <SubmitButton isLoading={loading} buttonTitle="category Title" loadingButtonTitle="creating category please wait ..."/>
     </form>
 
     </div>
