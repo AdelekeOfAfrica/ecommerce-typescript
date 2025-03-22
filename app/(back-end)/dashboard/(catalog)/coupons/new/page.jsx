@@ -10,9 +10,9 @@ import { generateSlug } from '../../../../../../lib/generateSlug';
 import ImageInput from '../../../../../../components/FormInputs/ImageInput'
 import { makePostRequest } from '../../../../../../lib/apiRequest';
 
-export default function NewCategory() {
+export default function NewCoupon() {
 
-  const [imageUrl,setImageUrl] = useState("");
+  
   const [loading,setLoading]=useState(false);
   const {register,reset,handleSubmit,formState:{errors}}=useForm();
   async function onSubmit(data){ //form function
@@ -30,24 +30,28 @@ export default function NewCategory() {
     //fetching of the data from the form
     const slug = generateSlug(data.title);
     data.slug=slug;
-    data.imageUrl =imageUrl;
     console.log(data);
   }
   return (
     <div>
-    <FormHeader title="New Category"/>
+    <FormHeader title="New Coupon"/>
     <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-4xl p-4 bg-white border
     border-gray-200 rounded-lg shadow sm:p-6 md:p-8
     dark:bg-gray-800 dark:border-gray-700 mx-auto my-3
     " >
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-        <TextInput label="Category Title" name="title" register={register}
+        <TextInput label="Coupon Title" name="title" register={register}
         errors={errors}/>
-        <TextAreaInput label="Category Description" name="Description" register={register}
-        errors={errors} />
-        <ImageInput imageUrl={imageUrl} setImageUrl={setImageUrl} endpoint="categoryImageUploader"  label="Category Image"/>
+
+        <TextInput label="Coupon Code" name="couponCode" register={register}
+        errors={errors} className="w-full"/>
+
+        <TextInput label="Coupon Expiry Date" name="expiryDate" register={register}
+        errors={errors} className="w-full"/>
+       
+       
       </div>
-      <SubmitButton isLoading={loading} buttonTitle="category Title" loadingButtonTitle="creating category please wait ..."/>
+      <SubmitButton isLoading={loading} buttonTitle="Create Coupon" loadingButtonTitle="creating coupon please wait ..."/>
     </form>
 
     </div>
