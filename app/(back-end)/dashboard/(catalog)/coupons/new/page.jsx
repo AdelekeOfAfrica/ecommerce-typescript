@@ -46,7 +46,7 @@ export default function NewCoupon() {
         <TextInput label="Coupon Code" name="couponCode" register={register}
         errors={errors} className="w-full"/>
 
-        <TextInput label="Coupon Expiry Date" name="expiryDate" register={register}
+        <TextInput type="date" label="Coupon Expiry Date" name="expiryDate" register={register}
         errors={errors} className="w-full"/>
        
        
