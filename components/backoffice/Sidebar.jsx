@@ -77,10 +77,10 @@ export default function Sidebar({showSidebar,setShowSidebar}) {
        href:"/dashboard/categories"
     },
     {
-      title:"Attributes",
+      title:"Banners",
       icon:SendToBack,
     
-       href:"/dashboard/attributes"
+       href:"/dashboard/banners"
     },
     {
       title:"Coupons",
@@ -130,7 +130,7 @@ export default function Sidebar({showSidebar,setShowSidebar}) {
                 </div>
               </button>
               </CollapsibleTrigger  >
-              <CollapsibleContent className=" rounded-lg py-2 px-4 pr-8 bg-slate-800">
+              <CollapsibleContent className=" rounded-lg py-2 px-4 pr-8 dark:bg-slate-800 dark:bg-slate-300">
                 
               {
                 catalogueLinks.map((item,i)=>{
