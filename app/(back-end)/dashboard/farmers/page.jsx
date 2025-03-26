@@ -1,9 +1,12 @@
+import PageHeader from '@/components/backoffice/PageHeader'
+import TableActions from '@/components/backoffice/TableActions'
 import React from 'react'
 
 export default function page() {
   return (
     <div>
-        farmers
+         <PageHeader linkTitle="Add Farmer" href="/dashboard/farmers/new" heading="Farmers"/>
+         <TableActions/>
     </div>
   )
 }

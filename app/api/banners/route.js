@@ -11,8 +11,8 @@ try{
 console.log(error);
 
 return NextResponse.json({
-    "message":"failed to create a category",
-    error
+    error:"failed to create a banner",
+  
 
 },{status:500});
 }

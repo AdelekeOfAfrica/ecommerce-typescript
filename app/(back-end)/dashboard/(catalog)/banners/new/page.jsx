@@ -44,7 +44,7 @@ export default function NewBanner() {
         <TextInput label="Banner Title" name="title" register={register}
         errors={errors}/>
 
-      <TextInput label="Banner Link" name="link" register={register}
+      <TextInput type="url" label="Banner Link" name="link" register={register}
         errors={errors}/>
 
 
