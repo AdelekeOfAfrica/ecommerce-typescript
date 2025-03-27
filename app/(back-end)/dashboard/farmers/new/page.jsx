@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import FormHeader from "../../../../../components/backoffice/FormHeader";
 import TextInput from '../../../../../components/FormInputs/TextInput';
 import SubmitButton from '../../../../../components/FormInputs/SubmitButton';
-import { generateCouponCode } from '../../../../../lib/generateCouponCode';
+import { generateUserCode } from '../../../../../lib/generateUserCode';
 import { makePostRequest } from '../../../../../lib/apiRequest';
 import TextAreaInput from '../../../../../components/FormInputs/TextAreaInput';
 
@@ -14,8 +14,8 @@ export default function NewFarmer(){
 
   async function onSubmit(data){
 
-    const farmerUniqueCode = generateCouponCode(data.title, data.expiryDate);
-    data.uniqueCode =farmerUniqueCode;
+    const code = generateUserCode('LFF',data.name); //you can use any codename you like 
+    data.uniqueCode =code;
     makePostRequest(setLoading,"api/farmers",data,"Farmer");
 
   }
@@ -28,7 +28,7 @@ export default function NewFarmer(){
           dark:bg-gray-800 dark:border-gray-700 mx-auto my-3
           " >
             <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-              <TextInput label="Farmer's Name" name="name" register={register}
+              <TextInput label="Farmer's Full Name" name="name" register={register}
               errors={errors} className="w-full"/>
       
               <TextInput label="Farmer's Phone Number" name="phone" register={register}
@@ -46,13 +46,13 @@ export default function NewFarmer(){
 <TextInput label="Farmer's Contact Person Number" name="contactPersonNumber" register={register}
               errors={errors} className="w-full"/>
 
-              <TextInput label="Farmer Unique Code" name="uniqueCode" register={register}
-              errors={errors} className="w-full"/>
+{/*              <TextInput label="Farmer Unique Code" name="uniqueCode" register={register}
+              errors={errors} className="w-full"/>*/}
       
               <TextAreaInput label="Farmer's Payment Terms" name="paymentTerms" register={register}
               errors={errors} className="w-full"/>
              
-             <TextAreaInput label="Notes" name="notes" register={register}
+             <TextAreaInput label="Notes" name="note" register={register}
               errors={errors} isRequired={false} className="w-full"/>
              
             </div>
