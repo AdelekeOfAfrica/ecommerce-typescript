@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import PageHeader from '@/components/backoffice/PageHeader';
+import TableActions from '@/components/backoffice/TableActions';
 
-export default function page() {
+export default function Markets() {
   return (
     <div>
-        markets
+     <PageHeader linkTitle="New Market" href="/dashboard/markets/new" heading="Markets"/>
+     <TableActions/>
     </div>
   )
 }

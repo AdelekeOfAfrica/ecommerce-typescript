@@ -31,10 +31,10 @@ export default function NewFarmer(){
               <TextInput label="Farmer's Full Name" name="name" register={register}
               errors={errors} className="w-full"/>
       
-              <TextInput label="Farmer's Phone Number" name="phone" register={register}
+              <TextInput  type="tel" label="Farmer's Phone Number" name="phone" register={register}
               errors={errors} className="w-full"/>
 
-              <TextInput label="Farmer's Email Address" name="email" register={register}
+              <TextInput type="email" label="Farmer's Email Address" name="email" register={register}
               errors={errors} className="w-full"/>
 
               <TextInput label="Farmer's Physical Address" name="physicalAddress" register={register}
@@ -43,7 +43,7 @@ export default function NewFarmer(){
               <TextInput label="Farmer's Contact Person" name="contactPerson" register={register}
               errors={errors} className="w-full"/>
 
-<TextInput label="Farmer's Contact Person Number" name="contactPersonNumber" register={register}
+<TextInput type="tel" label="Farmer's Contact Person Number" name="contactPersonNumber" register={register}
               errors={errors} className="w-full"/>
 
 {/*              <TextInput label="Farmer Unique Code" name="uniqueCode" register={register}

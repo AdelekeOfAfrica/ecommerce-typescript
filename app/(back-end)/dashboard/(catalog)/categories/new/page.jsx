@@ -9,6 +9,7 @@ import TextAreaInput from '../../../../../../components/FormInputs/TextAreaInput
 import { generateSlug } from '../../../../../../lib/generateSlug';
 import ImageInput from '../../../../../../components/FormInputs/ImageInput'
 import { makePostRequest } from '../../../../../../lib/apiRequest';
+import SelectInput from '../../../../../../components/FormInputs/SelectInput';
 
 export default function NewCategory() {
 
@@ -42,7 +43,13 @@ export default function NewCategory() {
     " >
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <TextInput label="Category Title" name="title" register={register}
+        
         errors={errors}/>
+
+        {/*
+         <SelectInput  label="Select Market" name="title" register={register}
+        
+        errors={errors}/>*/} 
         <TextAreaInput label="Category Description" name="Description" register={register}
         errors={errors} />
         <ImageInput imageUrl={imageUrl} setImageUrl={setImageUrl} endpoint="categoryImageUploader"  label="Category Image"/>
