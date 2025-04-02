@@ -10,7 +10,7 @@ export default function SelectInput({
   return (
     <div className={className}>
 
-        <label htmlFor={name} className="block text-sm font-medium leading-6 text-gray-900">
+        <label htmlFor={name} className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50  mb-2">
             {label}
         </label>    
         <div className="mt-2">
@@ -18,7 +18,7 @@ export default function SelectInput({
         {...register(`${name}`)}
         id={name}
         name={name}
-        className="block w-full rounded-md border-0 py-2 text-grey-900 shadow-sw ring-1 ring-inset
+        className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sw ring-1 ring-inset
         focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
         >
         {options.map((option, i) => (  // ✅ Corrected Syntax

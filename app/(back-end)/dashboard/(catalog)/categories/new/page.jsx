@@ -14,10 +14,39 @@ import SelectInput from '../../../../../../components/FormInputs/SelectInput';
 export default function NewCategory() {
 
   const [imageUrl,setImageUrl] = useState("");
+  const markets =[{
+    id:1,
+    title:"market 1"
+
+  },
+  {
+    id:2,
+    title:"market 2"
+
+  },
+  {
+    id:3,
+    title:"market 3"
+
+  },
+  {
+    id:4,
+    title:"market 4"
+
+  },
+  {
+    id:5,
+    title:"market 5"
+
+  },]
   const [loading,setLoading]=useState(false);
   const {register,reset,handleSubmit,formState:{errors}}=useForm();
   async function onSubmit(data){ //form function
    
+       const slug = generateSlug(data.title);
+    data.slug=slug;
+    data.imageUrl =imageUrl;
+    console.log(data);
     makePostRequest(
       setLoading,
       'api/categories',
@@ -29,10 +58,7 @@ export default function NewCategory() {
     setImageUrl(""); //this is to clear the image after posting it 
 
     //fetching of the data from the form
-    const slug = generateSlug(data.title);
-    data.slug=slug;
-    data.imageUrl =imageUrl;
-    console.log(data);
+ 
   }
   return (
     <div>
@@ -44,12 +70,12 @@ export default function NewCategory() {
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <TextInput label="Category Title" name="title" register={register}
         
-        errors={errors}/>
+        errors={errors} className="w-full"/>
 
-        {/*
-         <SelectInput  label="Select Market" name="title" register={register}
+       
+         <SelectInput  label="Select Markets" name="marketIds" register={register} options={markets}
         
-        errors={errors}/>*/} 
+        errors={errors} className="w-full" />
         <TextAreaInput label="Category Description" name="Description" register={register}
         errors={errors} />
         <ImageInput imageUrl={imageUrl} setImageUrl={setImageUrl} endpoint="categoryImageUploader"  label="Category Image"/>
