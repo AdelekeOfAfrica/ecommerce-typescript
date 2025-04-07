@@ -1,5 +1,5 @@
 "use client"
-import { Plus, X } from 'lucide-react'
+import { Plus, Watch, X } from 'lucide-react'
 import React, { useState } from 'react'
 import FormHeader from '../../../../../../components/backoffice/FormHeader';
 import TextInput from '../../../../../../components/FormInputs/TextInput';
@@ -11,12 +11,14 @@ import ImageInput from '../../../../../../components/FormInputs/ImageInput'
 import { makePostRequest } from '../../../../../../lib/apiRequest';
 import SelectInput from '../../../../../../components/FormInputs/SelectInput';
 import ArrayItemInput from '../../../../../../components/FormInputs/ArrayItemInput';
+import ToogleInput from '../../../../../../components/FormInputs/toogleInput';
 
 export default function NewProduct() {
 
 
   //tags function
   const[tags,setTags]=useState([]); 
+
 
 
   const [imageUrl,setImageUrl] = useState("");
@@ -72,7 +74,12 @@ export default function NewProduct() {
 
   },]
   const [loading,setLoading]=useState(false);
-  const {register,reset,handleSubmit,formState:{errors}}=useForm();
+  const {register,reset,watch,handleSubmit,formState:{errors}}=useForm({
+    defaultValues:{
+      isActive:true,
+    }
+  });
+  const isActive=watch("isActive");
   async function onSubmit(data){ //form function
   
   const slug = generateSlug(data.title);
@@ -125,6 +132,12 @@ export default function NewProduct() {
 
         {/* Product Description */}
         <TextAreaInput label="Product Description" name="Description" register={register} errors={errors} />
+
+       
+       <ToogleInput label="publish your prouct" name="isActive" trueTitle="Active"
+       falseTitle="Draft" register={register}/>
+
+
 
         {/* Submit Button */}
         <SubmitButton isLoading={loading} buttonTitle="Create Product" loadingButtonTitle="Creating Product... Please wait" />
