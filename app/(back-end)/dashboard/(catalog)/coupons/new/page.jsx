@@ -10,14 +10,19 @@ import { generateSlug } from '../../../../../../lib/generateSlug';
 import ImageInput from '../../../../../../components/FormInputs/ImageInput'
 import { makePostRequest } from '../../../../../../lib/apiRequest';
 import { generateCouponCode } from '../../../../../../lib/generateCouponCode';
+import ToogleInput from '../../../../../../components/FormInputs/toogleInput';
+
 
 export default function NewCoupon() {
 
   const [imageUrl,setImageUrl] = useState("");
   const [loading,setLoading]=useState(false);
-  const {register,reset,watch,handleSubmit,formState:{errors}}=useForm();
+  const {register,reset,watch,handleSubmit,formState:{errors}}=useForm({ defaultValues:{
+    isActive:true,
+  }
+});
  
-  
+  const isActive=watch("isActive");  
   async function onSubmit(data){ 
 
      makePostRequest(
@@ -51,7 +56,9 @@ export default function NewCoupon() {
         <TextInput type="date" label="Coupon Expiry Date" name="expiryDate" register={register}
         errors={errors} className="w-full"/>
        
-       
+        <ToogleInput label="publish your Coupon" name="isActive" trueTitle="Active"
+                             falseTitle="Draft" register={register}/>
+
       </div>
       <SubmitButton isLoading={loading} buttonTitle="Create Coupon" loadingButtonTitle="creating coupon please wait ..."/>
     </form>

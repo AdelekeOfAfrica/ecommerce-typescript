@@ -6,11 +6,11 @@ export default function ToogleInput({label, name, trueTitle,falseTitle,register
 }) {
   return (
    <div className={`${className}`}>
-          <div className="w-full mt-2">
-            <h2 className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50  mb-2">Publish this product</h2>
+          <div className="w-full sm:w-1/2 mt-2">
+            <h2 className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50  mb-2">{label}</h2>
           </div>
 
-          <div className="w-full">
+          <div className="w-full sm:w-1/2">
               <label className="relative inline-flex items-center cursor-pointer">
                 <input 
                   {...register(name)}

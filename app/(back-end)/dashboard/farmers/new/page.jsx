@@ -7,11 +7,17 @@ import SubmitButton from '../../../../../components/FormInputs/SubmitButton';
 import { generateUserCode } from '../../../../../lib/generateUserCode';
 import { makePostRequest } from '../../../../../lib/apiRequest';
 import TextAreaInput from '../../../../../components/FormInputs/TextAreaInput';
+import ToogleInput from '../../../../../components/FormInputs/toogleInput';
 
 export default function NewFarmer(){
     const [loading,setLoading]=useState(false);
- const {register,reset,watch,handleSubmit,formState:{errors}}=useForm();
+ const {register,reset,watch,handleSubmit,formState:{errors}}=useForm({ defaultValues:{
+  isActive:true,
+}
+});
 
+
+ const isActive=watch("isActive");  
   async function onSubmit(data){
 
     const code = generateUserCode('LFF',data.name); //you can use any codename you like 
@@ -55,6 +61,9 @@ export default function NewFarmer(){
              <TextAreaInput label="Notes" name="note" register={register}
               errors={errors} isRequired={false} className="w-full"/>
              
+              <ToogleInput label="publish your Farmer" name="isActive" trueTitle="Active"
+                falseTitle="Draft" register={register}/>
+
             </div>
             <SubmitButton isLoading={loading} buttonTitle="Create Farmer" loadingButtonTitle="creating coupon please wait ..."/>
           </form>

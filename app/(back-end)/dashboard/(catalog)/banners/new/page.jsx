@@ -9,12 +9,19 @@ import TextAreaInput from '../../../../../../components/FormInputs/TextAreaInput
 import { generateSlug } from '../../../../../../lib/generateSlug';
 import ImageInput from '../../../../../../components/FormInputs/ImageInput'
 import { makePostRequest } from '../../../../../../lib/apiRequest';
+import ToogleInput from '../../../../../../components/FormInputs/toogleInput';
+
 
 export default function NewBanner() {
 
   const [imageUrl,setImageUrl] = useState("");
   const [loading,setLoading]=useState(false);
-  const {register,reset,handleSubmit,formState:{errors}}=useForm();
+  const {register,reset,watch,handleSubmit,formState:{errors}}=useForm({ defaultValues:{
+    isActive:true,
+  }
+});
+
+  const isActive=watch("isActive");
   async function onSubmit(data){ //form function
    
     makePostRequest(
@@ -51,6 +58,8 @@ export default function NewBanner() {
        {/* always remember to configure your image endpoint */}
        <ImageInput imageUrl={imageUrl} setImageUrl={setImageUrl} endpoint="bannerImageUploader"  label="Banner"/>
        
+       <ToogleInput label="publish your banner" name="isActive" trueTitle="Active"
+              falseTitle="Draft" register={register}/>
       </div>
       <SubmitButton isLoading={loading} buttonTitle="Create Banner" loadingButtonTitle="creating a new banner  please wait ..."/>
     </form>

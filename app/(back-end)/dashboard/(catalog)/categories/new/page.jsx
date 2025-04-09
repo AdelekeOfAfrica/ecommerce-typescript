@@ -10,6 +10,8 @@ import { generateSlug } from '../../../../../../lib/generateSlug';
 import ImageInput from '../../../../../../components/FormInputs/ImageInput'
 import { makePostRequest } from '../../../../../../lib/apiRequest';
 import SelectInput from '../../../../../../components/FormInputs/SelectInput';
+import ToogleInput from '../../../../../../components/FormInputs/toogleInput';
+
 
 export default function NewCategory() {
 
@@ -40,7 +42,11 @@ export default function NewCategory() {
 
   },]
   const [loading,setLoading]=useState(false);
-  const {register,reset,handleSubmit,formState:{errors}}=useForm();
+  const {register,reset,watch,handleSubmit,formState:{errors}}=useForm({ defaultValues:{
+    isActive:true,
+  }
+});
+const isActive=watch("isActive");
   async function onSubmit(data){ //form function
    
        const slug = generateSlug(data.title);
@@ -79,6 +85,8 @@ export default function NewCategory() {
         <TextAreaInput label="Category Description" name="Description" register={register}
         errors={errors} />
         <ImageInput imageUrl={imageUrl} setImageUrl={setImageUrl} endpoint="categoryImageUploader"  label="Category Image"/>
+        <ToogleInput label="publish your Category" name="isActive" trueTitle="Active"
+                      falseTitle="Draft" register={register}/>
       </div>
       <SubmitButton isLoading={loading} buttonTitle="category Title" loadingButtonTitle="creating category please wait ..."/>
     </form>
