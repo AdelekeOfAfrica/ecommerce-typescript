@@ -9,12 +9,18 @@ import TextAreaInput from '../../../../../components/FormInputs/TextAreaInput';
 import { generateSlug } from '../../../../../lib/generateSlug';
 import ImageInput from '../../../../../components/FormInputs/ImageInput'
 import { makePostRequest } from '../../../../../lib/apiRequest';
-
+import ToogleInput from '../../../../../components/FormInputs/toogleInput';
 export default function NewBanner() {
 
   const [logoUrl,setLogoUrl] = useState("");
   const [loading,setLoading]=useState(false);
-  const {register,reset,handleSubmit,formState:{errors}}=useForm();
+  const {register,reset,watch,handleSubmit,formState:{errors}}=useForm(
+    { defaultValues:{
+      isActive:true,
+    }
+    }
+  );
+  const isActive=watch("isActive");
   async function onSubmit(data){ //form function
    
 
@@ -57,6 +63,9 @@ export default function NewBanner() {
         <TextAreaInput label="Market Description" name="description" register={register}
         errors={errors}/>
 
+
+ <ToogleInput label="publish your Farmer" name="isActive" trueTitle="Active"
+                falseTitle="Draft" register={register}/>
 
       </div>
       <SubmitButton isLoading={loading} buttonTitle="Create Market" loadingButtonTitle="creating a new market please wait ..."/>
