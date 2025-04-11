@@ -91,11 +91,9 @@ const isActive=watch("isActive");
         <ImageInput imageUrl={imageUrl} setImageUrl={setImageUrl} endpoint="TrainingImageUploader"  label="Training Thumbnail"/>
         {/*Quill editor */}
          <div className="sm:col-span-2">
-            <label htmlFor="content" className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50  mb-2">
-                Blog Content
-            </label>
+           
 
-            <Editor />
+            <Editor label="Blog Content"/>
          </div>
          {/*End of Quill Editor*/}
         <ToogleInput label="publish your Training" name="isActive" trueTitle="Active"

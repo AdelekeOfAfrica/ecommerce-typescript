@@ -13,41 +13,65 @@ const MenuBar = ({ editor }) => {
   if (!editor) return null
 
   return (
-    <div style={{ marginBottom: 10, display: 'flex', gap: 8, flexWrap: 'wrap' }} className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50  mb-2">
-      <button onClick={() => editor.chain().focus().toggleBold().run()} disabled={!editor.can().chain().focus().toggleBold().run()}>
+    <div className="flex flex-wrap gap-2 mb-2">
+      <button
+        className="px-3 py-1 rounded block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50 mb-1"
+        onClick={() => editor.chain().focus().toggleBold().run()}
+        disabled={!editor.can().chain().focus().toggleBold().run()}
+      >
         Bold
       </button>
-      <button onClick={() => editor.chain().focus().toggleItalic().run()} disabled={!editor.can().chain().focus().toggleItalic().run()}>
+      <button
+        className="px-3 py-1 rounded block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50 mb-1"
+        onClick={() => editor.chain().focus().toggleItalic().run()}
+        disabled={!editor.can().chain().focus().toggleItalic().run()}
+      >
         Italic
       </button>
-   
-      <button onClick={() => editor.chain().focus().toggleStrike().run()}>
+      <button
+        className="px-3 py-1 rounded block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50 mb-1"
+        onClick={() => editor.chain().focus().toggleStrike().run()}
+      >
         Strike
       </button>
-      <button onClick={() => editor.chain().focus().toggleBulletList().run()}>
+      <button
+        className="px-3 py-1 rounded block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50 mb-1"
+        onClick={() => editor.chain().focus().toggleBulletList().run()}
+      >
         • Bullet List
       </button>
-      <button onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}>
+      <button
+        className="px-3 py-1 rounded block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50 mb-1"
+        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+      >
         H1
       </button>
-      <button onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}>
+      <button
+        className="px-3 py-1 rounded block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50 mb-1"
+        onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+      >
         H2
       </button>
-      <button onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}>
+      <button
+        className="px-3 py-1 rounded block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50 mb-1"
+        onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+      >
         H3
       </button>
-      <button onClick={() => editor.chain().focus().unsetAllMarks().clearNodes().run()}>
+      <button
+        className="px-3 py-1 rounded block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50 mb-1"
+        onClick={() => editor.chain().focus().unsetAllMarks().clearNodes().run()}
+      >
         Clear
       </button>
     </div>
   )
 }
 
-const Editor = () => {
+const Editor = ({ label }) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
-    
       Strike,
       BulletList,
       ListItem,
@@ -55,20 +79,27 @@ const Editor = () => {
         levels: [1, 2, 3],
       }),
     ],
-    content: '<p>Start writing...</p>',
+    content: '',
   })
 
   return (
-    <div>
-      <MenuBar editor={editor} />
-      <div style={{ border: '1px solid #ccc', padding: 10, borderRadius: 6, minHeight: 150 }}>
-        <EditorContent editor={editor} className="block w-full rounded border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
-          placeholder:text-gray-400 focus:ring-green-700 dark:focus:ring-slate-500 focus:ring-inset  sm:text-sm 
-          sm:leading-6 dark:bg-transparent dark:text-slate-100"/>
+    <div className="w-full">
+      <label
+        htmlFor="content"
+        className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50 mb-1"
+      >
+        {label}
+      </label>
+
+      <div className="border border-gray-300 dark:border-slate-600 rounded-lg p-4 bg-white dark:bg-slate-800 space-y-2">
+        <MenuBar editor={editor} className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50 mb-1" />
+        <EditorContent
+          editor={editor}
+          className="min-h-[150px] w-full outline-none text-gray-900 dark:text-slate-100"
+        />
       </div>
     </div>
   )
 }
 
 export default Editor
-
