@@ -20,7 +20,7 @@ export default function NewStaff(){
  const isActive=watch("isActive");  
   async function onSubmit(data){
 
-    const code = generateUserCode('LFF',data.name); //you can use any codename you like 
+    const code = generateUserCode('LFM',data.name); //you can use any codename you like 
     data.uniqueCode =code;
     makePostRequest(setLoading,"api/staff",data,"staff");
 
@@ -49,6 +49,12 @@ export default function NewStaff(){
               <TextInput label="staff's Physical Address" name="physicalAddress" register={register}
               errors={errors} className="w-full"/>
 
+              <TextInput label="NIN" name="nin" register={register}
+              errors={errors} className="w-full"/>
+
+
+              <TextInput label="Date Of Birth" name="dob" type="date" register={register}
+              errors={errors} className="w-full"/>
             
 
 {/*              <TextInput label="staff Unique Code" name="uniqueCode" register={register}

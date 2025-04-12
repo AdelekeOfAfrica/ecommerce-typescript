@@ -11,7 +11,7 @@ try{
 console.log(error);
 
 return NextResponse.json({
-    "message":"failed to create a category",
+    "message":"failed to create a training",
     error
 
 },{status:500});
