@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 
 export async function POST(request){
 try{
-    const {title,coupons,expiryDate} = await request.json();
-    const newCoupon = {title,coupons,expiryDate};
+    const {title,coupons,expiryDate,isActive} = await request.json();
+    const newCoupon = {title,coupons,expiryDate,isActive};
     console.log(newCoupon)
     return NextResponse.json(newCoupon);
 

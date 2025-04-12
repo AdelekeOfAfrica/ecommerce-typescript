@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 
 export async function POST(request){
 try{
-    const {title,slug,imageUrl,link} = await request.json();
-    const newBanner = {title,slug,imageUrl,link};
+    const {title,slug,imageUrl,link,isActive} = await request.json();
+    const newBanner = {title,slug,imageUrl,link,isActive};
     console.log(newBanner)
     return NextResponse.json(newBanner);
 

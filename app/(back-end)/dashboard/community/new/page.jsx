@@ -42,13 +42,13 @@ export default function NewTraining() {
 
   },]
   const [loading,setLoading]=useState(false);
-  const {register,reset,watch,handleSubmit,formState:{errors}}=useForm({ defaultValues:{
+  const {register,reset,watch,setValue,handleSubmit,formState:{errors}}=useForm({ defaultValues:{
     isActive:true,
   }
 });
 
 
-//end of quill editor setup
+
 
 const isActive=watch("isActive");
   async function onSubmit(data){ //form function
@@ -61,7 +61,7 @@ const isActive=watch("isActive");
       setLoading,
       'api/community',
       data,
-      "Category",
+      "Community",
       reset
     );
 
@@ -93,7 +93,7 @@ const isActive=watch("isActive");
          <div className="sm:col-span-2">
            
 
-            <Editor label="Blog Content"/>
+            <Editor label="Blog Content" name="blogContent"   setValue={setValue} />
          </div>
          {/*End of Quill Editor*/}
         <ToogleInput label="publish your Training" name="isActive" trueTitle="Active"

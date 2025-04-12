@@ -68,7 +68,7 @@ const MenuBar = ({ editor }) => {
   )
 }
 
-const Editor = ({ label }) => {
+const Editor = ({ label, name,setValue }) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -80,6 +80,9 @@ const Editor = ({ label }) => {
       }),
     ],
     content: '',
+    onUpdate({ editor }) {
+      setValue(name, editor.getHTML()) 
+    },
   })
 
   return (
