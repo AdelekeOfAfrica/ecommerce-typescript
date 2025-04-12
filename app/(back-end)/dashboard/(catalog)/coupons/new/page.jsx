@@ -25,6 +25,8 @@ export default function NewCoupon() {
   const isActive=watch("isActive");  
   async function onSubmit(data){ 
 
+    const couponCode = generateCouponCode(data.title,data.expiryDate);
+    data.couponCode =couponCode;
      makePostRequest(
        setLoading,
        'api/coupons',
@@ -33,8 +35,7 @@ export default function NewCoupon() {
        reset
      );
   
-  const couponCode = generateCouponCode(data.title,data.expiryDate);
-  data.couponCode =couponCode;
+
 
 
   console.log(data);
