@@ -18,11 +18,16 @@ export default function NewFarmer(){
 
 
  const isActive=watch("isActive");  
+   const router = useRouter();
+ 
+   function redirect(){
+     router.push("/dashboard/farmers");
+   }
   async function onSubmit(data){
 
     const code = generateUserCode('LFF',data.name); //you can use any codename you like 
     data.uniqueCode =code;
-    makePostRequest(setLoading,"api/farmers",data,"Farmer");
+    makePostRequest(setLoading,"api/farmers",data,"Farmer",redirect);
 
   }
 

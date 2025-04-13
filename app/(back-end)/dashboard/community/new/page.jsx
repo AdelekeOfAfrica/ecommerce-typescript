@@ -12,6 +12,7 @@ import { makePostRequest } from '../../../../../lib/apiRequest';
 import SelectInput from '../../../../../components/FormInputs/SelectInput';
 import ToogleInput from '../../../../../components/FormInputs/toogleInput';
 import Editor from '../../../../../components/FormInputs/TextEditor'
+import { useRouter } from 'next/navigation';
 
 export default function NewTraining() {
 
@@ -51,6 +52,11 @@ export default function NewTraining() {
 
 
 const isActive=watch("isActive");
+  const router = useRouter();
+
+  function redirect(){
+    router.push("/dashboard/community");
+  }
   async function onSubmit(data){ //form function
    
        const slug = generateSlug(data.title);
@@ -62,7 +68,8 @@ const isActive=watch("isActive");
       'api/community',
       data,
       "Community",
-      reset
+      reset,
+      redirect
     );
 
     setImageUrl(""); //this is to clear the image after posting it 

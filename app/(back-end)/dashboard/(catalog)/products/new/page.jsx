@@ -12,6 +12,7 @@ import { makePostRequest } from '../../../../../../lib/apiRequest';
 import SelectInput from '../../../../../../components/FormInputs/SelectInput';
 import ArrayItemInput from '../../../../../../components/FormInputs/ArrayItemInput';
 import ToogleInput from '../../../../../../components/FormInputs/toogleInput';
+import { useRouter } from 'next/navigation';
 
 export default function NewProduct() {
 
@@ -80,6 +81,11 @@ export default function NewProduct() {
     }
   });
   const isActive=watch("isActive");
+    const router = useRouter();
+  
+    function redirect(){
+      router.push("/dashboard/products");
+    }
   async function onSubmit(data){ //form function
   
   const slug = generateSlug(data.title);
@@ -92,7 +98,8 @@ export default function NewProduct() {
       'api/products',
       data,
       "Product",
-      reset
+      reset,
+      redirect
     );
 
     setImageUrl(""); //this is to clear the image after posting it 

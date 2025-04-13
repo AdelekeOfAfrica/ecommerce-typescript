@@ -11,6 +11,7 @@ import ImageInput from '../../../../../../components/FormInputs/ImageInput'
 import { makePostRequest } from '../../../../../../lib/apiRequest';
 import SelectInput from '../../../../../../components/FormInputs/SelectInput';
 import ToogleInput from '../../../../../../components/FormInputs/toogleInput';
+import { useRouter } from 'next/navigation';
 
 
 export default function NewCategory() {
@@ -47,6 +48,11 @@ export default function NewCategory() {
   }
 });
 const isActive=watch("isActive");
+    const router = useRouter();
+  
+    function redirect(){
+      router.push("/dashboard/categories");
+    }
   async function onSubmit(data){ //form function
    
        const slug = generateSlug(data.title);
@@ -58,7 +64,8 @@ const isActive=watch("isActive");
       'api/categories',
       data,
       "Category",
-      reset
+      reset,
+      redirect
     );
 
     setImageUrl(""); //this is to clear the image after posting it 

@@ -10,6 +10,7 @@ import { generateSlug } from '../../../../../../lib/generateSlug';
 import ImageInput from '../../../../../../components/FormInputs/ImageInput'
 import { makePostRequest } from '../../../../../../lib/apiRequest';
 import ToogleInput from '../../../../../../components/FormInputs/toogleInput';
+import { useRouter } from 'next/navigation';
 
 
 export default function NewBanner() {
@@ -22,6 +23,11 @@ export default function NewBanner() {
 });
 
   const isActive=watch("isActive");
+  const router = useRouter();
+  
+    function redirect(){
+      router.push("/dashboard/banners");
+    } 
   async function onSubmit(data){ //form function
    
     makePostRequest(
@@ -29,7 +35,8 @@ export default function NewBanner() {
       'api/banners',
       data,
       "Banners",
-      reset
+      reset,
+      redirect
     );
 
     setImageUrl(""); //this is to clear the image after posting it 

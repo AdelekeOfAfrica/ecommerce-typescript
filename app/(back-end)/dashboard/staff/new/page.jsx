@@ -8,6 +8,7 @@ import { generateUserCode } from '../../../../../lib/generateUserCode';
 import { makePostRequest } from '../../../../../lib/apiRequest';
 import TextAreaInput from '../../../../../components/FormInputs/TextAreaInput';
 import ToogleInput from '../../../../../components/FormInputs/toogleInput';
+import { useRouter } from 'next/navigation';
 
 export default function NewStaff(){
     const [loading,setLoading]=useState(false);
@@ -17,12 +18,17 @@ export default function NewStaff(){
 });
 
 
- const isActive=watch("isActive");  
+ const isActive=watch("isActive"); 
+   const router = useRouter();
+ 
+   function redirect(){
+     router.push("/dashboard/coupons");
+   } 
   async function onSubmit(data){
 
     const code = generateUserCode('LFM',data.name); //you can use any codename you like 
     data.uniqueCode =code;
-    makePostRequest(setLoading,"api/staff",data,"staff");
+    makePostRequest(setLoading,"api/staff",data,"staff",redirect);
 
   }
 

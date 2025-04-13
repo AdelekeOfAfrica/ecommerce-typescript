@@ -21,6 +21,11 @@ export default function NewBanner() {
     }
   );
   const isActive=watch("isActive");
+    const router = useRouter();
+  
+    function redirect(){
+      router.push("/dashboard/markets");
+    }
   async function onSubmit(data){ //form function
    
 
@@ -34,7 +39,8 @@ export default function NewBanner() {
       'api/markets',
       data,
       "Markets",
-      reset
+      reset,
+      redirect
     );
 
     setLogoUrl(""); //this is to clear the image after posting it 
