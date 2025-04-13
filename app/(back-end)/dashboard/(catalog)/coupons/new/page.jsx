@@ -11,6 +11,7 @@ import ImageInput from '../../../../../../components/FormInputs/ImageInput'
 import { makePostRequest } from '../../../../../../lib/apiRequest';
 import { generateCouponCode } from '../../../../../../lib/generateCouponCode';
 import ToogleInput from '../../../../../../components/FormInputs/toogleInput';
+import { isoGeneratedFormattedDate } from '../../../../../../lib/isoGeneratedFormattedDate';
 
 
 export default function NewCoupon() {
@@ -26,6 +27,8 @@ export default function NewCoupon() {
   async function onSubmit(data){ 
 
     const couponCode = generateCouponCode(data.title,data.expiryDate);
+    const isoFormattedDate = isoGeneratedFormattedDate(data.expiryDate);
+    data.expiryDate =isoFormattedDate;
     data.couponCode =couponCode;
      makePostRequest(
        setLoading,

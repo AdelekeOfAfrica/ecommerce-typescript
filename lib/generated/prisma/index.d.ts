@@ -838,7 +838,6 @@ export namespace Prisma {
     title: string | null
     couponCode: string | null
     expiryDate: Date | null
-    isActive: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -848,7 +847,6 @@ export namespace Prisma {
     title: string | null
     couponCode: string | null
     expiryDate: Date | null
-    isActive: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -858,7 +856,6 @@ export namespace Prisma {
     title: number
     couponCode: number
     expiryDate: number
-    isActive: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -870,7 +867,6 @@ export namespace Prisma {
     title?: true
     couponCode?: true
     expiryDate?: true
-    isActive?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -880,7 +876,6 @@ export namespace Prisma {
     title?: true
     couponCode?: true
     expiryDate?: true
-    isActive?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -890,7 +885,6 @@ export namespace Prisma {
     title?: true
     couponCode?: true
     expiryDate?: true
-    isActive?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -973,7 +967,6 @@ export namespace Prisma {
     title: string
     couponCode: string
     expiryDate: Date
-    isActive: string
     createdAt: Date
     updatedAt: Date
     _count: CouponCountAggregateOutputType | null
@@ -1000,7 +993,6 @@ export namespace Prisma {
     title?: boolean
     couponCode?: boolean
     expiryDate?: boolean
-    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["coupon"]>
@@ -1012,12 +1004,11 @@ export namespace Prisma {
     title?: boolean
     couponCode?: boolean
     expiryDate?: boolean
-    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CouponOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "couponCode" | "expiryDate" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["coupon"]>
+  export type CouponOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "couponCode" | "expiryDate" | "createdAt" | "updatedAt", ExtArgs["result"]["coupon"]>
 
   export type $CouponPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Coupon"
@@ -1027,7 +1018,6 @@ export namespace Prisma {
       title: string
       couponCode: string
       expiryDate: Date
-      isActive: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["coupon"]>
@@ -1426,7 +1416,6 @@ export namespace Prisma {
     readonly title: FieldRef<"Coupon", 'String'>
     readonly couponCode: FieldRef<"Coupon", 'String'>
     readonly expiryDate: FieldRef<"Coupon", 'DateTime'>
-    readonly isActive: FieldRef<"Coupon", 'String'>
     readonly createdAt: FieldRef<"Coupon", 'DateTime'>
     readonly updatedAt: FieldRef<"Coupon", 'DateTime'>
   }
@@ -1786,7 +1775,6 @@ export namespace Prisma {
     title: 'title',
     couponCode: 'couponCode',
     expiryDate: 'expiryDate',
-    isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -1868,7 +1856,6 @@ export namespace Prisma {
     title?: StringFilter<"Coupon"> | string
     couponCode?: StringFilter<"Coupon"> | string
     expiryDate?: DateTimeFilter<"Coupon"> | Date | string
-    isActive?: StringFilter<"Coupon"> | string
     createdAt?: DateTimeFilter<"Coupon"> | Date | string
     updatedAt?: DateTimeFilter<"Coupon"> | Date | string
   }
@@ -1878,7 +1865,6 @@ export namespace Prisma {
     title?: SortOrder
     couponCode?: SortOrder
     expiryDate?: SortOrder
-    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -1891,7 +1877,6 @@ export namespace Prisma {
     title?: StringFilter<"Coupon"> | string
     couponCode?: StringFilter<"Coupon"> | string
     expiryDate?: DateTimeFilter<"Coupon"> | Date | string
-    isActive?: StringFilter<"Coupon"> | string
     createdAt?: DateTimeFilter<"Coupon"> | Date | string
     updatedAt?: DateTimeFilter<"Coupon"> | Date | string
   }, "id">
@@ -1901,7 +1886,6 @@ export namespace Prisma {
     title?: SortOrder
     couponCode?: SortOrder
     expiryDate?: SortOrder
-    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CouponCountOrderByAggregateInput
@@ -1917,7 +1901,6 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Coupon"> | string
     couponCode?: StringWithAggregatesFilter<"Coupon"> | string
     expiryDate?: DateTimeWithAggregatesFilter<"Coupon"> | Date | string
-    isActive?: StringWithAggregatesFilter<"Coupon"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Coupon"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Coupon"> | Date | string
   }
@@ -1927,7 +1910,6 @@ export namespace Prisma {
     title: string
     couponCode: string
     expiryDate: Date | string
-    isActive: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -1937,7 +1919,6 @@ export namespace Prisma {
     title: string
     couponCode: string
     expiryDate: Date | string
-    isActive: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -1946,7 +1927,6 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     couponCode?: StringFieldUpdateOperationsInput | string
     expiryDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    isActive?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -1955,7 +1935,6 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     couponCode?: StringFieldUpdateOperationsInput | string
     expiryDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    isActive?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -1965,7 +1944,6 @@ export namespace Prisma {
     title: string
     couponCode: string
     expiryDate: Date | string
-    isActive: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -1974,7 +1952,6 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     couponCode?: StringFieldUpdateOperationsInput | string
     expiryDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    isActive?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -1983,7 +1960,6 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     couponCode?: StringFieldUpdateOperationsInput | string
     expiryDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    isActive?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2019,7 +1995,6 @@ export namespace Prisma {
     title?: SortOrder
     couponCode?: SortOrder
     expiryDate?: SortOrder
-    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2029,7 +2004,6 @@ export namespace Prisma {
     title?: SortOrder
     couponCode?: SortOrder
     expiryDate?: SortOrder
-    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2039,7 +2013,6 @@ export namespace Prisma {
     title?: SortOrder
     couponCode?: SortOrder
     expiryDate?: SortOrder
-    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
