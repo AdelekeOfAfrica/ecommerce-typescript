@@ -12,6 +12,8 @@ import { makePostRequest } from '../../../../../../lib/apiRequest';
 import { generateCouponCode } from '../../../../../../lib/generateCouponCode';
 import ToogleInput from '../../../../../../components/FormInputs/toogleInput';
 import { isoGeneratedFormattedDate } from '../../../../../../lib/isoGeneratedFormattedDate';
+import { useRouter } from 'next/navigation';
+import { RedirectType } from 'next/navigation';
 
 
 export default function NewCoupon() {
@@ -24,6 +26,12 @@ export default function NewCoupon() {
 });
  
   const isActive=watch("isActive");  
+  const router = useRouter();
+
+  function redirect(){
+    router.push("/dashboard/coupons");
+  } 
+
   async function onSubmit(data){ 
 
     const couponCode = generateCouponCode(data.title,data.expiryDate);
@@ -35,7 +43,8 @@ export default function NewCoupon() {
        'api/coupons',
        data,
        "coupon",
-       reset
+       reset,
+     redirect
      );
   
 
