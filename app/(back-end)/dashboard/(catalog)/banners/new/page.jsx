@@ -30,6 +30,11 @@ export default function NewBanner() {
     } 
   async function onSubmit(data){ //form function
    
+    const slug = generateSlug(data.title);
+    data.slug=slug;
+    data.imageUrl =imageUrl;
+    console.log(data);
+    
     makePostRequest(
       setLoading,
       'api/banners',
@@ -42,10 +47,7 @@ export default function NewBanner() {
     setImageUrl(""); //this is to clear the image after posting it 
 
     //fetching of the data from the form
-    const slug = generateSlug(data.title);
-    data.slug=slug;
-    data.imageUrl =imageUrl;
-    console.log(data);
+ 
   }
   return (
     <div>
