@@ -11,6 +11,7 @@ try{
             title,
             couponCode,
             expiryDate,
+            isActive
            
         }
       }) //the name of the coupon model

@@ -17,31 +17,7 @@ import { useRouter } from 'next/navigation';
 export default function NewCategory() {
 
   const [imageUrl,setImageUrl] = useState("");
-  //const markets =[{
-   // id:1,
-    // title:"market 1"
 
-  //},
-  //{
-    //id:2,
-    //title:"market 2"
-
-  //},
-  //{
-    //id:3,
-    //title:"market 3"
-
-  //},
-  //{
-    //id:4,
-    //title:"market 4"
-
-  //},
-  //{
-    //id:5,
-    //title:"market 5"
-
- // },]
   const [loading,setLoading]=useState(false);
   const {register,reset,watch,handleSubmit,formState:{errors}}=useForm({ defaultValues:{
     isActive:true,
@@ -87,9 +63,7 @@ const isActive=watch("isActive");
 
          {/*
          
-          <SelectInput  multiple={true}  label="Select Markets" name="marketIds" register={register} options={markets}
-        
-        errors={errors} className="w-full" />
+         
          
          */}
         

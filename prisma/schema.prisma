@@ -20,6 +20,7 @@ model Coupon{
   title String
   couponCode String
   expiryDate DateTime
+  isActive  Boolean
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
 }
@@ -44,7 +45,7 @@ model Category {
   slug        String    @unique
   imageUrl    String?
   description String?
-
+  isActive   Boolean
   products    Product[]
   marketIds   String[]  @db.ObjectId
   markets     Market[]  @relation(fields: [marketIds], references: [id])
@@ -59,7 +60,7 @@ model Market {
 
   categoryIds  String[]    @db.ObjectId
   categories   Category[]  @relation(fields: [categoryIds], references: [id])
-
+  isActive   Boolean
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
 }
@@ -67,11 +68,33 @@ model Market {
 model Product {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
   title       String    @unique
-
+  slug        String    @unique
+  description String?
+  imageUrl    String? 
+  sku         String?
+  barcode     String?
+  productPrice Float
+  salePrice    Float
+  isActive   Boolean
+  tags       String[]
   categoryId  String    @db.ObjectId
   category    Category  @relation(fields: [categoryId], references: [id])
 
+
+farmerId  String    @db.ObjectId
+  farmer    Farmer  @relation(fields: [farmerId], references: [id])
+
+  isActive   Boolean
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+}
+
+
+
+model Farmer {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String    @unique
+  products    Product[]
+
 }
 
