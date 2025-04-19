@@ -56,8 +56,10 @@ model Category {
 
 model Market {
   id           String      @id @default(auto()) @map("_id") @db.ObjectId
-  name         String      @unique
-
+  title         String      @unique
+  slug          String
+  logoUrl       String
+  description   String
   categoryIds  String[]    @db.ObjectId
   categories   Category[]  @relation(fields: [categoryIds], references: [id])
   isActive   Boolean
@@ -69,7 +71,7 @@ model Product {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
   title       String    @unique
   slug        String    @unique
-  description String?
+  Description String?
   imageUrl    String? 
   sku         String?
   barcode     String?
@@ -83,6 +85,7 @@ model Product {
 
 farmerId  String    @db.ObjectId
   farmer    Farmer  @relation(fields: [farmerId], references: [id])
+ 
 
   isActive   Boolean
   createdAt   DateTime  @default(now())
@@ -93,8 +96,29 @@ farmerId  String    @db.ObjectId
 
 model Farmer {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  title       String    @unique
+  uniqueCode      String
+  contactPerson String?
+  ContactPersonPhone String?
+  email         String
+  name          String
+  note        String?
+  phone         String?
+  physicalAddress String?
+  isActive       Boolean
+  paymentTerms         String?
   products    Product[]
 
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+}
+
+model Training{
+
+  title String
+  slug  String @uniqueCode
+  imageUrl String?
+  Description String?
+  isActive    Boolean
 }
 

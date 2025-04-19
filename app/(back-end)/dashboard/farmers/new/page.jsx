@@ -8,6 +8,7 @@ import { generateUserCode } from '../../../../../lib/generateUserCode';
 import { makePostRequest } from '../../../../../lib/apiRequest';
 import TextAreaInput from '../../../../../components/FormInputs/TextAreaInput';
 import ToogleInput from '../../../../../components/FormInputs/toogleInput';
+import { useRouter } from 'next/navigation';
 
 export default function NewFarmer(){
     const [loading,setLoading]=useState(false);
@@ -67,7 +68,7 @@ export default function NewFarmer(){
               errors={errors} isRequired={false} className="w-full"/>
              
               <ToogleInput label="publish your Farmer" name="isActive" trueTitle="Active"
-                falseTitle="Draft" register={register}/>
+                falseTitle="Draft" register={register} isRequiredd={false}/>
 
             </div>
             <SubmitButton isLoading={loading} buttonTitle="Create Farmer" loadingButtonTitle="creating coupon please wait ..."/>
