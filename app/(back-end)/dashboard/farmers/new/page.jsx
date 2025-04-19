@@ -9,9 +9,11 @@ import { makePostRequest } from '../../../../../lib/apiRequest';
 import TextAreaInput from '../../../../../components/FormInputs/TextAreaInput';
 import ToogleInput from '../../../../../components/FormInputs/toogleInput';
 import { useRouter } from 'next/navigation';
+import ImageInput from '../../../../../components/FormInputs/ImageInput';
 
 export default function NewFarmer(){
     const [loading,setLoading]=useState(false);
+    const [imageUrl,setImageUrl] = useState("");
  const {register,reset,watch,handleSubmit,formState:{errors}}=useForm({ defaultValues:{
   isActive:true,
 }
@@ -28,7 +30,9 @@ export default function NewFarmer(){
 
     const code = generateUserCode('LFF',data.name); //you can use any codename you like 
     data.uniqueCode =code;
+    data.imageUrl =imageUrl;
     makePostRequest(setLoading,"api/farmers",data,"Farmer",redirect);
+    setImageUrl("");
 
   }
 
@@ -67,6 +71,7 @@ export default function NewFarmer(){
              <TextAreaInput label="Notes" name="note" register={register}
               errors={errors} isRequired={false} className="w-full"/>
              
+               <ImageInput imageUrl={imageUrl} setImageUrl={setImageUrl} endpoint="FarmerProfileImageUploader" label="Farmer Profile Image" />
               <ToogleInput label="publish your Farmer" name="isActive" trueTitle="Active"
                 falseTitle="Draft" register={register} isRequiredd={false}/>
 
