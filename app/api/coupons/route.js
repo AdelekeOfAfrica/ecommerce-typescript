@@ -28,3 +28,22 @@ return NextResponse.json({
 },{status:500});
 }
 }
+
+export async function GET(request) {
+
+    try{
+
+        const coupons = await db.coupon.findMany();
+        return NextResponse.json(coupons)
+
+    }catch(Exception){
+
+        return NextResponse.json({
+            "message":"failed to fetch coupon",
+            error
+        
+        },{status:500});
+
+    }
+
+}

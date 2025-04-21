@@ -24,3 +24,22 @@ return NextResponse.json({
 },{status:500});
 }
 }
+
+export async function GET(request) {
+
+    try{
+
+        const banners = await db.banner.findMany();
+        return NextResponse.json(banners)
+
+    }catch(Exception){
+
+        return NextResponse.json({
+            "message":"failed to fetch banners",
+            error
+        
+        },{status:500});
+
+    }
+
+}
