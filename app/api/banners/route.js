@@ -29,7 +29,11 @@ export async function GET(request) {
 
     try{
 
-        const banners = await db.banner.findMany();
+        const banners = await db.banner.findMany({
+            orderBy:{
+                createdAt:"desc",
+            }
+        });
         return NextResponse.json(banners)
 
     }catch(Exception){

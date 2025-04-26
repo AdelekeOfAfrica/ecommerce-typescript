@@ -67,13 +67,13 @@ const isActive=watch("isActive");
          
          */}
         
-        <TextAreaInput label="Category Description" name="Description" register={register}
+        <TextAreaInput label="Category Description" name="description" register={register}
         errors={errors} />
         <ImageInput imageUrl={imageUrl} setImageUrl={setImageUrl} endpoint="categoryImageUploader"  label="Category Image"/>
         <ToogleInput label="publish your Category" name="isActive" trueTitle="Active"
                       falseTitle="Draft" register={register}/>
       </div>
-      <SubmitButton isLoading={loading} buttonTitle="category Title" loadingButtonTitle="creating category please wait ..."/>
+      <SubmitButton isLoading={loading} buttonTitle="create Category" loadingButtonTitle="creating category please wait ..."/>
     </form>
 
     </div>
