@@ -6,7 +6,7 @@ export async function POST(request) {
     try {
       const { title, slug, imageUrl, description, marketIds, isActive } = await request.json();
   
-      console.log("Received slug:", slug);
+     
       if (!slug) {
         return NextResponse.json({ message: "Slug is required" }, { status: 400 });
       }
