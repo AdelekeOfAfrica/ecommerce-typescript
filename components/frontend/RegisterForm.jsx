@@ -10,7 +10,7 @@ import SubmitButton from '@/components/FormInputs/SubmitButton';
 import TextInput from '@/components/FormInputs/TextInput';
 
 export default function RegisterForm() {
-    const Router =useRouter();
+    const router =useRouter();
     const{register,handleSubmit,reset,formState:{errors}}=useForm();
     const [loading , setLoading] = useState(false);
     const [emailErr,setEmailErr] =useState("");
@@ -20,7 +20,7 @@ export default function RegisterForm() {
             console.log(data);
             setLoading(true);
             const baseUrl =process.env.NEXT_PUBLIC_BASE_URL;
-            const response = await fetch(`${baseUrl}/api/user`,{
+            const response = await fetch(`${baseUrl}/api/users`,{
                 method:"POST",
                 headers:{
                     "Content-type":"application/json",
@@ -28,9 +28,11 @@ export default function RegisterForm() {
                 body:JSON.stringify(data),
 
             });
-            const responseData = await response.json();
             
+            const responseData = await response.json();
             if(response.ok){
+              
+                console.log(responseData);
                 setLoading(false);
                 toast.success("User Created Successfully");
                 reset();
@@ -41,7 +43,7 @@ export default function RegisterForm() {
                     setEmailErr("User with email already exists");
                     toast.error("User with email already exists");
                 }else{
-                    console.error("Server Error:",responseData.message );
+                    console.error("Server Error:",responseData.error );
                     toast.error("oops something went wrong ");
 
                 }
@@ -66,17 +68,17 @@ export default function RegisterForm() {
 
             <div className="mb-5">
            
-                <TextInput label="Name" name="name" register={register}
-                errors={errors} type="name"/>
+                <TextInput label="Name" name="Name" register={register}
+                errors={errors} type="name" className="sm:col-span-2 mb-3"/>
             
-
+                {emailErr && <small className="text-red-600 -mt-2 mb-2">{emailErr}</small>}
             </div>
 
 
             <div className="mb-5">
            
-                <TextInput label="Email" name="Email" register={register}
-                errors={errors} type="email"/>
+                <TextInput label="Email" name="email" register={register}
+                errors={errors} type="email" className="sm:col-span-2 mb-3" />
             
                 {errors.email && (
                     <small className="text-red-600 text-sm">
@@ -90,8 +92,8 @@ export default function RegisterForm() {
             </div>
             <div className="mb-5">
             
-                <TextInput label="Password" name="Password" register={register}
-                errors={errors} type="password"/>
+                <TextInput label="Password" name="password" register={register}
+                errors={errors} type="password" className="sm:col-span-2 mb-3" />
            
 
                 {errors.password && (

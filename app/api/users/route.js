@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import db from "../../../lib/db";
 import bcrypt from 'bcrypt';
-export default async function POST(request){ 
+export async function POST(request){ 
 
     try{
 
@@ -30,15 +30,19 @@ export default async function POST(request){
         })
 
         console.log(newUser)
-        return NextResponse.json(newUser);
+        return NextResponse.json({
+            data:newUser,
+            message:"User created successfully"
+        },{status:201});
 
     }catch(error){
 
         console.log(error);
 
         return NextResponse.json({
-            message:"failed to create a user",
-            error
+            error,
+            message:"Server Error:something went wrong",
+            
         },{
             status:500
         });
