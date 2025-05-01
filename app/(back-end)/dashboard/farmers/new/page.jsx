@@ -4,7 +4,8 @@ import { useForm } from 'react-hook-form';
 import FormHeader from "../../../../../components/backoffice/FormHeader";
 import TextInput from '../../../../../components/FormInputs/TextInput';
 import SubmitButton from '../../../../../components/FormInputs/SubmitButton';
-import { generateUserCode } from '../../../../../lib/generateUserCode';
+
+import {generateUserCode} from '../../../../../lib/generateUserCode'
 import { makePostRequest } from '../../../../../lib/apiRequest';
 import TextAreaInput from '../../../../../components/FormInputs/TextAreaInput';
 import ToogleInput from '../../../../../components/FormInputs/toogleInput';
@@ -77,7 +78,7 @@ export default function NewFarmer(){
 
             </div>
             <SubmitButton isLoading={loading} buttonTitle="Create Farmer" loadingButtonTitle="creating coupon please wait ..."/>
-          </form>
+        </form>
     </div>
   );
 }

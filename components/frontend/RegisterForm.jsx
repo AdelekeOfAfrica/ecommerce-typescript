@@ -67,7 +67,7 @@ export default function RegisterForm({role}) {
             
         <div className="mb-5">
            
-           <TextInput label="Role" name="role" register={register} defaultValue={role}/>
+           <TextInput label="" name="role" register={register} defaultValue={role} type="hidden"/>
 
        </div>
 
