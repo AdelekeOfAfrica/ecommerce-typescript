@@ -9,8 +9,8 @@ import {FaFacebook, FaGithub,FaGoogle} from "react-icons/fa";
 import SubmitButton from '@/components/FormInputs/SubmitButton';
 import TextInput from '@/components/FormInputs/TextInput';
 
-export default function RegisterForm() {
-    const router =useRouter();
+export default function RegisterForm({role}) {
+    const router = useRouter();
     const{register,handleSubmit,reset,formState:{errors}}=useForm();
     const [loading , setLoading] = useState(false);
     const [emailErr,setEmailErr] =useState("");
@@ -65,10 +65,15 @@ export default function RegisterForm() {
 
 
             
+        <div className="mb-5">
+           
+           <TextInput label="Role" name="role" register={register} defaultValue={role}/>
+
+       </div>
 
             <div className="mb-5">
            
-                <TextInput label="Name" name="Name" register={register}
+                <TextInput label="Name" name="name" register={register}
                 errors={errors} type="name" className="sm:col-span-2 mb-3"/>
             
                 {emailErr && <small className="text-red-600 -mt-2 mb-2">{emailErr}</small>}

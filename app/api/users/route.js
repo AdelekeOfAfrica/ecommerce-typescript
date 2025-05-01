@@ -5,7 +5,7 @@ export async function POST(request){
 
     try{
 
-        const {name,email,password } = await request.json();
+        const {name,email,password,role } = await request.json();
 
         //check if user already exist in the database 
         const existingUser  = await db.user.findUnique({
@@ -25,7 +25,7 @@ export async function POST(request){
         const hashedPassword = await bcrypt.hash(password,10)
         const newUser =await db.user.create({
             data:{
-                name,email,password:hashedPassword
+                name,email,password:hashedPassword,role
             }
         })
 
@@ -47,4 +47,27 @@ export async function POST(request){
             status:500
         });
     }
+}
+
+export async function GET(request) {
+
+    try{
+
+        const users = await db.user.findMany({
+            orderBy:{
+                createdAt:"desc",
+            }
+        });
+        return NextResponse.json(users)
+
+    }catch(Exception){
+
+        return NextResponse.json({
+            "message":"failed to fetch users",
+            error
+        
+        },{status:500});
+
+    }
+
 }
