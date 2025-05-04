@@ -10,6 +10,7 @@ import SubmitButton from '@/components/FormInputs/SubmitButton';
 import {generateUserCode} from '@/lib/generateUserCode'
 import { makePostRequest } from '@/lib/apiRequest';
 import FormHeader from "@/components/backoffice/FormHeader";
+import ArrayItemInput from '../FormInputs/ArrayItemInput';
 
 
 
@@ -24,6 +25,8 @@ export default function NewFarmerForm({user}) {
 }
 });
 
+const[products,setProducts]=useState([]);
+
 
  const isActive=watch("isActive");  
    const router = useRouter();
@@ -35,6 +38,7 @@ export default function NewFarmerForm({user}) {
 
     const code = generateUserCode('LFF',data.name); //you can use any codename you like 
     data.uniqueCode =code;
+    data.products=products
     data.imageUrl =imageUrl;
     makePostRequest(setLoading,"api/farmers",data,"Farmer",redirect);
     setImageUrl("");
@@ -69,11 +73,21 @@ export default function NewFarmerForm({user}) {
 {/*              <TextInput label="Farmer Unique Code" name="uniqueCode" register={register}
         errors={errors} className="w-full"/>*/}
 
+<TextInput label="what is the size of your land in accres" name="landSize" register={register}
+        errors={errors} className="w-full" type="number"/>
+
+        <TextInput label="what is your main crop that you cultivate" name="mainCrop" register={register}
+        errors={errors} className="w-full" type="text"/>
+
+       
+
         <TextAreaInput label="Farmer's Payment Terms" name="paymentTerms" register={register}
         errors={errors} className="w-full"/>
        
        <TextAreaInput label="Notes" name="note" register={register}
         errors={errors} isRequired={false} className="w-full"/>
+
+      <ArrayItemInput setItems={setProducts} items={products} itemTitle="products" className="w-full"/>
        
          <ImageInput imageUrl={imageUrl} setImageUrl={setImageUrl} endpoint="FarmerProfileImageUploader" label="Farmer Profile Image" />
         <ToogleInput label="publish your Farmer" name="isActive" trueTitle="Active"
