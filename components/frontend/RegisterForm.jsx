@@ -9,7 +9,7 @@ import {FaFacebook, FaGithub,FaGoogle} from "react-icons/fa";
 import SubmitButton from '@/components/FormInputs/SubmitButton';
 import TextInput from '@/components/FormInputs/TextInput';
 
-export default function RegisterForm({role}) {
+export default function RegisterForm({role="USER"}) {
     const router = useRouter();
     const{register,handleSubmit,reset,formState:{errors}}=useForm();
     const [loading , setLoading] = useState(false);
@@ -36,7 +36,14 @@ export default function RegisterForm({role}) {
                 setLoading(false);
                 toast.success("User Created Successfully");
                 reset();
-                router.push("/login");
+                const userRole= responseData.data.role
+                // router.push("/login");
+                if(role==="USER"){
+                    router.push("/")
+
+                }else{
+                    router.push(`/onboarding/${responseData.data.id}`)
+                }
             }else{
                 setLoading(false);
                 if(response.status ===409){
