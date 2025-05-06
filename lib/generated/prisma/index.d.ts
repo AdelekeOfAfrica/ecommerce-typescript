@@ -6798,15 +6798,25 @@ export namespace Prisma {
 
   export type AggregateFarmerProfile = {
     _count: FarmerProfileCountAggregateOutputType | null
+    _avg: FarmerProfileAvgAggregateOutputType | null
+    _sum: FarmerProfileSumAggregateOutputType | null
     _min: FarmerProfileMinAggregateOutputType | null
     _max: FarmerProfileMaxAggregateOutputType | null
+  }
+
+  export type FarmerProfileAvgAggregateOutputType = {
+    landSize: number | null
+  }
+
+  export type FarmerProfileSumAggregateOutputType = {
+    landSize: number | null
   }
 
   export type FarmerProfileMinAggregateOutputType = {
     id: string | null
     uniqueCode: string | null
     contactPerson: string | null
-    ContactPersonPhone: string | null
+    contactPersonNumber: string | null
     imageUrl: string | null
     email: string | null
     name: string | null
@@ -6815,6 +6825,8 @@ export namespace Prisma {
     physicalAddress: string | null
     isActive: boolean | null
     paymentTerms: string | null
+    landSize: number | null
+    mainCrop: string | null
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -6824,7 +6836,7 @@ export namespace Prisma {
     id: string | null
     uniqueCode: string | null
     contactPerson: string | null
-    ContactPersonPhone: string | null
+    contactPersonNumber: string | null
     imageUrl: string | null
     email: string | null
     name: string | null
@@ -6833,6 +6845,8 @@ export namespace Prisma {
     physicalAddress: string | null
     isActive: boolean | null
     paymentTerms: string | null
+    landSize: number | null
+    mainCrop: string | null
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -6842,7 +6856,7 @@ export namespace Prisma {
     id: number
     uniqueCode: number
     contactPerson: number
-    ContactPersonPhone: number
+    contactPersonNumber: number
     imageUrl: number
     email: number
     name: number
@@ -6851,6 +6865,9 @@ export namespace Prisma {
     physicalAddress: number
     isActive: number
     paymentTerms: number
+    products: number
+    landSize: number
+    mainCrop: number
     userId: number
     createdAt: number
     updatedAt: number
@@ -6858,11 +6875,19 @@ export namespace Prisma {
   }
 
 
+  export type FarmerProfileAvgAggregateInputType = {
+    landSize?: true
+  }
+
+  export type FarmerProfileSumAggregateInputType = {
+    landSize?: true
+  }
+
   export type FarmerProfileMinAggregateInputType = {
     id?: true
     uniqueCode?: true
     contactPerson?: true
-    ContactPersonPhone?: true
+    contactPersonNumber?: true
     imageUrl?: true
     email?: true
     name?: true
@@ -6871,6 +6896,8 @@ export namespace Prisma {
     physicalAddress?: true
     isActive?: true
     paymentTerms?: true
+    landSize?: true
+    mainCrop?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -6880,7 +6907,7 @@ export namespace Prisma {
     id?: true
     uniqueCode?: true
     contactPerson?: true
-    ContactPersonPhone?: true
+    contactPersonNumber?: true
     imageUrl?: true
     email?: true
     name?: true
@@ -6889,6 +6916,8 @@ export namespace Prisma {
     physicalAddress?: true
     isActive?: true
     paymentTerms?: true
+    landSize?: true
+    mainCrop?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -6898,7 +6927,7 @@ export namespace Prisma {
     id?: true
     uniqueCode?: true
     contactPerson?: true
-    ContactPersonPhone?: true
+    contactPersonNumber?: true
     imageUrl?: true
     email?: true
     name?: true
@@ -6907,6 +6936,9 @@ export namespace Prisma {
     physicalAddress?: true
     isActive?: true
     paymentTerms?: true
+    products?: true
+    landSize?: true
+    mainCrop?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -6951,6 +6983,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: FarmerProfileAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FarmerProfileSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: FarmerProfileMinAggregateInputType
@@ -6981,6 +7025,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: FarmerProfileCountAggregateInputType | true
+    _avg?: FarmerProfileAvgAggregateInputType
+    _sum?: FarmerProfileSumAggregateInputType
     _min?: FarmerProfileMinAggregateInputType
     _max?: FarmerProfileMaxAggregateInputType
   }
@@ -6989,7 +7035,7 @@ export namespace Prisma {
     id: string
     uniqueCode: string
     contactPerson: string | null
-    ContactPersonPhone: string | null
+    contactPersonNumber: string | null
     imageUrl: string | null
     email: string
     name: string
@@ -6998,10 +7044,15 @@ export namespace Prisma {
     physicalAddress: string | null
     isActive: boolean
     paymentTerms: string | null
+    products: string[]
+    landSize: number | null
+    mainCrop: string | null
     userId: string
     createdAt: Date
     updatedAt: Date
     _count: FarmerProfileCountAggregateOutputType | null
+    _avg: FarmerProfileAvgAggregateOutputType | null
+    _sum: FarmerProfileSumAggregateOutputType | null
     _min: FarmerProfileMinAggregateOutputType | null
     _max: FarmerProfileMaxAggregateOutputType | null
   }
@@ -7024,7 +7075,7 @@ export namespace Prisma {
     id?: boolean
     uniqueCode?: boolean
     contactPerson?: boolean
-    ContactPersonPhone?: boolean
+    contactPersonNumber?: boolean
     imageUrl?: boolean
     email?: boolean
     name?: boolean
@@ -7033,6 +7084,9 @@ export namespace Prisma {
     physicalAddress?: boolean
     isActive?: boolean
     paymentTerms?: boolean
+    products?: boolean
+    landSize?: boolean
+    mainCrop?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7045,7 +7099,7 @@ export namespace Prisma {
     id?: boolean
     uniqueCode?: boolean
     contactPerson?: boolean
-    ContactPersonPhone?: boolean
+    contactPersonNumber?: boolean
     imageUrl?: boolean
     email?: boolean
     name?: boolean
@@ -7054,12 +7108,15 @@ export namespace Prisma {
     physicalAddress?: boolean
     isActive?: boolean
     paymentTerms?: boolean
+    products?: boolean
+    landSize?: boolean
+    mainCrop?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type FarmerProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uniqueCode" | "contactPerson" | "ContactPersonPhone" | "imageUrl" | "email" | "name" | "note" | "phone" | "physicalAddress" | "isActive" | "paymentTerms" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["farmerProfile"]>
+  export type FarmerProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "uniqueCode" | "contactPerson" | "contactPersonNumber" | "imageUrl" | "email" | "name" | "note" | "phone" | "physicalAddress" | "isActive" | "paymentTerms" | "products" | "landSize" | "mainCrop" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["farmerProfile"]>
   export type FarmerProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -7073,7 +7130,7 @@ export namespace Prisma {
       id: string
       uniqueCode: string
       contactPerson: string | null
-      ContactPersonPhone: string | null
+      contactPersonNumber: string | null
       imageUrl: string | null
       email: string
       name: string
@@ -7082,6 +7139,9 @@ export namespace Prisma {
       physicalAddress: string | null
       isActive: boolean
       paymentTerms: string | null
+      products: string[]
+      landSize: number | null
+      mainCrop: string | null
       userId: string
       createdAt: Date
       updatedAt: Date
@@ -7481,7 +7541,7 @@ export namespace Prisma {
     readonly id: FieldRef<"FarmerProfile", 'String'>
     readonly uniqueCode: FieldRef<"FarmerProfile", 'String'>
     readonly contactPerson: FieldRef<"FarmerProfile", 'String'>
-    readonly ContactPersonPhone: FieldRef<"FarmerProfile", 'String'>
+    readonly contactPersonNumber: FieldRef<"FarmerProfile", 'String'>
     readonly imageUrl: FieldRef<"FarmerProfile", 'String'>
     readonly email: FieldRef<"FarmerProfile", 'String'>
     readonly name: FieldRef<"FarmerProfile", 'String'>
@@ -7490,6 +7550,9 @@ export namespace Prisma {
     readonly physicalAddress: FieldRef<"FarmerProfile", 'String'>
     readonly isActive: FieldRef<"FarmerProfile", 'Boolean'>
     readonly paymentTerms: FieldRef<"FarmerProfile", 'String'>
+    readonly products: FieldRef<"FarmerProfile", 'String[]'>
+    readonly landSize: FieldRef<"FarmerProfile", 'Float'>
+    readonly mainCrop: FieldRef<"FarmerProfile", 'String'>
     readonly userId: FieldRef<"FarmerProfile", 'String'>
     readonly createdAt: FieldRef<"FarmerProfile", 'DateTime'>
     readonly updatedAt: FieldRef<"FarmerProfile", 'DateTime'>
@@ -10063,7 +10126,7 @@ export namespace Prisma {
     id: 'id',
     uniqueCode: 'uniqueCode',
     contactPerson: 'contactPerson',
-    ContactPersonPhone: 'ContactPersonPhone',
+    contactPersonNumber: 'contactPersonNumber',
     imageUrl: 'imageUrl',
     email: 'email',
     name: 'name',
@@ -10072,6 +10135,9 @@ export namespace Prisma {
     physicalAddress: 'physicalAddress',
     isActive: 'isActive',
     paymentTerms: 'paymentTerms',
+    products: 'products',
+    landSize: 'landSize',
+    mainCrop: 'mainCrop',
     userId: 'userId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -10618,7 +10684,7 @@ export namespace Prisma {
     id?: StringFilter<"FarmerProfile"> | string
     uniqueCode?: StringFilter<"FarmerProfile"> | string
     contactPerson?: StringNullableFilter<"FarmerProfile"> | string | null
-    ContactPersonPhone?: StringNullableFilter<"FarmerProfile"> | string | null
+    contactPersonNumber?: StringNullableFilter<"FarmerProfile"> | string | null
     imageUrl?: StringNullableFilter<"FarmerProfile"> | string | null
     email?: StringFilter<"FarmerProfile"> | string
     name?: StringFilter<"FarmerProfile"> | string
@@ -10627,6 +10693,9 @@ export namespace Prisma {
     physicalAddress?: StringNullableFilter<"FarmerProfile"> | string | null
     isActive?: BoolFilter<"FarmerProfile"> | boolean
     paymentTerms?: StringNullableFilter<"FarmerProfile"> | string | null
+    products?: StringNullableListFilter<"FarmerProfile">
+    landSize?: FloatNullableFilter<"FarmerProfile"> | number | null
+    mainCrop?: StringNullableFilter<"FarmerProfile"> | string | null
     userId?: StringFilter<"FarmerProfile"> | string
     createdAt?: DateTimeFilter<"FarmerProfile"> | Date | string
     updatedAt?: DateTimeFilter<"FarmerProfile"> | Date | string
@@ -10637,7 +10706,7 @@ export namespace Prisma {
     id?: SortOrder
     uniqueCode?: SortOrder
     contactPerson?: SortOrder
-    ContactPersonPhone?: SortOrder
+    contactPersonNumber?: SortOrder
     imageUrl?: SortOrder
     email?: SortOrder
     name?: SortOrder
@@ -10646,6 +10715,9 @@ export namespace Prisma {
     physicalAddress?: SortOrder
     isActive?: SortOrder
     paymentTerms?: SortOrder
+    products?: SortOrder
+    landSize?: SortOrder
+    mainCrop?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -10660,7 +10732,7 @@ export namespace Prisma {
     NOT?: FarmerProfileWhereInput | FarmerProfileWhereInput[]
     uniqueCode?: StringFilter<"FarmerProfile"> | string
     contactPerson?: StringNullableFilter<"FarmerProfile"> | string | null
-    ContactPersonPhone?: StringNullableFilter<"FarmerProfile"> | string | null
+    contactPersonNumber?: StringNullableFilter<"FarmerProfile"> | string | null
     imageUrl?: StringNullableFilter<"FarmerProfile"> | string | null
     email?: StringFilter<"FarmerProfile"> | string
     name?: StringFilter<"FarmerProfile"> | string
@@ -10669,6 +10741,9 @@ export namespace Prisma {
     physicalAddress?: StringNullableFilter<"FarmerProfile"> | string | null
     isActive?: BoolFilter<"FarmerProfile"> | boolean
     paymentTerms?: StringNullableFilter<"FarmerProfile"> | string | null
+    products?: StringNullableListFilter<"FarmerProfile">
+    landSize?: FloatNullableFilter<"FarmerProfile"> | number | null
+    mainCrop?: StringNullableFilter<"FarmerProfile"> | string | null
     createdAt?: DateTimeFilter<"FarmerProfile"> | Date | string
     updatedAt?: DateTimeFilter<"FarmerProfile"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -10678,7 +10753,7 @@ export namespace Prisma {
     id?: SortOrder
     uniqueCode?: SortOrder
     contactPerson?: SortOrder
-    ContactPersonPhone?: SortOrder
+    contactPersonNumber?: SortOrder
     imageUrl?: SortOrder
     email?: SortOrder
     name?: SortOrder
@@ -10687,12 +10762,17 @@ export namespace Prisma {
     physicalAddress?: SortOrder
     isActive?: SortOrder
     paymentTerms?: SortOrder
+    products?: SortOrder
+    landSize?: SortOrder
+    mainCrop?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: FarmerProfileCountOrderByAggregateInput
+    _avg?: FarmerProfileAvgOrderByAggregateInput
     _max?: FarmerProfileMaxOrderByAggregateInput
     _min?: FarmerProfileMinOrderByAggregateInput
+    _sum?: FarmerProfileSumOrderByAggregateInput
   }
 
   export type FarmerProfileScalarWhereWithAggregatesInput = {
@@ -10702,7 +10782,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"FarmerProfile"> | string
     uniqueCode?: StringWithAggregatesFilter<"FarmerProfile"> | string
     contactPerson?: StringNullableWithAggregatesFilter<"FarmerProfile"> | string | null
-    ContactPersonPhone?: StringNullableWithAggregatesFilter<"FarmerProfile"> | string | null
+    contactPersonNumber?: StringNullableWithAggregatesFilter<"FarmerProfile"> | string | null
     imageUrl?: StringNullableWithAggregatesFilter<"FarmerProfile"> | string | null
     email?: StringWithAggregatesFilter<"FarmerProfile"> | string
     name?: StringWithAggregatesFilter<"FarmerProfile"> | string
@@ -10711,6 +10791,9 @@ export namespace Prisma {
     physicalAddress?: StringNullableWithAggregatesFilter<"FarmerProfile"> | string | null
     isActive?: BoolWithAggregatesFilter<"FarmerProfile"> | boolean
     paymentTerms?: StringNullableWithAggregatesFilter<"FarmerProfile"> | string | null
+    products?: StringNullableListFilter<"FarmerProfile">
+    landSize?: FloatNullableWithAggregatesFilter<"FarmerProfile"> | number | null
+    mainCrop?: StringNullableWithAggregatesFilter<"FarmerProfile"> | string | null
     userId?: StringWithAggregatesFilter<"FarmerProfile"> | string
     createdAt?: DateTimeWithAggregatesFilter<"FarmerProfile"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"FarmerProfile"> | Date | string
@@ -11309,7 +11392,7 @@ export namespace Prisma {
     id?: string
     uniqueCode: string
     contactPerson?: string | null
-    ContactPersonPhone?: string | null
+    contactPersonNumber?: string | null
     imageUrl?: string | null
     email: string
     name: string
@@ -11318,6 +11401,9 @@ export namespace Prisma {
     physicalAddress?: string | null
     isActive: boolean
     paymentTerms?: string | null
+    products?: FarmerProfileCreateproductsInput | string[]
+    landSize?: number | null
+    mainCrop?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutFarmerInput
@@ -11327,7 +11413,7 @@ export namespace Prisma {
     id?: string
     uniqueCode: string
     contactPerson?: string | null
-    ContactPersonPhone?: string | null
+    contactPersonNumber?: string | null
     imageUrl?: string | null
     email: string
     name: string
@@ -11336,6 +11422,9 @@ export namespace Prisma {
     physicalAddress?: string | null
     isActive: boolean
     paymentTerms?: string | null
+    products?: FarmerProfileCreateproductsInput | string[]
+    landSize?: number | null
+    mainCrop?: string | null
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11344,7 +11433,7 @@ export namespace Prisma {
   export type FarmerProfileUpdateInput = {
     uniqueCode?: StringFieldUpdateOperationsInput | string
     contactPerson?: NullableStringFieldUpdateOperationsInput | string | null
-    ContactPersonPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPersonNumber?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -11353,6 +11442,9 @@ export namespace Prisma {
     physicalAddress?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     paymentTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    products?: FarmerProfileUpdateproductsInput | string[]
+    landSize?: NullableFloatFieldUpdateOperationsInput | number | null
+    mainCrop?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutFarmerNestedInput
@@ -11361,7 +11453,7 @@ export namespace Prisma {
   export type FarmerProfileUncheckedUpdateInput = {
     uniqueCode?: StringFieldUpdateOperationsInput | string
     contactPerson?: NullableStringFieldUpdateOperationsInput | string | null
-    ContactPersonPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPersonNumber?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -11370,6 +11462,9 @@ export namespace Prisma {
     physicalAddress?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     paymentTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    products?: FarmerProfileUpdateproductsInput | string[]
+    landSize?: NullableFloatFieldUpdateOperationsInput | number | null
+    mainCrop?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11379,7 +11474,7 @@ export namespace Prisma {
     id?: string
     uniqueCode: string
     contactPerson?: string | null
-    ContactPersonPhone?: string | null
+    contactPersonNumber?: string | null
     imageUrl?: string | null
     email: string
     name: string
@@ -11388,6 +11483,9 @@ export namespace Prisma {
     physicalAddress?: string | null
     isActive: boolean
     paymentTerms?: string | null
+    products?: FarmerProfileCreateproductsInput | string[]
+    landSize?: number | null
+    mainCrop?: string | null
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11396,7 +11494,7 @@ export namespace Prisma {
   export type FarmerProfileUpdateManyMutationInput = {
     uniqueCode?: StringFieldUpdateOperationsInput | string
     contactPerson?: NullableStringFieldUpdateOperationsInput | string | null
-    ContactPersonPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPersonNumber?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -11405,6 +11503,9 @@ export namespace Prisma {
     physicalAddress?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     paymentTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    products?: FarmerProfileUpdateproductsInput | string[]
+    landSize?: NullableFloatFieldUpdateOperationsInput | number | null
+    mainCrop?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11412,7 +11513,7 @@ export namespace Prisma {
   export type FarmerProfileUncheckedUpdateManyInput = {
     uniqueCode?: StringFieldUpdateOperationsInput | string
     contactPerson?: NullableStringFieldUpdateOperationsInput | string | null
-    ContactPersonPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPersonNumber?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -11421,6 +11522,9 @@ export namespace Prisma {
     physicalAddress?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     paymentTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    products?: FarmerProfileUpdateproductsInput | string[]
+    landSize?: NullableFloatFieldUpdateOperationsInput | number | null
+    mainCrop?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11980,11 +12084,23 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+    isSet?: boolean
+  }
+
   export type FarmerProfileCountOrderByAggregateInput = {
     id?: SortOrder
     uniqueCode?: SortOrder
     contactPerson?: SortOrder
-    ContactPersonPhone?: SortOrder
+    contactPersonNumber?: SortOrder
     imageUrl?: SortOrder
     email?: SortOrder
     name?: SortOrder
@@ -11993,16 +12109,23 @@ export namespace Prisma {
     physicalAddress?: SortOrder
     isActive?: SortOrder
     paymentTerms?: SortOrder
+    products?: SortOrder
+    landSize?: SortOrder
+    mainCrop?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type FarmerProfileAvgOrderByAggregateInput = {
+    landSize?: SortOrder
   }
 
   export type FarmerProfileMaxOrderByAggregateInput = {
     id?: SortOrder
     uniqueCode?: SortOrder
     contactPerson?: SortOrder
-    ContactPersonPhone?: SortOrder
+    contactPersonNumber?: SortOrder
     imageUrl?: SortOrder
     email?: SortOrder
     name?: SortOrder
@@ -12011,6 +12134,8 @@ export namespace Prisma {
     physicalAddress?: SortOrder
     isActive?: SortOrder
     paymentTerms?: SortOrder
+    landSize?: SortOrder
+    mainCrop?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12020,7 +12145,7 @@ export namespace Prisma {
     id?: SortOrder
     uniqueCode?: SortOrder
     contactPerson?: SortOrder
-    ContactPersonPhone?: SortOrder
+    contactPersonNumber?: SortOrder
     imageUrl?: SortOrder
     email?: SortOrder
     name?: SortOrder
@@ -12029,9 +12154,32 @@ export namespace Prisma {
     physicalAddress?: SortOrder
     isActive?: SortOrder
     paymentTerms?: SortOrder
+    landSize?: SortOrder
+    mainCrop?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type FarmerProfileSumOrderByAggregateInput = {
+    landSize?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+    isSet?: boolean
   }
 
   export type TrainingCountOrderByAggregateInput = {
@@ -12395,10 +12543,28 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProductsInput, UserUpdateWithoutProductsInput>, UserUncheckedUpdateWithoutProductsInput>
   }
 
+  export type FarmerProfileCreateproductsInput = {
+    set: string[]
+  }
+
   export type UserCreateNestedOneWithoutFarmerInput = {
     create?: XOR<UserCreateWithoutFarmerInput, UserUncheckedCreateWithoutFarmerInput>
     connectOrCreate?: UserCreateOrConnectWithoutFarmerInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type FarmerProfileUpdateproductsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+    unset?: boolean
   }
 
   export type UserUpdateOneRequiredWithoutFarmerNestedInput = {
@@ -12656,6 +12822,35 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+    isSet?: boolean
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+    isSet?: boolean
   }
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
@@ -13276,7 +13471,7 @@ export namespace Prisma {
     id?: string
     uniqueCode: string
     contactPerson?: string | null
-    ContactPersonPhone?: string | null
+    contactPersonNumber?: string | null
     imageUrl?: string | null
     email: string
     name: string
@@ -13285,6 +13480,9 @@ export namespace Prisma {
     physicalAddress?: string | null
     isActive: boolean
     paymentTerms?: string | null
+    products?: FarmerProfileCreateproductsInput | string[]
+    landSize?: number | null
+    mainCrop?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13293,7 +13491,7 @@ export namespace Prisma {
     id?: string
     uniqueCode: string
     contactPerson?: string | null
-    ContactPersonPhone?: string | null
+    contactPersonNumber?: string | null
     imageUrl?: string | null
     email: string
     name: string
@@ -13302,6 +13500,9 @@ export namespace Prisma {
     physicalAddress?: string | null
     isActive: boolean
     paymentTerms?: string | null
+    products?: FarmerProfileCreateproductsInput | string[]
+    landSize?: number | null
+    mainCrop?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13341,7 +13542,7 @@ export namespace Prisma {
   export type FarmerProfileUpdateWithoutUserInput = {
     uniqueCode?: StringFieldUpdateOperationsInput | string
     contactPerson?: NullableStringFieldUpdateOperationsInput | string | null
-    ContactPersonPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPersonNumber?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -13350,6 +13551,9 @@ export namespace Prisma {
     physicalAddress?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     paymentTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    products?: FarmerProfileUpdateproductsInput | string[]
+    landSize?: NullableFloatFieldUpdateOperationsInput | number | null
+    mainCrop?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13357,7 +13561,7 @@ export namespace Prisma {
   export type FarmerProfileUncheckedUpdateWithoutUserInput = {
     uniqueCode?: StringFieldUpdateOperationsInput | string
     contactPerson?: NullableStringFieldUpdateOperationsInput | string | null
-    ContactPersonPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    contactPersonNumber?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -13366,6 +13570,9 @@ export namespace Prisma {
     physicalAddress?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     paymentTerms?: NullableStringFieldUpdateOperationsInput | string | null
+    products?: FarmerProfileUpdateproductsInput | string[]
+    landSize?: NullableFloatFieldUpdateOperationsInput | number | null
+    mainCrop?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

@@ -4,8 +4,12 @@ export async function POST(request){
 try{
     const {title,slug,sku,barcode,productPrice,salePrice,imageUrl,Description,categoryId,farmerId,tags,isActive} = await request.json();
     const newProduct = {title,slug,sku,barcode,productPrice,salePrice,imageUrl,Description,categoryId,farmerId,tags,isActive};
-    console.log(newProduct)
-    return NextResponse.json(newProduct);
+
+    const createProduct = await db.farmerProfile.create({
+        data:newProduct
+    })
+    console.log(createProduct)
+    return NextResponse.json(createProduct);
 
 }catch(error){
 console.log(error);

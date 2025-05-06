@@ -39,6 +39,7 @@ const[products,setProducts]=useState([]);
     const code = generateUserCode('LFF',data.name); //you can use any codename you like 
     data.uniqueCode =code;
     data.products=products
+    data.userId = user?.id
     data.imageUrl =imageUrl;
     makePostRequest(setLoading,"api/farmers",data,"Farmer",redirect);
     setImageUrl("");
@@ -94,7 +95,7 @@ const[products,setProducts]=useState([]);
           falseTitle="Draft" register={register} isRequiredd={false}/>
 
       </div>
-      <SubmitButton isLoading={loading} buttonTitle="Create Farmer" loadingButtonTitle="creating coupon please wait ..."/>
+      <SubmitButton isLoading={loading} buttonTitle="Create Farmer" loadingButtonTitle="creating Farmer please wait ..."/>
   </form>
     </div>
    
