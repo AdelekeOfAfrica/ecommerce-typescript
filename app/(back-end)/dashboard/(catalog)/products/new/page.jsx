@@ -78,9 +78,11 @@ export default function NewProduct() {
   const {register,reset,watch,handleSubmit,formState:{errors}}=useForm({
     defaultValues:{
       isActive:true,
+      isWholesale:false
     }
   });
   const isActive=watch("isActive");
+  const isWholesale=watch("isWholesale","iswholesale:false");
     const router = useRouter();
   
     function redirect(){
@@ -89,6 +91,7 @@ export default function NewProduct() {
   async function onSubmit(data){ //form function
   
   const slug = generateSlug(data.title);
+  const productCode =generateUserCode();
     data.slug=slug;
     data.imageUrl =imageUrl;
     data.tags=tags;
@@ -125,6 +128,26 @@ export default function NewProduct() {
             <SelectInput label="Select Category" name="categoryId" register={register} options={categories} errors={errors} className="w-full" />
 
             <SelectInput label="Select Farmer" name="farmerId" register={register} options={farmers} errors={errors} className="w-full" />
+            <ToogleInput label="support wholesale selling" name="isWholesale" trueTitle="supported"
+              falseTitle="not supported" register={register}/>
+
+
+
+            {
+              isWholesale&&(
+                <>
+                <TextInput label="wholesale Price" name="wholesalePrice" type="number" register={register} errors={errors} className="w-full" />
+
+            <TextInput label="minimum  wholesale quantity" name="wholesaleQty" type="number" register={register} errors={errors} className="w-full" />
+
+            <TextInput label="Unit of measurement" name="unit"  register={register} errors={errors} /> 
+                </>
+                
+              )
+
+              
+            }
+           
 
             <ImageInput imageUrl={imageUrl} setImageUrl={setImageUrl} endpoint="ProductImageUploader" label="Product Image" />
         </div>
@@ -141,8 +164,10 @@ export default function NewProduct() {
         <TextAreaInput label="Product Description" name="Description" register={register} errors={errors} />
 
        
-       <ToogleInput label="publish your prouct" name="isActive" trueTitle="Active"
+       <ToogleInput label="publish your prodduct" name="isActive" trueTitle="Active"
        falseTitle="Draft" register={register}/>
+
+
 
 
 
