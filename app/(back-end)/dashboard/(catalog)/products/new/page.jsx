@@ -13,6 +13,7 @@ import SelectInput from '../../../../../../components/FormInputs/SelectInput';
 import ArrayItemInput from '../../../../../../components/FormInputs/ArrayItemInput';
 import ToogleInput from '../../../../../../components/FormInputs/toogleInput';
 import { useRouter } from 'next/navigation';
+import {generateUserCode} from '@/lib/generateUserCode';
 
 export default function NewProduct() {
 
@@ -91,10 +92,12 @@ export default function NewProduct() {
   async function onSubmit(data){ //form function
   
   const slug = generateSlug(data.title);
-  const productCode =generateUserCode();
+  const productCode =generateUserCode('LLP',data.title);
     data.slug=slug;
     data.imageUrl =imageUrl;
     data.tags=tags;
+    data.Qty=1;
+    data.productCode=productCode;
     console.log(data);
     makePostRequest(
       setLoading,
@@ -124,6 +127,8 @@ export default function NewProduct() {
             <TextInput label="Product Price (Before Discount)" name="productPrice" type="number" register={register} errors={errors} className="w-full" />
 
             <TextInput label="Product Sale Price (Discount)" name="salePrice" type="number" register={register} errors={errors} className="w-full" />
+
+            <TextInput label="Product Stock" name="productStock" type="number" register={register} errors={errors} className="w-full" />
 
             <SelectInput label="Select Category" name="categoryId" register={register} options={categories} errors={errors} className="w-full" />
 

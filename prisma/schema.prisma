@@ -90,6 +90,14 @@ model Product {
   
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+  iswholesale   Boolean
+  wholesaleQty  Int?
+  unit          Int?
+  wholesalePrice Float?
+  productCode   String?
+  productStock Int
+  Qty Int
+  
 }
 
 
