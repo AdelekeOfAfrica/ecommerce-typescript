@@ -5712,7 +5712,7 @@ export namespace Prisma {
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    iswholesale: boolean | null
+    isWholesale: boolean | null
     wholesaleQty: number | null
     unit: number | null
     wholesalePrice: number | null
@@ -5736,7 +5736,7 @@ export namespace Prisma {
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    iswholesale: boolean | null
+    isWholesale: boolean | null
     wholesaleQty: number | null
     unit: number | null
     wholesalePrice: number | null
@@ -5761,7 +5761,7 @@ export namespace Prisma {
     userId: number
     createdAt: number
     updatedAt: number
-    iswholesale: number
+    isWholesale: number
     wholesaleQty: number
     unit: number
     wholesalePrice: number
@@ -5807,7 +5807,7 @@ export namespace Prisma {
     userId?: true
     createdAt?: true
     updatedAt?: true
-    iswholesale?: true
+    isWholesale?: true
     wholesaleQty?: true
     unit?: true
     wholesalePrice?: true
@@ -5831,7 +5831,7 @@ export namespace Prisma {
     userId?: true
     createdAt?: true
     updatedAt?: true
-    iswholesale?: true
+    isWholesale?: true
     wholesaleQty?: true
     unit?: true
     wholesalePrice?: true
@@ -5856,7 +5856,7 @@ export namespace Prisma {
     userId?: true
     createdAt?: true
     updatedAt?: true
-    iswholesale?: true
+    isWholesale?: true
     wholesaleQty?: true
     unit?: true
     wholesalePrice?: true
@@ -5968,7 +5968,7 @@ export namespace Prisma {
     userId: string
     createdAt: Date
     updatedAt: Date
-    iswholesale: boolean
+    isWholesale: boolean
     wholesaleQty: number | null
     unit: number | null
     wholesalePrice: number | null
@@ -6012,7 +6012,7 @@ export namespace Prisma {
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    iswholesale?: boolean
+    isWholesale?: boolean
     wholesaleQty?: boolean
     unit?: boolean
     wholesalePrice?: boolean
@@ -6041,7 +6041,7 @@ export namespace Prisma {
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    iswholesale?: boolean
+    isWholesale?: boolean
     wholesaleQty?: boolean
     unit?: boolean
     wholesalePrice?: boolean
@@ -6050,7 +6050,7 @@ export namespace Prisma {
     Qty?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "Description" | "imageUrl" | "sku" | "barcode" | "productPrice" | "salePrice" | "isActive" | "tags" | "categoryId" | "userId" | "createdAt" | "updatedAt" | "iswholesale" | "wholesaleQty" | "unit" | "wholesalePrice" | "productCode" | "productStock" | "Qty", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "Description" | "imageUrl" | "sku" | "barcode" | "productPrice" | "salePrice" | "isActive" | "tags" | "categoryId" | "userId" | "createdAt" | "updatedAt" | "isWholesale" | "wholesaleQty" | "unit" | "wholesalePrice" | "productCode" | "productStock" | "Qty", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -6078,7 +6078,7 @@ export namespace Prisma {
       userId: string
       createdAt: Date
       updatedAt: Date
-      iswholesale: boolean
+      isWholesale: boolean
       wholesaleQty: number | null
       unit: number | null
       wholesalePrice: number | null
@@ -6494,7 +6494,7 @@ export namespace Prisma {
     readonly userId: FieldRef<"Product", 'String'>
     readonly createdAt: FieldRef<"Product", 'DateTime'>
     readonly updatedAt: FieldRef<"Product", 'DateTime'>
-    readonly iswholesale: FieldRef<"Product", 'Boolean'>
+    readonly isWholesale: FieldRef<"Product", 'Boolean'>
     readonly wholesaleQty: FieldRef<"Product", 'Int'>
     readonly unit: FieldRef<"Product", 'Int'>
     readonly wholesalePrice: FieldRef<"Product", 'Float'>
@@ -10214,7 +10214,7 @@ export namespace Prisma {
     userId: 'userId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    iswholesale: 'iswholesale',
+    isWholesale: 'isWholesale',
     wholesaleQty: 'wholesaleQty',
     unit: 'unit',
     wholesalePrice: 'wholesalePrice',
@@ -10690,7 +10690,7 @@ export namespace Prisma {
     userId?: StringFilter<"Product"> | string
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
-    iswholesale?: BoolFilter<"Product"> | boolean
+    isWholesale?: BoolFilter<"Product"> | boolean
     wholesaleQty?: IntNullableFilter<"Product"> | number | null
     unit?: IntNullableFilter<"Product"> | number | null
     wholesalePrice?: FloatNullableFilter<"Product"> | number | null
@@ -10717,7 +10717,7 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    iswholesale?: SortOrder
+    isWholesale?: SortOrder
     wholesaleQty?: SortOrder
     unit?: SortOrder
     wholesalePrice?: SortOrder
@@ -10747,7 +10747,7 @@ export namespace Prisma {
     categoryId?: StringFilter<"Product"> | string
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
-    iswholesale?: BoolFilter<"Product"> | boolean
+    isWholesale?: BoolFilter<"Product"> | boolean
     wholesaleQty?: IntNullableFilter<"Product"> | number | null
     unit?: IntNullableFilter<"Product"> | number | null
     wholesalePrice?: FloatNullableFilter<"Product"> | number | null
@@ -10774,7 +10774,7 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    iswholesale?: SortOrder
+    isWholesale?: SortOrder
     wholesaleQty?: SortOrder
     unit?: SortOrder
     wholesalePrice?: SortOrder
@@ -10807,7 +10807,7 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"Product"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
-    iswholesale?: BoolWithAggregatesFilter<"Product"> | boolean
+    isWholesale?: BoolWithAggregatesFilter<"Product"> | boolean
     wholesaleQty?: IntNullableWithAggregatesFilter<"Product"> | number | null
     unit?: IntNullableWithAggregatesFilter<"Product"> | number | null
     wholesalePrice?: FloatNullableWithAggregatesFilter<"Product"> | number | null
@@ -11421,7 +11421,7 @@ export namespace Prisma {
     tags?: ProductCreatetagsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    iswholesale: boolean
+    isWholesale: boolean
     wholesaleQty?: number | null
     unit?: number | null
     wholesalePrice?: number | null
@@ -11448,7 +11448,7 @@ export namespace Prisma {
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    iswholesale: boolean
+    isWholesale: boolean
     wholesaleQty?: number | null
     unit?: number | null
     wholesalePrice?: number | null
@@ -11470,7 +11470,7 @@ export namespace Prisma {
     tags?: ProductUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    iswholesale?: BoolFieldUpdateOperationsInput | boolean
+    isWholesale?: BoolFieldUpdateOperationsInput | boolean
     wholesaleQty?: NullableIntFieldUpdateOperationsInput | number | null
     unit?: NullableIntFieldUpdateOperationsInput | number | null
     wholesalePrice?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -11496,7 +11496,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    iswholesale?: BoolFieldUpdateOperationsInput | boolean
+    isWholesale?: BoolFieldUpdateOperationsInput | boolean
     wholesaleQty?: NullableIntFieldUpdateOperationsInput | number | null
     unit?: NullableIntFieldUpdateOperationsInput | number | null
     wholesalePrice?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -11521,7 +11521,7 @@ export namespace Prisma {
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    iswholesale: boolean
+    isWholesale: boolean
     wholesaleQty?: number | null
     unit?: number | null
     wholesalePrice?: number | null
@@ -11543,7 +11543,7 @@ export namespace Prisma {
     tags?: ProductUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    iswholesale?: BoolFieldUpdateOperationsInput | boolean
+    isWholesale?: BoolFieldUpdateOperationsInput | boolean
     wholesaleQty?: NullableIntFieldUpdateOperationsInput | number | null
     unit?: NullableIntFieldUpdateOperationsInput | number | null
     wholesalePrice?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -11567,7 +11567,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    iswholesale?: BoolFieldUpdateOperationsInput | boolean
+    isWholesale?: BoolFieldUpdateOperationsInput | boolean
     wholesaleQty?: NullableIntFieldUpdateOperationsInput | number | null
     unit?: NullableIntFieldUpdateOperationsInput | number | null
     wholesalePrice?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -12245,7 +12245,7 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    iswholesale?: SortOrder
+    isWholesale?: SortOrder
     wholesaleQty?: SortOrder
     unit?: SortOrder
     wholesalePrice?: SortOrder
@@ -12279,7 +12279,7 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    iswholesale?: SortOrder
+    isWholesale?: SortOrder
     wholesaleQty?: SortOrder
     unit?: SortOrder
     wholesalePrice?: SortOrder
@@ -12303,7 +12303,7 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    iswholesale?: SortOrder
+    isWholesale?: SortOrder
     wholesaleQty?: SortOrder
     unit?: SortOrder
     wholesalePrice?: SortOrder
@@ -13236,7 +13236,7 @@ export namespace Prisma {
     tags?: ProductCreatetagsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    iswholesale: boolean
+    isWholesale: boolean
     wholesaleQty?: number | null
     unit?: number | null
     wholesalePrice?: number | null
@@ -13261,7 +13261,7 @@ export namespace Prisma {
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    iswholesale: boolean
+    isWholesale: boolean
     wholesaleQty?: number | null
     unit?: number | null
     wholesalePrice?: number | null
@@ -13375,7 +13375,7 @@ export namespace Prisma {
     userId?: StringFilter<"Product"> | string
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
-    iswholesale?: BoolFilter<"Product"> | boolean
+    isWholesale?: BoolFilter<"Product"> | boolean
     wholesaleQty?: IntNullableFilter<"Product"> | number | null
     unit?: IntNullableFilter<"Product"> | number | null
     wholesalePrice?: FloatNullableFilter<"Product"> | number | null
@@ -13784,7 +13784,7 @@ export namespace Prisma {
     tags?: ProductCreatetagsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    iswholesale: boolean
+    isWholesale: boolean
     wholesaleQty?: number | null
     unit?: number | null
     wholesalePrice?: number | null
@@ -13809,7 +13809,7 @@ export namespace Prisma {
     categoryId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    iswholesale: boolean
+    isWholesale: boolean
     wholesaleQty?: number | null
     unit?: number | null
     wholesalePrice?: number | null
@@ -13952,7 +13952,7 @@ export namespace Prisma {
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    iswholesale: boolean
+    isWholesale: boolean
     wholesaleQty?: number | null
     unit?: number | null
     wholesalePrice?: number | null
@@ -13986,7 +13986,7 @@ export namespace Prisma {
     tags?: ProductUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    iswholesale?: BoolFieldUpdateOperationsInput | boolean
+    isWholesale?: BoolFieldUpdateOperationsInput | boolean
     wholesaleQty?: NullableIntFieldUpdateOperationsInput | number | null
     unit?: NullableIntFieldUpdateOperationsInput | number | null
     wholesalePrice?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -14010,7 +14010,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    iswholesale?: BoolFieldUpdateOperationsInput | boolean
+    isWholesale?: BoolFieldUpdateOperationsInput | boolean
     wholesaleQty?: NullableIntFieldUpdateOperationsInput | number | null
     unit?: NullableIntFieldUpdateOperationsInput | number | null
     wholesalePrice?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -14033,7 +14033,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    iswholesale?: BoolFieldUpdateOperationsInput | boolean
+    isWholesale?: BoolFieldUpdateOperationsInput | boolean
     wholesaleQty?: NullableIntFieldUpdateOperationsInput | number | null
     unit?: NullableIntFieldUpdateOperationsInput | number | null
     wholesalePrice?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -14158,7 +14158,7 @@ export namespace Prisma {
     categoryId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    iswholesale: boolean
+    isWholesale: boolean
     wholesaleQty?: number | null
     unit?: number | null
     wholesalePrice?: number | null
@@ -14180,7 +14180,7 @@ export namespace Prisma {
     tags?: ProductUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    iswholesale?: BoolFieldUpdateOperationsInput | boolean
+    isWholesale?: BoolFieldUpdateOperationsInput | boolean
     wholesaleQty?: NullableIntFieldUpdateOperationsInput | number | null
     unit?: NullableIntFieldUpdateOperationsInput | number | null
     wholesalePrice?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -14204,7 +14204,7 @@ export namespace Prisma {
     categoryId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    iswholesale?: BoolFieldUpdateOperationsInput | boolean
+    isWholesale?: BoolFieldUpdateOperationsInput | boolean
     wholesaleQty?: NullableIntFieldUpdateOperationsInput | number | null
     unit?: NullableIntFieldUpdateOperationsInput | number | null
     wholesalePrice?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -14227,7 +14227,7 @@ export namespace Prisma {
     categoryId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    iswholesale?: BoolFieldUpdateOperationsInput | boolean
+    isWholesale?: BoolFieldUpdateOperationsInput | boolean
     wholesaleQty?: NullableIntFieldUpdateOperationsInput | number | null
     unit?: NullableIntFieldUpdateOperationsInput | number | null
     wholesalePrice?: NullableFloatFieldUpdateOperationsInput | number | null

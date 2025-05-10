@@ -5,7 +5,7 @@ import db from "../../../lib/db";
 export async function POST(request){
 try{
     const {title,slug,sku,barcode,productPrice,salePrice,imageUrl,Description,categoryId,farmerId,tags,isActive,isWholesale,wholesaleQty,unit,wholesalePrice,productCode,productStock,Qty} = await request.json();
-    const newProduct = {title,slug,sku,barcode,productPrice:parseFloat(productPrice),salePrice:parseFloat(salePrice),imageUrl,Description,categoryId,userId:farmerId,tags,isActive,isWholesale,wholesaleQty:parseInt(wholesaleQty),unit,wholesalePrice:parseFloat(wholesalePrice),productCode,productStock:parseInt(productStock),Qty:parseInt(Qty),uniqueCode:productCode};
+    const newProduct = {title,slug,sku,barcode,productPrice:parseFloat(productPrice),salePrice:parseFloat(salePrice),imageUrl,Description,categoryId,userId:farmerId,tags,isActive,isWholesale,wholesaleQty:parseInt(wholesaleQty),unit:parseInt(unit),wholesalePrice:parseFloat(wholesalePrice),productCode,productStock:parseInt(productStock),Qty:parseInt(Qty)};
 
     //check if product exists in the database
 
@@ -22,7 +22,7 @@ try{
           { status: 409 }
         );
       }
-    const createProduct = await db.farmerProfile.create({
+    const createProduct = await db.product.create({
         data:newProduct
     })
     console.log(createProduct)
