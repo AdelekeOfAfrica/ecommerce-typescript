@@ -56,8 +56,8 @@ model Category {
 model Market {
   id          String     @id @default(auto()) @map("_id") @db.ObjectId
   title       String     @unique
-  slug        String
-  logoUrl     String
+  slug        String     @unique
+  imageUrl    String
   description String
   categoryIds String[]   @db.ObjectId
   categories  Category[] @relation(fields: [categoryIds], references: [id])

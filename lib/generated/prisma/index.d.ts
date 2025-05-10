@@ -302,8 +302,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 6.7.0
+   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
    */
   export type PrismaVersion = {
     client: string
@@ -4634,7 +4634,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     slug: string | null
-    logoUrl: string | null
+    imageUrl: string | null
     description: string | null
     isActive: boolean | null
     createdAt: Date | null
@@ -4645,7 +4645,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     slug: string | null
-    logoUrl: string | null
+    imageUrl: string | null
     description: string | null
     isActive: boolean | null
     createdAt: Date | null
@@ -4656,7 +4656,7 @@ export namespace Prisma {
     id: number
     title: number
     slug: number
-    logoUrl: number
+    imageUrl: number
     description: number
     categoryIds: number
     isActive: number
@@ -4670,7 +4670,7 @@ export namespace Prisma {
     id?: true
     title?: true
     slug?: true
-    logoUrl?: true
+    imageUrl?: true
     description?: true
     isActive?: true
     createdAt?: true
@@ -4681,7 +4681,7 @@ export namespace Prisma {
     id?: true
     title?: true
     slug?: true
-    logoUrl?: true
+    imageUrl?: true
     description?: true
     isActive?: true
     createdAt?: true
@@ -4692,7 +4692,7 @@ export namespace Prisma {
     id?: true
     title?: true
     slug?: true
-    logoUrl?: true
+    imageUrl?: true
     description?: true
     categoryIds?: true
     isActive?: true
@@ -4777,7 +4777,7 @@ export namespace Prisma {
     id: string
     title: string
     slug: string
-    logoUrl: string
+    imageUrl: string
     description: string
     categoryIds: string[]
     isActive: boolean
@@ -4806,7 +4806,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     slug?: boolean
-    logoUrl?: boolean
+    imageUrl?: boolean
     description?: boolean
     categoryIds?: boolean
     isActive?: boolean
@@ -4822,7 +4822,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     slug?: boolean
-    logoUrl?: boolean
+    imageUrl?: boolean
     description?: boolean
     categoryIds?: boolean
     isActive?: boolean
@@ -4830,7 +4830,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type MarketOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "logoUrl" | "description" | "categoryIds" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["market"]>
+  export type MarketOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "imageUrl" | "description" | "categoryIds" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["market"]>
   export type MarketInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     categories?: boolean | Market$categoriesArgs<ExtArgs>
     _count?: boolean | MarketCountOutputTypeDefaultArgs<ExtArgs>
@@ -4845,7 +4845,7 @@ export namespace Prisma {
       id: string
       title: string
       slug: string
-      logoUrl: string
+      imageUrl: string
       description: string
       categoryIds: string[]
       isActive: boolean
@@ -5247,7 +5247,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Market", 'String'>
     readonly title: FieldRef<"Market", 'String'>
     readonly slug: FieldRef<"Market", 'String'>
-    readonly logoUrl: FieldRef<"Market", 'String'>
+    readonly imageUrl: FieldRef<"Market", 'String'>
     readonly description: FieldRef<"Market", 'String'>
     readonly categoryIds: FieldRef<"Market", 'String[]'>
     readonly isActive: FieldRef<"Market", 'Boolean'>
@@ -10187,7 +10187,7 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     slug: 'slug',
-    logoUrl: 'logoUrl',
+    imageUrl: 'imageUrl',
     description: 'description',
     categoryIds: 'categoryIds',
     isActive: 'isActive',
@@ -10603,7 +10603,7 @@ export namespace Prisma {
     id?: StringFilter<"Market"> | string
     title?: StringFilter<"Market"> | string
     slug?: StringFilter<"Market"> | string
-    logoUrl?: StringFilter<"Market"> | string
+    imageUrl?: StringFilter<"Market"> | string
     description?: StringFilter<"Market"> | string
     categoryIds?: StringNullableListFilter<"Market">
     isActive?: BoolFilter<"Market"> | boolean
@@ -10616,7 +10616,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     slug?: SortOrder
-    logoUrl?: SortOrder
+    imageUrl?: SortOrder
     description?: SortOrder
     categoryIds?: SortOrder
     isActive?: SortOrder
@@ -10628,24 +10628,24 @@ export namespace Prisma {
   export type MarketWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     title?: string
+    slug?: string
     AND?: MarketWhereInput | MarketWhereInput[]
     OR?: MarketWhereInput[]
     NOT?: MarketWhereInput | MarketWhereInput[]
-    slug?: StringFilter<"Market"> | string
-    logoUrl?: StringFilter<"Market"> | string
+    imageUrl?: StringFilter<"Market"> | string
     description?: StringFilter<"Market"> | string
     categoryIds?: StringNullableListFilter<"Market">
     isActive?: BoolFilter<"Market"> | boolean
     createdAt?: DateTimeFilter<"Market"> | Date | string
     updatedAt?: DateTimeFilter<"Market"> | Date | string
     categories?: CategoryListRelationFilter
-  }, "id" | "title">
+  }, "id" | "title" | "slug">
 
   export type MarketOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
     slug?: SortOrder
-    logoUrl?: SortOrder
+    imageUrl?: SortOrder
     description?: SortOrder
     categoryIds?: SortOrder
     isActive?: SortOrder
@@ -10663,7 +10663,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Market"> | string
     title?: StringWithAggregatesFilter<"Market"> | string
     slug?: StringWithAggregatesFilter<"Market"> | string
-    logoUrl?: StringWithAggregatesFilter<"Market"> | string
+    imageUrl?: StringWithAggregatesFilter<"Market"> | string
     description?: StringWithAggregatesFilter<"Market"> | string
     categoryIds?: StringNullableListFilter<"Market">
     isActive?: BoolWithAggregatesFilter<"Market"> | boolean
@@ -11330,7 +11330,7 @@ export namespace Prisma {
     id?: string
     title: string
     slug: string
-    logoUrl: string
+    imageUrl: string
     description: string
     isActive: boolean
     createdAt?: Date | string
@@ -11342,7 +11342,7 @@ export namespace Prisma {
     id?: string
     title: string
     slug: string
-    logoUrl: string
+    imageUrl: string
     description: string
     categoryIds?: MarketCreatecategoryIdsInput | string[]
     isActive: boolean
@@ -11354,7 +11354,7 @@ export namespace Prisma {
   export type MarketUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    logoUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11365,7 +11365,7 @@ export namespace Prisma {
   export type MarketUncheckedUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    logoUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     categoryIds?: MarketUpdatecategoryIdsInput | string[]
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -11378,7 +11378,7 @@ export namespace Prisma {
     id?: string
     title: string
     slug: string
-    logoUrl: string
+    imageUrl: string
     description: string
     categoryIds?: MarketCreatecategoryIdsInput | string[]
     isActive: boolean
@@ -11389,7 +11389,7 @@ export namespace Prisma {
   export type MarketUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    logoUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11399,7 +11399,7 @@ export namespace Prisma {
   export type MarketUncheckedUpdateManyInput = {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    logoUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     categoryIds?: MarketUpdatecategoryIdsInput | string[]
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -12143,7 +12143,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     slug?: SortOrder
-    logoUrl?: SortOrder
+    imageUrl?: SortOrder
     description?: SortOrder
     categoryIds?: SortOrder
     isActive?: SortOrder
@@ -12155,7 +12155,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     slug?: SortOrder
-    logoUrl?: SortOrder
+    imageUrl?: SortOrder
     description?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
@@ -12166,7 +12166,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     slug?: SortOrder
-    logoUrl?: SortOrder
+    imageUrl?: SortOrder
     description?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
@@ -13283,7 +13283,7 @@ export namespace Prisma {
     id?: string
     title: string
     slug: string
-    logoUrl: string
+    imageUrl: string
     description: string
     isActive: boolean
     createdAt?: Date | string
@@ -13294,7 +13294,7 @@ export namespace Prisma {
     id?: string
     title: string
     slug: string
-    logoUrl: string
+    imageUrl: string
     description: string
     categoryIds?: MarketCreatecategoryIdsInput | string[]
     isActive: boolean
@@ -13407,7 +13407,7 @@ export namespace Prisma {
     id?: StringFilter<"Market"> | string
     title?: StringFilter<"Market"> | string
     slug?: StringFilter<"Market"> | string
-    logoUrl?: StringFilter<"Market"> | string
+    imageUrl?: StringFilter<"Market"> | string
     description?: StringFilter<"Market"> | string
     categoryIds?: StringNullableListFilter<"Market">
     isActive?: BoolFilter<"Market"> | boolean
@@ -14045,7 +14045,7 @@ export namespace Prisma {
   export type MarketUpdateWithoutCategoriesInput = {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    logoUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14055,7 +14055,7 @@ export namespace Prisma {
   export type MarketUncheckedUpdateWithoutCategoriesInput = {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    logoUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     categoryIds?: MarketUpdatecategoryIdsInput | string[]
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -14066,7 +14066,7 @@ export namespace Prisma {
   export type MarketUncheckedUpdateManyWithoutCategoriesInput = {
     title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    logoUrl?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     categoryIds?: MarketUpdatecategoryIdsInput | string[]
     isActive?: BoolFieldUpdateOperationsInput | boolean

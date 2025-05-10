@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import db from "@/lib/db";
 
+//if you make any changes on your prisma
+//always run npx prisma db push
+//verify the changes from npx prisma studio
+
 export async function POST(request){
     try{
         const {uniqueCode,contactPerson,contactPersonNumber,email,name,note,phone,physicalAddress,paymentTerms,imageUrl} = await request.json();
