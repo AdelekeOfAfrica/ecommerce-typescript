@@ -44,3 +44,26 @@ return NextResponse.json({
 },{status:500});
 }
 }
+
+export async function GET(request) {
+
+    try{
+
+        const markets = await db.market.findMany({
+            orderBy:{
+                createdAt:"desc",
+            }
+        });
+        return NextResponse.json(markets)
+
+    }catch(Exception){
+
+        return NextResponse.json({
+            "message":"failed to fetch available markets",
+            error
+        
+        },{status:500});
+
+    }
+
+}

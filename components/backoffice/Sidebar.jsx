@@ -61,6 +61,12 @@ export default function Sidebar({showSidebar,setShowSidebar}) {
       icon:ExternalLink,
       href:"/dashboard/onlineStore"
     },
+
+    {
+      title:"Community",
+      icon:Users2,
+      href:"/dashboard/community"
+    },
   ];
 
   const catalogueLinks =[
