@@ -7,6 +7,7 @@ export default withUt({
  
   darkMode: ["class"],
   content: [
+	"./node_modules/flowbite-react/**/*.js",
   "./pages/**/*.{js,ts,jsx,tsx,mdx}",
   "./components/**/*.{js,ts,jsx,tsx,mdx}",
   "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -63,7 +64,9 @@ theme: {
 		}
 	}
 },
-plugins: [require("tailwindcss-animate"),require("@tailwindcss/forms")],
+plugins: [require("tailwindcss-animate"),require("@tailwindcss/forms"),
+	require("flowbite/plugin")
+],
   
 } satisfies Config);
 

@@ -12,6 +12,7 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import ThemeSwitcher from '@/components/ThemeSwitcher'
+import HelpModal from './HelpModal';
 export default function NavBar() {
   return (
     <div className="bg-white dark:bg-slate-800">
@@ -33,11 +34,7 @@ export default function NavBar() {
                 <span>Login</span>
             </Link>
 
-            <Link href="/help" className="flex items-center space-x-1 text-green-500 dark:text-slate-100">
-                <HelpCircle/>
-                <span>Help</span>
-            </Link>
-
+            <HelpModal/>
              <Link  href="/cart"type="button"  className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-transparent rounded-lg">
                 <ShoppingCart className="text-lime-700 dark:text-lime-500"/>
                 <span className="sr-only">Cart</span>
