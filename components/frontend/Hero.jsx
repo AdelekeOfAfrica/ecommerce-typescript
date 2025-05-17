@@ -1,6 +1,9 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+"use client"
+
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import HeroCarousel from '@/components/frontend/HeroCarousel'
 
 export default function Hero() {
   const categories=[
@@ -12,7 +15,7 @@ export default function Hero() {
     { id: "6", name: "Category 6" }
   ];
   return (
-    <div className="flex gap-8">
+    <div className="flex gap-8 mb-6">
       <div className="w-1/3  bg-white border border-gray-300 rounded-lg  dark:bg-gray-800 dark:border-gray-700 text-slate-800 overflow-hidden">
       {/* category section  */}
      <h2 className="bg-slate-100 py-3 px-6 font-semibold border-gray-300 border-b dark:bg-slate-700 text-slate-800 dark:text-slate-100 dark:border-gray-600">
@@ -35,7 +38,7 @@ export default function Hero() {
       </div>
       <div className="w-2/3 bg-blue-600 rounded-md">
       {/* banner section */}
-      navaber
+      <HeroCarousel/>
       </div> 
     </div>
   )
