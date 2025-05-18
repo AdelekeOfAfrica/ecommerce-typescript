@@ -17,10 +17,11 @@ export default function Hero() {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6 px-8 lg:px-0">
       
       {/* Left Column: Category Section (col-span-3) */}
-      <div className="md:col-span-3 bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 text-slate-800 overflow-hidden ">
+     <div className="hidden sm:block sm:col-span-3 bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 text-slate-800 overflow-hidden">
+
         <h2 className="bg-slate-100 py-3 px-6 font-semibold border-gray-300 border-b dark:bg-slate-700 text-slate-800 dark:text-slate-100 dark:border-gray-600">
           Shop by Category
         </h2>
