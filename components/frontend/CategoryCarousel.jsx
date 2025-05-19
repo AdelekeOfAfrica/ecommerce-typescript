@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"
 
-export default function MarketCarousel() {
+export default function CatgoryCarousel() {
   const responsive = {
     superLargeDesktop: {
  
