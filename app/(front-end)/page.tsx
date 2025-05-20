@@ -10,7 +10,18 @@ export default function Home() {
       <Hero />
       <div className="text-white py-8">
         <MarketList/>
-        <CategoryList/>
+        <div className="py-8">
+          <CategoryList/>
+        </div>
+
+        <div className="py-8">
+          <CategoryList/>
+        </div>
+
+        <div className="py-8">
+          <CategoryList/>
+        </div>
+
       </div>
      
       <h2 className="text-4xl">Ecommerce</h2>
