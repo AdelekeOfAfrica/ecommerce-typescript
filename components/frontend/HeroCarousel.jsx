@@ -1,43 +1,60 @@
 'use client';
-
 import React from 'react';
-import {Carousel} from 'nuka-carousel';
+import { Carousel } from 'nuka-carousel';
 import Image from 'next/image';
+import Link from 'next/link';
 
-const images = [
-  '/banner1.jpg',
-  '/banner2.gif',
-  '/banner3.jpg',
-];
+export default function HeroCarousel({ banners }) {
+  // Filter banners with both imageUrl and title
+  const validBanners = banners.filter(
+    (banner) => banner?.imageUrl?.trim() && banner?.title?.trim()
+  );
 
-export default function HeroCarousel() {
+  if (validBanners.length === 0) return null; // Don't render if none are valid
 
-   
   return (
-    <div  className="w-full max-w-screen-xl mx-auto">
+    <div className="w-full max-w-screen-xl mx-auto">
       <Carousel
         autoplay
         wrapAround
         pauseOnHover
         speed={500}
-        renderCenterLeftControls={null}
-        renderCenterRightControls={null}
         defaultControlsConfig={{
           pagingDotsStyle: {
             fill: 'white',
           },
         }}
+        renderCenterLeftControls={({ previousSlide }) => (
+          <button
+            onClick={previousSlide}
+            className="bg-black bg-opacity-50 text-white px-3 py-1 rounded-md ml-2 hover:bg-opacity-75"
+          >
+            ‹
+          </button>
+        )}
+        renderCenterRightControls={({ nextSlide }) => (
+          <button
+            onClick={nextSlide}
+            className="bg-black bg-opacity-50 text-white px-3 py-1 rounded-md mr-2 hover:bg-opacity-75"
+          >
+            ›
+          </button>
+        )}
       >
-        {images.map((src, index) => (
-          <div key={index} className="relative w-full h-[400px] flex-shrink-0">
+        {validBanners.map((banner, index) => (
+          <Link
+            href={banner.link || '#'}
+            key={index}
+            className="relative w-full h-[400px] flex-shrink-0"
+          >
             <Image
-              src={src}
-              alt={`Banner ${index + 1}`}
+              src={banner.imageUrl}
+              alt={banner.title}
               fill
               className="object-cover"
               priority={index === 0}
             />
-          </div>
+          </Link>
         ))}
       </Carousel>
     </div>

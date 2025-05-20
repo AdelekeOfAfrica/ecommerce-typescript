@@ -1,4 +1,3 @@
-"use client";
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,7 +5,10 @@ import React from 'react';
 import HeroCarousel from '@/components/frontend/HeroCarousel';
 import { DollarSign, HelpCircle, RefreshCw } from 'lucide-react';
 import SidebarCategories from '@/components/frontend/SidebarCategories'
-export default function Hero() {
+import { getData } from '@/lib/getData';
+export default async function Hero() {
+
+  const banners = await getData('banners')// route that it is fetching data from ;
 
 
   return (
@@ -17,7 +19,7 @@ export default function Hero() {
 
       {/* Center Column: Hero Carousel (col-span-7) */}
       <div className="col-span-full md:col-span-7 bg-blue-600 rounded-md">
-        <HeroCarousel />
+        <HeroCarousel banners={banners}/>
       </div>
 
       {/* Right Column: Help Center (col-span-2) */}
