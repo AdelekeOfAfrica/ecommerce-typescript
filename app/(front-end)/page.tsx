@@ -4,6 +4,7 @@ import Hero from '@/components/frontend/Hero';
 import MarketList from '@/components/frontend/MarketList';
 import CategoryList from '@/components/frontend/CategoryList';
 import CommunityTraining from '@/components/frontend/CommunityTraining';
+import Footer from '@/components/frontend/Footer';
 export default function Home() {
   return (
 
@@ -27,6 +28,9 @@ export default function Home() {
           <CommunityTraining/>
         </div>
 
+        <div className="py-8">
+          <Footer/>
+        </div>
       </div>
      
       <h2 className="text-4xl">Ecommerce</h2>
