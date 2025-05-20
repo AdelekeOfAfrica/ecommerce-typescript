@@ -3,6 +3,7 @@ import Link from "next/link";
 import Hero from '@/components/frontend/Hero';
 import MarketList from '@/components/frontend/MarketList';
 import CategoryList from '@/components/frontend/CategoryList';
+import CommunityTraining from '@/components/frontend/CommunityTraining';
 export default function Home() {
   return (
 
@@ -20,6 +21,10 @@ export default function Home() {
 
         <div className="py-8">
           <CategoryList/>
+        </div>
+
+        <div className="py-8">
+          <CommunityTraining/>
         </div>
 
       </div>
