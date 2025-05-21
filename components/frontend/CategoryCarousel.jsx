@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"
 
-export default function CatgoryCarousel() {
+export default function CatgoryCarousel({products}) {
   const responsive = {
     superLargeDesktop: {
  
@@ -38,20 +38,27 @@ export default function CatgoryCarousel() {
         autoPlaySpeed={3000}
         infinite={true}
         arrows={false}>
-{
-  slides.map((slide,i)=>{
- return(
-  <Link key={i} href="/" className="rounded-lg mr-3  bg-red-400">
-  <Image src ="/logo.png" width={755} height={755} alt="marketImage" className=""/>
-  <h2 className="text-center text-2xl text-slate-800 dark:text-white mt-2">Vegetables</h2>
 
-</Link>
- );
+{
+  products.map((product,i)=>{
+    return(
+
+        <Link  key={i} href="/" className="rounded-lg mr-3  bg-red-400">
+          <Image src ="/logo.png" width={755} height={755} alt="marketImage" className=""/>
+          <h2 className="text-center text-2xl text-slate-800 dark:text-white mt-2">{product.title}</h2>
+
+        </Link>
+
+    );
   })
 }
+
+ 
+
  
 </Carousel>
       
     </div>
   )
 }
+

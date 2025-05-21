@@ -39,3 +39,26 @@ return NextResponse.json({
 },{status:500});
 }
 }
+
+export async function GET(request) {
+
+    try{
+
+        const Trainings = await db.training.findMany({
+            orderBy:{
+                createdAt:"desc",
+            }
+        });
+        return NextResponse.json(Trainings)
+
+    }catch(Exception){
+
+        return NextResponse.json({
+            "message":"failed to fetch all the trainings at the moment",
+            error
+        
+        },{status:500});
+
+    }
+
+}

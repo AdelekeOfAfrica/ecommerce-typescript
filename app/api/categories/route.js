@@ -17,6 +17,9 @@ export async function POST(request) {
   
       const existingCategory = await db.category.findUnique({
         where: { slug: slug }, 
+        include:{
+          products:true
+        }
       });
   
       if (existingCategory) {
@@ -55,6 +58,9 @@ export async function GET(request) {
         const categories = await db.category.findMany({
             orderBy:{
                 createdAt:"desc",
+            },
+            include:{
+              products:true,
             }
         });
         return NextResponse.json(categories)
