@@ -41,13 +41,13 @@ export default function TrainingCarousel({trainings}) {
  return(
   <div key={i} className="rounded-lg overflow-hidden mr-3 bg-slate-100  dark:bg-slate-900">
     <Link href="#">
-    <Image src ="/logo.png" width={755} height={755} alt="marketImage" className="w-full"/>
+    <Image src ="/logo.png" width={755} height={755} alt="marketImage" className="w-full h-48 object-cover"/>
     </Link>
   
   <h2 className="text-center text-xl text-slate-800 dark:text-white my-2">{training.title}</h2>
     <p className="px-4 line-clamp-3 text-slate-800 dark:text-slate-300 mb-2">{training.Description} </p>
     <div className="flex justify-between items-center py-2 px-4"> 
-    <Link className="bg-green-900 hover:bg-green-800 duration-300 transition-all text-slate-50  rounded-md px-4 py-2" href="#">
+    <Link className="bg-green-600 hover:bg-green-700 duration-300 transition-all text-slate-50  rounded-md px-4 py-2" href="#">
         Read More
     </Link>
 

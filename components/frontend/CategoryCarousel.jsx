@@ -5,6 +5,7 @@ import React from 'react';
 import Link from 'next/link';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"
+import { BaggageClaim } from 'lucide-react';
 
 export default function CatgoryCarousel({products}) {
   const responsive = {
@@ -43,11 +44,28 @@ export default function CatgoryCarousel({products}) {
   products.map((product,i)=>{
     return(
 
-        <Link  key={i} href="/" className="rounded-lg mr-3  bg-red-400">
-          <Image src ="/logo.png" width={755} height={755} alt="marketImage" className=""/>
-          <h2 className="text-center text-2xl text-slate-800 dark:text-white mt-2">{product.title}</h2>
+        <div  key={i}  className="rounded-lg mr-3  bg-white overflow-hidden border shadow dark:bg-slate-900">
+          <Link href="/">
+          <Image src ="/logo.png" width={755} height={755} alt="marketImage" className="w-full h-48 object-cover"/>
+          
+          </Link>
 
-        </Link>
+          <Link href="#">
+           <h2 className="text-center text-2xl text-slate-800 dark:text-white my-2 font-semibold">{product.title}</h2>
+          </Link>
+
+          <div className="px-4">
+            <div className="flex items-center justify-between gap-2 pb-3 dark:text-slate-200 text-slate-800">
+           N {product.productPrice}
+            <button className="flex items-center space-x-2  bg-green-600 px-4 py-2 rounded-md text-white">
+              <BaggageClaim/>
+              <span>Add </span>
+            </button>
+          </div>
+          </div>
+
+         
+        </div>
 
     );
   })
