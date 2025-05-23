@@ -42,29 +42,38 @@ export function DataTable({
   columns,
   data,
 }) {
-  const [sorting,setSorting]=useState([]);
-    const [columnFilters,setColumnFilters]=useState([]);
+        const [sorting,setSorting]=useState([]);
+        const [columnFilters,setColumnFilters]=useState([]);
         const [columnVisibility,setColumnVisibility]=useState({});
+        const [rowSelection,setRowSelection] = useState([]);
   const table = useReactTable({
-    data,
+      data,
     columns,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    onColumnVisibilityChange: setColumnVisibility,
     getFilteredRowModel: getFilteredRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: setRowSelection,
     state: {
       sorting,
       columnFilters,
       columnVisibility,
+      rowSelection,
     },
   })
 
   return (
     <div>
-            <div className="flex items-center py-4">
+
+      <div className="flex-1 text-sm text-muted-foreground"> {/*checkbox area */}
+        {table.getFilteredSelectedRowModel().rows.length} of{" "}
+        {table.getFilteredRowModel().rows.length} row(s) selected.
+      </div>
+      {/*end checkbox area */}
+     {/*search area */} <div className="flex items-center py-4">
         <Input
           placeholder="Filter titles..."
           value={table.getColumn("title")?.getFilterValue() ?? "" }
@@ -101,7 +110,7 @@ export function DataTable({
               })}
           </DropdownMenuContent>
         </DropdownMenu>
-      </div>
+     {/* end search area */}  </div>
       <div className="rounded-md border">
       <Table>
         <TableHeader>
