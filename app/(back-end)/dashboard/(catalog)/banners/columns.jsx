@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { Checkbox } from "@/components/ui/checkbox"
+import DateColumn from "../../../../../components/DataTableColumns/DateColumn";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -86,20 +87,7 @@ export const columns = [
   {
     accessorKey: "createdAt",
     header: "Date Created",
-      cell:({row})=>{
-        const createdAt = row.getValue("createdAt")
-        const originalDate = new Date(createdAt)
-
-        const day = originalDate.getDate();
-        const month =  originalDate.toLocaleString('default',{
-          month:'short'
-        });
-        const year = originalDate.getFullYear();
-        const formatted = `${day}th ${month} ${year}`
-        return <div className="">
-            {formatted}
-        </div>
-    }
+      cell:({row})=>(<DateColumn row={row}/>)
   },
   {
      header: "Actions",
