@@ -1,18 +1,6 @@
 "use client"
 
-import Image from "next/image";
-import { MoreHorizontal } from "lucide-react";
-import { ArrowUpDown} from "lucide-react";
- 
-import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+
 
 import { Checkbox } from "@/components/ui/checkbox"
 import ImageColumn from "../../../../../components/DataTableColumns/ImageColumn";
@@ -52,33 +40,52 @@ export const columns = [
     accessorKey: "title", //name used in the database
     header: ({ column }) => (<SortableColumn column={column} title="title"/>)
   },
-  // {
-  //   accessorKey: "description",
-  //   header: "Description",
-  //     cell:({row})=>{
-  //       const description = row.getValue("description")
-  //       return <div className="line-clamp-1">
-  //           {description}
-  //       </div>
-  //   }
-  // },
-    {
-    accessorKey: "imageUrl", //name used in the database
-    header: "Category Image",// name you want to name your table header
-    cell:({row})=><ImageColumn row={row} imageTitle="imageUrl"/>
+  {
+    accessorKey:"couponCode",
+    header:"CouponCode",
+    cell:({row})=>{
+
+       const couponCode = row.getValue("couponCode")
+        return <div className="line-clamp-1">
+            {couponCode}
+        </div>
+
+    }
   },
+
+   {
+    accessorKey:"slug",
+    header:"Slug",
+    cell:({row})=>{
+
+       const slug = row.getValue("slug")
+        return <div className="line-clamp-1">
+            {slug}
+        </div>
+
+    }
+  },
+
+
   {
     accessorKey: "isActive",
-    header: "IsActive",
+    header: "Active",
   },
   {
+    accessorKey: "expiryDate",
+    header: "Expiry Date",
+      cell:({row})=>(<DateColumn row={row}/>)
+  },
+
+    {
     accessorKey: "createdAt",
     header: "Date Created",
       cell:({row})=>(<DateColumn row={row}/>)
   },
+
   {
      header: "Actions",
     id: "actions",
-    cell: ({ row }) => (<ActionColumn row={row} title="categories"/>)
+    cell: ({ row }) => (<ActionColumn row={row} title="coupons"/>)
   }
 ]
