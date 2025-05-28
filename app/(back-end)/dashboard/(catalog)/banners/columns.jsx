@@ -16,6 +16,9 @@ import {
 
 import { Checkbox } from "@/components/ui/checkbox"
 import DateColumn from "../../../../../components/DataTableColumns/DateColumn";
+import ImageColumn from "../../../../../components/DataTableColumns/ImageColumn";
+import SortableColumn from "../../../../../components/DataTableColumns/SortableColumn";
+import ActionColumn from "../../../../../components/DataTableColumns/ActionColumn";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -47,42 +50,28 @@ export const columns = [
   },
   {
     accessorKey: "title", //name used in the database
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Title
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
+    header: ({ column }) => (<SortableColumn column={column} title="title"/>)
   },
   // {
-  //   accessorKey: "description",
+  //   accessorKey: "testField",
   //   header: "Description",
   //     cell:({row})=>{
-  //       const description = row.getValue("description")
+  //       const description = row.getValue("testField")
   //       return <div className="line-clamp-1">
   //           {description}
   //       </div>
   //   }
   // },
+
+ 
     {
     accessorKey: "imageUrl", //name used in the database
     header: "Category Image",// name you want to name your table header
-    cell:({row})=>{
-        const imageUrl = row.getValue("imageUrl")
-        return <div className="shrink-0">
-            <Image src={imageUrl} width={500} height={500} className="w-10 h-10 rounded-full object-cover" alt="category image"/>
-
-        </div>
-    }
+    cell:({row})=><ImageColumn row={row} imageTitle="imageUrl"/>
   },
   {
     accessorKey: "isActive",
-    header: "IsActive",
+    header: "Status",
   },
   {
     accessorKey: "createdAt",
@@ -92,30 +81,6 @@ export const columns = [
   {
      header: "Actions",
     id: "actions",
-    cell: ({ row }) => {
-      const isActive = row.isActive
- 
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(isActive)}
-            >
-              Copy the status
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Delete Category</DropdownMenuItem>
-            <DropdownMenuItem>Edit Category</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      )
-    },
+    cell: ({ row }) => (<ActionColumn row={row} title="banners"/>)
   }
 ]

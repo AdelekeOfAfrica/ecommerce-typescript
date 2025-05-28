@@ -37,7 +37,7 @@ export default function DataTable({
   columns,
   data,
 })  {
-          const [sorting,setSorting]=useState({});
+          const [sorting,setSorting]=useState([]);
           const [columnFilters,setColumnFilters]=useState([]);
           const [columnVisibility,setColumnVisibility]=useState({});
           const [rowSelection,setRowSelection] = useState([]);
