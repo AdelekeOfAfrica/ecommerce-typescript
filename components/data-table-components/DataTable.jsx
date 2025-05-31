@@ -36,6 +36,7 @@ import { DataTablePagination } from "./DataTablePagination";
 export default function DataTable({
   columns,
   data,
+  filterKeys
 })  {
           const [sorting,setSorting]=useState([]);
           const [columnFilters,setColumnFilters]=useState([]);
@@ -66,7 +67,7 @@ export default function DataTable({
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar table={table} filterKeys={filterKeys} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>

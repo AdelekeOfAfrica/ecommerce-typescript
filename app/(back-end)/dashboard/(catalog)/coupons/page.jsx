@@ -11,7 +11,7 @@ const coupons = await getData('coupons')//route used for the coupons
     <div>
    <PageHeader linkTitle="Coupons" href="/dashboard/coupons/new" heading="Add Coupons"/>
     <div className="py-8">
-        <DataTable data={coupons} columns={columns} />
+        <DataTable data={coupons} columns={columns} filterKeys={["title"]} />
     </div>
     
     </div>

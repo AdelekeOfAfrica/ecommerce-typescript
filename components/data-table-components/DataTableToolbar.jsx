@@ -12,20 +12,38 @@ import { DataTableViewOptions } from "./DataTableViewOptions"
 
 export function DataTableToolbar({
   table,
+  filterKeys 
 }) {
-  const isFiltered = table.getState().columnFilters.length > 0
+  // const isFiltered = table.getState().columnFilters.length > 0
+ const isFiltered = filterKeys.some((key) =>
+  table.getState().columnFilters.some(
+    (filter) => filter.id === key && filter.value
+  )
+);
+
+  const handleInputChange =(key,value)=>{
+    table.getColumn(key)?.setFilterValue(value);
+
+  } 
+
+  const handleResetClick =()=>{
+    filterKeys.forEach((key)=>{
+      table.getColumn(key)?.setFilterValue('');
+    });
+  }
 
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
-        <Input
-          placeholder="Filter title..."
-          value={(table.getColumn("title")?.getFilterValue()) ?? ""}
-          onChange={(event) =>
-            table.getColumn("title")?.setFilterValue(event.target.value)
-          }
-          className="h-8 w-[150px] lg:w-[250px]"
-        />
+    {filterKeys.map((key) => (
+  <Input
+    key={key}
+    placeholder={`Filter ${key} ...`}
+    value={table.getColumn(key)?.getFilterValue() ?? ""}
+    onChange={(event) => handleInputChange(key, event.target.value)}
+    className="h-8 w-[150px] lg:w-[250px]"
+  />
+))}
         {/* {table.getColumn("status") && (
           <DataTableFacetedFilter
             column={table.getColumn("status")}
@@ -43,11 +61,11 @@ export function DataTableToolbar({
         {isFiltered && (
           <Button
             variant="ghost"
-            onClick={() => table.resetColumnFilters()}
+            onClick={handleResetClick}
             className="h-8 px-2 lg:px-3"
           >
             Reset
-            <X />
+            <X className="ml-2 h-4 w-4"/>
           </Button>
         )}
       </div>

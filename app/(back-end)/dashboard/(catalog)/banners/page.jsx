@@ -11,7 +11,7 @@ export default async function Banners() {
     <div>
       <PageHeader linkTitle="New Banner" href="/dashboard/banners/new" heading="Banners"/>
        <div className="py-8">
-           <DataTable data={banners} columns={columns}/>
+           <DataTable data={banners} columns={columns} filterKeys={["title"]}/>
            </div>
     </div>
   )
