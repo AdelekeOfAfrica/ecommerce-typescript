@@ -79,6 +79,6 @@ export const columns = [
   {
      header: "Actions",
     id: "actions",
-    cell: ({ row }) => (<ActionColumn row={row} title="categories"/>)
+    cell: ({ row }) => (<ActionColumn row={row} title="category" endpoint={`categories/${row.original.id}`}/>)
   }
 ]

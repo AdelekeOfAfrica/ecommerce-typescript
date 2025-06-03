@@ -15,7 +15,7 @@ export default async function page() {
       <PageHeader linkTitle="Add category" href="/dashboard/categories/new" heading="Categories"/>
       
       <div className="py-8">
-      <DataTable data={categories} columns={columns} filterKeys={["title"]}/>
+      <DataTable data={categories} columns={columns} filterKeys={["title"]} />
       </div>
     </div>
   )

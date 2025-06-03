@@ -10732,7 +10732,6 @@ export namespace Prisma {
     id?: string
     title?: string
     slug?: string
-    userId?: string
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
@@ -10745,6 +10744,7 @@ export namespace Prisma {
     isActive?: BoolFilter<"Product"> | boolean
     tags?: StringNullableListFilter<"Product">
     categoryId?: StringFilter<"Product"> | string
+    userId?: StringFilter<"Product"> | string
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
     isWholesale?: BoolFilter<"Product"> | boolean
@@ -10756,7 +10756,7 @@ export namespace Prisma {
     Qty?: IntFilter<"Product"> | number
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id" | "title" | "slug" | "userId">
+  }, "id" | "title" | "slug">
 
   export type ProductOrderByWithAggregationInput = {
     id?: SortOrder

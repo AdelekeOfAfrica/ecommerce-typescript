@@ -76,3 +76,47 @@ export async function GET(request) {
     }
 
 }
+
+export async function DELETE(request,{params}) {
+   const { id } = params; 
+    try{
+
+        const existingCategory = await db.category.findUnique({
+          where: { id },
+            
+        });
+
+           if(!existingCategory){
+            return NextResponse.json({
+              data:null,
+            message:"category does not exist",
+            },{status:404})
+           }
+
+        if(existingCategory){
+          const deleteCategory = await db.category.delete({
+               where: { id },
+            });
+
+               await db.product.deleteMany({
+                where: { categoryId: id },
+              });
+
+
+          await db.training.deleteMany({
+            where: { categoryId: id },
+          });
+        }
+        return NextResponse.json(deleteCategory)
+
+    }catch(Exception){
+
+        return NextResponse.json({
+            "message":"failed to delete category",
+            error
+        
+        },{status:500});
+
+    }
+
+}
