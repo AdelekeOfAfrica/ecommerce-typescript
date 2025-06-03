@@ -17,8 +17,7 @@ export default function DeleteButton({ endpoint, title }) {
       text: "You won't be able to recall this action!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      showDenyButton:true,
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {

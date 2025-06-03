@@ -27,36 +27,32 @@ export async function GET(request,{params:{id}}) {
 }
 
 
-
 export async function DELETE(request, context) {
   const { id } = context.params;
 
   try {
     // Step 1: Fetch and log the category
-    const existingCategory = await db.category.findUnique({
+    const existingBanner = await db.banner.findUnique({
       where: { id },
     });
 
-        await db.pr.deleteMany({
-      where: {
-        categoryId: id,
-      },
-    });
+     
+    
 
     // Delete the category itself
-    const deletedCategory = await db.category.delete({
+    const deletedBanner = await db.banner.delete({
       where: { id },
     });
 
     return NextResponse.json({
-      message: "Category fetched successfully",
-      data: existingCategory,
+      message: "Banner Deleted successfully",
+      data: existingBanner,
     });
 
   } catch (error) {
     console.error("Fetch category error:", error);
     return NextResponse.json({
-      message: "Failed to delete category",
+      message: "Failed to delete Banner at the moment",
       error: error.message || error,
     }, { status: 500 });
   }

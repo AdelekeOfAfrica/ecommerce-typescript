@@ -8245,7 +8245,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    category?: boolean | Training$categoryArgs<ExtArgs>
   }, ExtArgs["result"]["training"]>
 
 
@@ -8265,13 +8265,13 @@ export namespace Prisma {
 
   export type TrainingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "imageUrl" | "Description" | "blogContent" | "categoryId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["training"]>
   export type TrainingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    category?: boolean | Training$categoryArgs<ExtArgs>
   }
 
   export type $TrainingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Training"
     objects: {
-      category: Prisma.$CategoryPayload<ExtArgs>
+      category: Prisma.$CategoryPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8647,7 +8647,7 @@ export namespace Prisma {
    */
   export interface Prisma__TrainingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    category<T extends Training$categoryArgs<ExtArgs> = {}>(args?: Subset<T, Training$categoryArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9054,6 +9054,25 @@ export namespace Prisma {
      * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
      */
     options?: InputJsonValue
+  }
+
+  /**
+   * Training.category
+   */
+  export type Training$categoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    where?: CategoryWhereInput
   }
 
   /**
@@ -10952,7 +10971,7 @@ export namespace Prisma {
     isActive?: BoolFilter<"Training"> | boolean
     createdAt?: DateTimeFilter<"Training"> | Date | string
     updatedAt?: DateTimeFilter<"Training"> | Date | string
-    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
   }
 
   export type TrainingOrderByWithRelationInput = {
@@ -10983,7 +11002,7 @@ export namespace Prisma {
     isActive?: BoolFilter<"Training"> | boolean
     createdAt?: DateTimeFilter<"Training"> | Date | string
     updatedAt?: DateTimeFilter<"Training"> | Date | string
-    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
   }, "id" | "slug">
 
   export type TrainingOrderByWithAggregationInput = {
@@ -11728,7 +11747,7 @@ export namespace Prisma {
     isActive: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    category: CategoryCreateNestedOneWithoutTrainingInput
+    category?: CategoryCreateNestedOneWithoutTrainingInput
   }
 
   export type TrainingUncheckedCreateInput = {
@@ -11753,7 +11772,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    category?: CategoryUpdateOneRequiredWithoutTrainingNestedInput
+    category?: CategoryUpdateOneWithoutTrainingNestedInput
   }
 
   export type TrainingUncheckedUpdateInput = {
@@ -12457,6 +12476,11 @@ export namespace Prisma {
     landSize?: SortOrder
   }
 
+  export type CategoryNullableScalarRelationFilter = {
+    is?: CategoryWhereInput | null
+    isNot?: CategoryWhereInput | null
+  }
+
   export type TrainingCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -12873,10 +12897,12 @@ export namespace Prisma {
     connect?: CategoryWhereUniqueInput
   }
 
-  export type CategoryUpdateOneRequiredWithoutTrainingNestedInput = {
+  export type CategoryUpdateOneWithoutTrainingNestedInput = {
     create?: XOR<CategoryCreateWithoutTrainingInput, CategoryUncheckedCreateWithoutTrainingInput>
     connectOrCreate?: CategoryCreateOrConnectWithoutTrainingInput
     upsert?: CategoryUpsertWithoutTrainingInput
+    disconnect?: boolean
+    delete?: CategoryWhereInput | boolean
     connect?: CategoryWhereUniqueInput
     update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutTrainingInput, CategoryUpdateWithoutTrainingInput>, CategoryUncheckedUpdateWithoutTrainingInput>
   }
