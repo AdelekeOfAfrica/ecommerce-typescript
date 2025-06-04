@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
+import { Trash } from 'lucide-react';
 
 export default function DeleteButton({ endpoint, title }) {
   const [loading, setLoading] = useState(false);
@@ -63,8 +64,9 @@ export default function DeleteButton({ endpoint, title }) {
         <button
           onClick={handleDelete}
           type="button"
-          className="font-medium text-red-600 dark:text-red-500"
+          className="flex items-center font-medium text-red-600 dark:text-red-500"
         >
+           <Trash className="mr-2 w-4 h-4"/>
           Delete {title}
         </button>
       )}

@@ -10,10 +10,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import EditButton from '../Actions/EditButton';
 
 
-export default function ActionColumn({row,title,endpoint}) {
-  console.log(endpoint)
+export default function ActionColumn({row,title,endpoint,editEndpoint}) {
+
   const isActive = row.isActive
  
       return (
@@ -33,7 +34,7 @@ export default function ActionColumn({row,title,endpoint}) {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem><DeleteButton  title={title} endpoint={endpoint}  /></DropdownMenuItem>
-            <DropdownMenuItem>Edit {title}</DropdownMenuItem>
+            <DropdownMenuItem><EditButton  title={title} editEndpoint={editEndpoint}  /></DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
