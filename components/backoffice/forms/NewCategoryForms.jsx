@@ -9,18 +9,22 @@ import TextAreaInput from '@/components/FormInputs/TextAreaInput';
 import { generateSlug } from '@/lib/generateSlug';
 import ImageInput from '@/components/FormInputs/ImageInput'
 import { makePostRequest } from '@/lib/apiRequest';
+import { makePutRequest } from '@/lib/apiRequest';
 import SelectInput from '@/components/FormInputs/SelectInput';
 import ToogleInput from '@/components/FormInputs/toogleInput';
 import { useRouter } from 'next/navigation';
 
 
-export default function NewCategoryForms() {
+export default function NewCategoryForms({updateData={}}) { //this is being done like this ,, because of when i am creating a category
 
-  const [imageUrl,setImageUrl] = useState("");
+  const initialImageUrl =updateData?.imageUrl??"";
+  const id=updateData?.id ??"";
+  const [imageUrl,setImageUrl] = useState(initialImageUrl);
 
   const [loading,setLoading]=useState(false);
   const {register,reset,watch,handleSubmit,formState:{errors}}=useForm({ defaultValues:{
     isActive:true,
+    ...updateData,
   }
 });
 const isActive=watch("isActive");
@@ -29,12 +33,28 @@ const isActive=watch("isActive");
     function redirect(){
       router.push("/dashboard/categories");
     }
+
   async function onSubmit(data){ //form function
    
        const slug = generateSlug(data.title);
     data.slug=slug;
     data.imageUrl =imageUrl;
     console.log(data);
+    if(id){
+      data.id=id
+      //make put request 
+      makePutRequest(
+        setLoading,
+        endpoint,
+        data,
+        resourceName,
+        redirect
+      );
+      console.log("updating request for: ", data)
+
+    }else{
+    // we make a post request 
+   
     makePostRequest(
       setLoading,
       'api/categories',
@@ -49,6 +69,9 @@ const isActive=watch("isActive");
     //fetching of the data from the form
  
   }
+     
+    }
+ 
   return (
     <div>
    
@@ -73,7 +96,7 @@ const isActive=watch("isActive");
         <ToogleInput label="publish your Category" name="isActive" trueTitle="Active"
                       falseTitle="Draft" register={register}/>
       </div>
-      <SubmitButton isLoading={loading} buttonTitle="create Category" loadingButtonTitle="creating category please wait ..."/>
+      <SubmitButton isLoading={loading} buttonTitle={id?"update category" :"create category"} loadingButtonTitle={`${id?"updating":"create"}  category please wait"`}/>
     </form>
 
     </div>
