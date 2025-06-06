@@ -63,6 +63,7 @@ export async function DELETE(request, context) {
 
 export async function PUT(request,{params:{id}}){
   try{
+    console.log(id)
  const { title, slug, imageUrl, description, marketIds, isActive } = await request.json();
     const existingCategory = await db.category.findUnique({
       where:{
@@ -87,11 +88,11 @@ export async function PUT(request,{params:{id}}){
       },
       data:{ title, slug, imageUrl, description, marketIds, isActive }
     });
-      return NextResponse.json(category)
+      return NextResponse.json(updateCategory)
     
   }catch(Error){
        return NextResponse.json({
-            "message":"failed to fetch category",
+            "message":"failed to update category",
             Error
         
         },{status:500});

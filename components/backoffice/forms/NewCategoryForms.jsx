@@ -45,9 +45,9 @@ const isActive=watch("isActive");
       //make put request 
       makePutRequest(
         setLoading,
-        endpoint,
+        `api/categories/${id}`,
         data,
-        resourceName,
+        'category',
         redirect
       );
       console.log("updating request for: ", data)
