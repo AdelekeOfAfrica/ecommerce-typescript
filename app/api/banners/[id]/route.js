@@ -7,23 +7,62 @@ export async function GET(request,{params:{id}}) {
 
     try{
 
-        const user = await db.user.findUnique({
+        const banner = await db.banner.findUnique({
            where:{id}
         });
-        return NextResponse.json(user)
+        return NextResponse.json(banner)
 
     }catch(Exception){
 
         return NextResponse.json({
-            "message":"failed to fetch user",
+            "message":"failed to fetch banners",
             error
         
         },{status:500});
 
     }
+}
+export async function PUT(request, context) {
+  try {
+    const { id } = context.params;
 
-    
+    const existingBanner = await db.banner.findUnique({
+      where: { id },
+    });
 
+    if (!existingBanner) {
+      return NextResponse.json(
+        {
+          data: null,
+          message: 'Banner does not exist',
+        },
+        { status: 404 }
+      );
+    }
+
+    const { title, slug, imageUrl, link, isActive } = await request.json();
+
+    const updatedBanner = await db.banner.update({
+      where: { id },
+      data: {
+        title,
+        slug,
+        imageUrl,
+        link,
+        isActive,
+      },
+    });
+
+    return NextResponse.json(updatedBanner);
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: 'Failed to update banner',
+        error: error.message,
+      },
+      { status: 500 }
+    );
+  }
 }
 
 

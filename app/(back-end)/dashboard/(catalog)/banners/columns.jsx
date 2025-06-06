@@ -81,6 +81,6 @@ export const columns = [
   {
      header: "Actions",
     id: "actions",
-    cell: ({ row }) => (<ActionColumn row={row} title="banner" endpoint={`banners/${row.original.id}`}/>)
+    cell: ({ row }) => (<ActionColumn row={row} title="banner" endpoint={`banners/${row.original.id}`} editEndpoint={`banners/update/${row.original.id}`}/>)
   }
 ]
