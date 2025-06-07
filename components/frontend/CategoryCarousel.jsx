@@ -45,8 +45,8 @@ export default function CatgoryCarousel({products}) {
     return(
 
         <div  key={i}  className="rounded-lg mr-3  bg-white overflow-hidden border shadow dark:bg-slate-900">
-          <Link href="/">
-          <Image src ="/logo.png" width={755} height={755} alt="marketImage" className="w-full h-48 object-cover"/>
+          <Link href={`/product/${product.slug}`}>
+          <Image src ={product.imageUrl} width={755} height={755} alt="marketImage" className="w-full h-48 object-cover"/>
           
           </Link>
 
