@@ -53,7 +53,7 @@ export default function Cart() {
               </div>
             </div>
           </div>
-          <div className="flex mt-8 gap-2">
+          <div className="flex mt-8 py-4 gap-2">
   <input
     type="email"
     id="email"
