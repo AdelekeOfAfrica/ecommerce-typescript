@@ -2,9 +2,10 @@ import React from 'react'
 import Footer from '@/components/frontend/Footer';
 import BreadCrumps from '@/components/frontend/BreadCrumps';
 import Image from 'next/image';
-import {BaggageClaim, MinusIcon, Plus, Share2, Tag} from 'lucide-react'
+import {BaggageClaim, MinusIcon, Plus, Send, Share2, Tag} from 'lucide-react'
 import { getData } from '@/lib/getData';
 import CategoryCarousel from "@/components/frontend/CategoryCarousel"
+import Link from 'next/link';
 export default async function  ProductDetailPage({params:{slug}}) {
 const productDetail = await getData(`/products/${slug}`);
 const productCategory = productDetail.categoryId;
@@ -59,15 +60,57 @@ console.log(relatedProduct);
             </div>
         </div>
 
-         <div className="col-span-3 hidden sm:block  bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 text-slate-800 overflow-hidden">
+         <div className="col-span-3 hidden sm:block  bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 text-slate-800 overflow-hidden ">
             <h2 className="bg-slate-100 py-3 px-6 font-semibold border-gray-300 border-b dark:bg-slate-700 text-slate-800 dark:text-slate-100 dark:border-gray-600">
              Delivery and Returns
             </h2>
-          </div>
+             <div className="p-4 ">
+                <div className="flex rounded-lg py-2 px-4 bg-green-400 text-slate-50 items-center gap-3 ">
+                  <span>Ecomm Express</span>
+                  <Send/>
+                </div>
+                <div className="py-3 text-slate-100 border-b border-slate-500 ">Eligible for free delivery <Link href="#">View Details</Link>  </div>
+                
+              </div>
+              <h2 className="text-slate-200 py-2">Choose your location</h2>
+              <div className="border-b border-gray-500 pb-3">
+                  <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option selected>Choose a country</option>
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="FR">France</option>
+                  <option value="DE">Germany</option>
+                </select>
+              </div>
+
+                <div className="border-b border-gray-500 pb-3">
+                  <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option selected>Choose a country</option>
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="FR">France</option>
+                  <option value="DE">Germany</option>
+                </select>
+              </div>
+
+                <div className="pb-3">
+                  <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option selected>Choose a country</option>
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="FR">France</option>
+                  <option value="DE">Germany</option>
+                </select>
+              </div>
+              
+             
+
+             </div>
+            
       </div>
  
-       <div className="bg-white dark:bg-slate-700 p-4 mb-8">
-          <h2>Other Related Products</h2>
+       <div className="bg-white dark:bg-slate-700 p-4 my-8 rounded-xl ">
+          <h2 className="mb-4 text-2xl font-semibold text-slate-400 ml-3">Other Related Products</h2>
           <CategoryCarousel products={relatedProduct.products} />
         </div>
        
