@@ -15,55 +15,51 @@ export default function LoginForm() {
     const [loading , setLoading] = useState(false);
     const [emailErr,setEmailErr] =useState("");
 
-    async function onSubmit(data){
-        try{
-            console.log(data);
-            setLoading(true);
-            const baseUrl =process.env.NEXT_PUBLIC_BASE_URL;
-            const response = await fetch(`${baseUrl}/api/users`,{
-                method:"POST",
-                headers:{
-                    "Content-type":"application/json",
-                },
-                body:JSON.stringify(data),
+   async function onSubmit(data) {
+    try {
+        console.log(data);
+        setLoading(true);
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-            });
-            
-            const responseData = await response.json();
-            if(response.ok){
-              
-                console.log(responseData);
-                setLoading(false);
-                toast.success("User Created Successfully");
-                reset();
-                const userRole= responseData.data.role
-                // router.push("/login");
-                if(role==="USER"){
-                    router.push("/")
+        const response = await fetch(`${baseUrl}/api/login`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
 
-                }else{
-                    router.push(`/onboarding/${responseData.data.id}`)
-                }
-            }else{
-                setLoading(false);
-                if(response.status ===409){
-                    setEmailErr("User with email already exists");
-                    toast.error("User with email already exists");
-                }else{
-                    console.error("Server Error:",responseData.error );
-                    toast.error("oops something went wrong ");
+        const responseData = await response.json();
 
-                }
+        if (response.ok) {
+            setLoading(false);
+            toast.success("Login Successful");
+            reset();
+
+            const userRole = responseData.data.role;
+
+            if (userRole === "USER") {
+                router.push("/dashboard");
+            } else {
+                router.push(`/onboarding/${responseData.data.id}`);
             }
 
-
-        }catch(error){
+        } else {
             setLoading(false);
-            console.log("Network Error:", error);
-            toast.error("oops, something went wrong!")
-           
+            if (response.status === 401) {
+                setEmailErr("Invalid email or password");
+                toast.error("Invalid email or password");
+            } else {
+                console.error("Server Error:", responseData.error);
+                toast.error("Oops, something went wrong");
+            }
         }
+    } catch (error) {
+        setLoading(false);
+        console.log("Network Error:", error);
+        toast.error("Oops, something went wrong!");
     }
+}
 
   return (
     <div>
