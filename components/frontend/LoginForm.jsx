@@ -8,58 +8,84 @@ import {toast} from "react-hot-toast";
 import {FaFacebook, FaGithub,FaGoogle} from "react-icons/fa";
 import SubmitButton from '@/components/FormInputs/SubmitButton';
 import TextInput from '@/components/FormInputs/TextInput';
-
+import { signIn } from 'next-auth/react';
 export default function LoginForm() {
     const router = useRouter();
     const{register,handleSubmit,reset,formState:{errors}}=useForm();
     const [loading , setLoading] = useState(false);
     const [emailErr,setEmailErr] =useState("");
 
-   async function onSubmit(data) {
-    try {
-        console.log(data);
+//    async function onSubmit(data) {
+//     try {
+//         console.log(data);
+//         setLoading(true);
+//         const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+//         const response = await fetch(`${baseUrl}/api/login`, {
+//             method: "POST",
+//             headers: {
+//                 "Content-type": "application/json",
+//             },
+//             body: JSON.stringify(data),
+//         });
+
+//         const responseData = await response.json();
+
+//         if (response.ok) {
+//             setLoading(false);
+//             toast.success("Login Successful");
+//             reset();
+
+//             const userRole = responseData.data.role;
+
+//             if (userRole === "USER") {
+//                 router.push("/dashboard");
+//             } else {
+//                 router.push(`/onboarding/${responseData.data.id}`);
+//             }
+
+//         } else {
+//             setLoading(false);
+//             if (response.status === 401) {
+//                 setEmailErr("Invalid email or password");
+//                 toast.error("Invalid email or password");
+//             } else {
+//                 console.error("Server Error:", responseData.error);
+//                 toast.error("Oops, something went wrong");
+//             }
+//         }
+//     } catch (error) {
+//         setLoading(false);
+//         console.log("Network Error:", error);
+//         toast.error("Oops, something went wrong!");
+//     }
+// } this is for normal login , without using next-auth 
+
+async function onSubmit(data){
+    try{
         setLoading(true);
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+        const loginData = await signIn("credentials",{
+            ...data,
+            redirect:false,
 
-        const response = await fetch(`${baseUrl}/api/login`, {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify(data),
         });
-
-        const responseData = await response.json();
-
-        if (response.ok) {
+        if(loginData?.error){
             setLoading(false);
-            toast.success("Login Successful");
+            toast.error("sign-in error :check your credentials")
+        }else{
+            toast.success("login Successful");
             reset();
-
-            const userRole = responseData.data.role;
-
-            if (userRole === "USER") {
-                router.push("/dashboard");
-            } else {
-                router.push(`/onboarding/${responseData.data.id}`);
-            }
-
-        } else {
-            setLoading(false);
-            if (response.status === 401) {
-                setEmailErr("Invalid email or password");
-                toast.error("Invalid email or password");
-            } else {
-                console.error("Server Error:", responseData.error);
-                toast.error("Oops, something went wrong");
-            }
+            router.push("/");
         }
-    } catch (error) {
+
+    }catch(error){
         setLoading(false);
-        console.log("Network Error:", error);
-        toast.error("Oops, something went wrong!");
+        console.log("Network error",error);
+        toast.error("ooopss, you cant login at the moment")
+
     }
 }
+
 
   return (
     <div>

@@ -6,8 +6,12 @@ import CategoryList from '@/components/frontend/CategoryList';
 import CommunityTraining from '@/components/frontend/CommunityTraining';
 import Footer from '@/components/frontend/Footer';
 import { getData } from "@/lib/getData";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOptions";
 export default async function Home() {
   const categories = await getData('categories') // route to the categories
+  const session = await getServerSession(authOptions);
+  console.log(session?.user);
   return (
 
     <div className="min-h-screen">
