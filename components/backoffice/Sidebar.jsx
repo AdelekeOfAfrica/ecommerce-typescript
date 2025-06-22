@@ -1,110 +1,64 @@
-"use client"
-
-import React, { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import logo from '../../public/logo.png';
-import { LayoutDashboard,User,ChevronsRight, ExternalLink, LayoutGrid, LogOut, Slack, Tractor, Truck, Users2, UserSquare2, Warehouse, Boxes, LayoutList, SendToBack, ScanSearch, MonitorPlay, ChevronDown } from 'lucide-react';
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
+import {
+  LayoutGrid, Users2, Truck, Tractor, Warehouse, UserSquare2, ExternalLink,
+  Boxes, LayoutList, SendToBack, ScanSearch, MonitorPlay, Slack, ChevronDown,
+  ChevronsRight, LogOut
+} from "lucide-react";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
-import { usePathname } from 'next/navigation';
+} from "@/components/ui/collapsible";
 
+import { useRouter } from 'next/navigation';
+import { signOut } from 'next-auth/react';
+export default function Sidebar({ showSidebar, setShowSidebar }) {
+  const { data: session, status } = useSession();
+  const [openMenu, setOpenMenu] = useState(false);
+   const router = useRouter();
+  const pathName = usePathname();
 
-export default function Sidebar({showSidebar,setShowSidebar}) {
-  const pathName=usePathname()
-  const sidebarLinks =[
+  if (status === "loading") {
+    return <p>loading ...</p>;
+  }
 
-    
-    {
-      title:"Customers",
-      icon:Users2,
-       href:"/dashboard/customers"
-    },
-    {
-      title:"Orders",
-      icon:Truck,
-       href:"/dashboard/orders"
-    },
-    {
-      title:"Markets",
-      icon:Warehouse,
-    
-       href:"/dashboard/markets"
-    },
-    {
-      title:"Farmers",
-      icon:Tractor
-      ,
-       href:"/dashboard/farmers"
-    },
+  const role = session?.user?.role;
 
-
-    {
-      title:"Staffs",
-      icon:UserSquare2
-      ,
-       href:"/dashboard/Staffs"
-    },
-
-
-    {
-      title:"Settings",
-      icon:LayoutGrid,
-      href:"/dashboard/settings"
-    },
-
-    {
-      title:"Online Store",
-      icon:ExternalLink,
-      href:"/dashboard/onlineStore"
-    },
-
-    {
-      title:"Community",
-      icon:Users2,
-      href:"/dashboard/community"
-    },
+  // Declare outside conditional blocks
+  let sidebarLinks = [];
+  let catalogueLinks = [
+    { title: "Products", icon: Boxes, href: "/dashboard/products" },
+    { title: "Categories", icon: LayoutList, href: "/dashboard/categories" },
+    { title: "Banners", icon: SendToBack, href: "/dashboard/banners" },
+    { title: "Coupons", icon: ScanSearch, href: "/dashboard/coupons" },
+    { title: "Store Sliders", icon: MonitorPlay, href: "/dashboard/sliders" },
   ];
 
-  const catalogueLinks =[
+  // Set values based on role
+  if (role === "ADMIN" || role === "FARMER" || role==="USER") {
+    sidebarLinks = [
+      { title: "Customers", icon: Users2, href: "/dashboard/customers" },
+      { title: "Orders", icon: Truck, href: "/dashboard/orders" },
+      { title: "Markets", icon: Warehouse, href: "/dashboard/markets" },
+      { title: "Farmers", icon: Tractor, href: "/dashboard/farmers" },
+      { title: "Staffs", icon: UserSquare2, href: "/dashboard/Staffs" },
+      { title: "Settings", icon: LayoutGrid, href: "/dashboard/settings" },
+      { title: "Online Store", icon: ExternalLink, href: "/dashboard/onlineStore" },
+      { title: "Community", icon: Users2, href: "/dashboard/community" },
+    ];
+  }
 
-    
-    {
-      title:"Products",
-      icon:Boxes,
-       href:"/dashboard/products"
-    },
-    {
-      title:"Categories",
-      icon:LayoutList,
-       href:"/dashboard/categories"
-    },
-    {
-      title:"Banners",
-      icon:SendToBack,
-    
-       href:"/dashboard/banners"
-    },
-    {
-      title:"Coupons",
-      icon:ScanSearch
-      ,
-       href:"/dashboard/coupons"
-    },
-
-
-    {
-      title:"Store Sliders",
-      icon:MonitorPlay
-      ,
-       href:"/dashboard/sliders"
+  // if (role === "USER") {
+  //   catalogueLinks = []; // USER doesn't see catalogue the correct way 
+  // }
+    async function handleLogout(){
+      await signOut()
+      router.push("/");
     }
-  ];
-  console.log("Sidebar state:", showSidebar);
-  const[openMenu,setOpenMenu]=useState(false);
   return (
  
 
@@ -124,7 +78,7 @@ export default function Sidebar({showSidebar,setShowSidebar}) {
        <span>Dashboard </span>
        </Link>
 
-       <Collapsible>
+            <Collapsible>
             <CollapsibleTrigger asChild className='mb-3' onClick={()=>setOpenMenu(!openMenu)}>
              <button  className="flex items-center space-x-6 
                 px-6 py-2  "> 
@@ -136,7 +90,9 @@ export default function Sidebar({showSidebar,setShowSidebar}) {
                 </div>
               </button>
               </CollapsibleTrigger  >
-              <CollapsibleContent className=" rounded-lg py-2 px-4 pr-8 dark:bg-slate-800">
+           {
+            catalogueLinks.length >0  && (
+                 <CollapsibleContent className=" rounded-lg py-2 px-4 pr-8 dark:bg-slate-800">
                 
               {
                 catalogueLinks.map((item,i)=>{
@@ -154,6 +110,8 @@ export default function Sidebar({showSidebar,setShowSidebar}) {
               
                
               </CollapsibleContent>
+            )
+           }
             </Collapsible>
      
 
@@ -174,7 +132,7 @@ export default function Sidebar({showSidebar,setShowSidebar}) {
        }
 
     <div className="px-6 py-2 ">
-       <button className="flex items-center space-x-3 
+       <button onClick={handleLogout} className="flex items-center space-x-3 
                  bg-green-600 rounded-md px-6 py-3">
         <LogOut/>
           <span >Logout</span>
