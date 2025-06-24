@@ -1,9 +1,16 @@
 import { NextResponse } from "next/server";
 import db from "../../../lib/db";
 import bcrypt from 'bcrypt';
+// import {v4 as uuidv4} from "uuid"
+// import base64url from "base64url"; 
+// import { Resend } from "resend";
+// import{EmailTemplate} from "@/components/email-template"
+
 export async function POST(request){ 
 
     try{
+
+        // const resend = new Resend(process.env.RESEND_API_KEY);
 
         const {name,email,password,role } = await request.json();
 
@@ -30,6 +37,11 @@ export async function POST(request){
         })
 
         console.log(newUser)
+        //send user token email if role = farmer
+        if(role === "FARMER"){
+
+        }
+
         return NextResponse.json({
             data:newUser,
             message:"User created successfully"

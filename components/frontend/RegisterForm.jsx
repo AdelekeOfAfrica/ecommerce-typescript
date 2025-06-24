@@ -42,7 +42,8 @@ export default function RegisterForm({role="USER"}) {
                     router.push("/")
 
                 }else{
-                    router.push(`/onboarding/${responseData.data.id}`)
+                    // router.push("/verify-email")
+                     router.push(`/onboarding/${responseData.data.id}`)
                 }
             }else{
                 setLoading(false);
@@ -129,12 +130,27 @@ export default function RegisterForm({role="USER"}) {
             </div>
 
             <div className="mt-4 text-center">
-            <label htmlFor="terms" className="text-sm font-medium text-gray-900 dark:text-gray-300">
-                Already have an account?{' '}
-                <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">
+            
+               
+               <div className="flex gap-2 justify-between">
+                <p  className="text-[0.70rem] font-medium text-gray-900 dark:text-gray-300">
+                    
+                    Already have an account?{' '}
+                    <a href="/login" className="text-blue-600 hover:underline dark:text-blue-500">
+                    Kindly login
+                    </a>
+                </p> 
+
+                <p className="text-[0.70rem] font-medium text-gray-900 dark:text-gray-300">
+                Are you a farmer?{' '}
+                <a href="/register-farmer" className="text-blue-600 hover:underline dark:text-blue-500">
                 Kindly login
                 </a>
-            </label>
+                </p>
+               </div>
+               
+
+          
             </div>
 
             <div className="flex flex-col items-center w-full">

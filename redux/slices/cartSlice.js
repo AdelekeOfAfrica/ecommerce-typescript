@@ -39,7 +39,7 @@ export const cartSlice = createSlice({
       const newState= state.filter((item) => item.id !== idToRemove);
         if(typeof window !== "undefined"){
          localStorage.setItem("cart",JSON.stringify(idToRemove));}
-         toast.success("product deleted succesfully")
+         toast.success("item deleted succesfully")
          return newState;
     },
 

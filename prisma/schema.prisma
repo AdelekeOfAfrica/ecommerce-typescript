@@ -155,9 +155,10 @@ model User{
   name String?
   email String @unique
   password String
-  emailVerified DateTime?
+  emailVerified Boolean @default(false) 
   
   role  UserRole @default(USER)
+  verificationToken String?
   products Product[]
   farmer FarmerProfile?
   createdAt   DateTime  @default(now())
